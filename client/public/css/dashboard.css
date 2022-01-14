@@ -1,0 +1,197 @@
+
+/* Account Component */
+.active_class{
+    background-color: #f87708;
+    color: black;
+    text-decoration: underline;
+}
+
+.account_button{
+    margin: 0 3rem 0 1.5rem;
+}
+#all_btn{
+    background-color: #f87708;
+    color: white;
+    width: 3.5rem;
+}
+
+/* Dashboard */
+
+#dash_hr{
+  
+    color: #f87708;
+    height: 3px;
+    margin-top: 3px;
+   
+}
+.dash_reload{
+    color: #f87708;
+    margin-top: 2rem;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dash_ul{
+    margin-left: 7rem;
+    text-decoration: none;
+}
+.dash_dash{
+    text-decoration: none;
+    
+}
+
+.dash_ul li{
+    margin: 0 .5rem 0 .5rem;
+}
+.dash_adspy{
+    margin-top: 12px;
+    
+}
+
+
+.account_overview_button{
+    border: 1px solid rgb(214, 205, 205);
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: black;
+    text-align: center;
+}
+.account_overview_button:hover{
+    background-color: #f87708;
+    color: white;
+}
+
+.account_overview{
+    background-color: rgb(245, 245, 241);
+    border-radius: 1rem;
+    padding: 1rem;
+   
+}
+
+#total_saving{
+    padding: 0 2rem 0  2rem;
+}
+#total_saving_data{
+    padding: 0 2rem 0  2rem;
+    color: green;
+}
+
+.account_enable{
+    text-align: center;
+}
+.account_connect_btn{
+    border-radius: 5px;
+    padding: 10px;
+    color: #f87708;
+    border-color: #f87708;
+    border: 1px solid #f87708;
+}
+.account_connect_btn:hover{
+    background-color:#f87708;
+    color: white;
+}
+
+#Enable-account-img{
+    height: 9rem;
+}
+
+#add_domain{
+    padding: 5px;
+    border-radius: 5px;
+    background-color:transparent;
+    color: #f87708;
+    border: 1px solid #f87708;
+   
+}
+
+#add_domain:hover{
+        background-color: #f87708;  
+        color: white;
+}   
+
+.Modal {
+    position: absolute;
+    top: 10%;
+    left: 45%;
+    right: auto;
+    bottom: auto;
+    background-color: rgb(255, 255, 255);
+    width: 30rem;
+    padding: 3.5rem;
+    border: .5px solid rgb(15, 109, 15);
+    border-radius: 3%;
+  }
+ 
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:-10px;
+    background-color: transparent;
+  }
+
+  .analytics-btn{
+      border: none;
+     margin: 1rem;
+     background-color: transparent;
+
+  }
+  .analytics-btn:hover{
+    color: #f87708;
+  }
+  .analytics-main-div{
+      background-color: rgb(250, 248, 248);
+      border-radius: 10px;
+      padding: .5rem 1rem 2rem .5rem;
+      width: 90%;
+      margin: auto;
+  }
+
+  .analytics-data-div{
+      text-align: center;
+      padding: 2rem;
+  }
+  .analytics-heading{
+      color: #f87708;
+      margin: 2rem;
+  }
+  #analytics-main-id{
+      margin: 0 0 1rem 4rem;
+  }
+  .gm_common{
+      background-color: rgb(248, 251, 253);
+      padding: 3rem;
+      border-radius: 5rem;
+     text-align: center;
+
+  }
+  .service-btn{
+      border:2px solid #f87708;
+      padding: .7rem;
+      border-radius: 10rem;
+      background-color: #f87708;
+      color: #ffffff; 
+      
+  }
+  #google_id{
+      padding: .6rem;
+      border-radius: 10rem;
+      margin-right: 3px;
+      border: 2px solid #f87708;
+  }
+  .manual-input{
+      margin-top: 1rem;
+   
+  }
+  .service-btn2{
+    border:1px solid #838181;
+    padding: .7rem 2rem .7rem 2rem;
+    border-radius: 10rem;
+    
+
+  }

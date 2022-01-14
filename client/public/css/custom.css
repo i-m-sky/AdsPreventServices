@@ -1,0 +1,128 @@
+ *{
+    font-family: 'Roboto', sans-serif;
+}
+/* Navbar */
+
+
+.custom-nav-btn{
+    background-color: #f87708;
+   font-size: 14px;
+   padding: 8px 20px;
+   color: rgb(255, 255, 255);
+   border: none;
+   border-radius: 35px;
+   padding: 15px;
+    margin-top: -1rem;
+}
+
+
+/* Home component */
+
+#home_img{
+    height: 30rem;
+}
+.custom-home-btn{
+    background-color: #f87708;
+    font-size: 25px;
+    padding: 16px 40px;
+    color: rgb(223, 215, 215);
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 15px;
+}
+.custom-home-btn:hover{
+    background-color: #db6a07;
+}
+.home_container{
+    background-color: #282421;;
+}
+
+
+/* Footer */
+.webfooter{
+    margin-top: 5rem;
+    padding: 2.5rem;
+    background-color: #212529;
+    color: white;
+
+   
+}
+
+.footer_products{
+    text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+    #home_img{
+        height: 15rem;
+    }   
+}
+@media screen and (max-width: 640) {
+    #home_img{
+        height: 20rem;
+        text-align: center;
+    }   
+    
+}
+
+
+/* Register */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+ }
+
+.register_btn_service{
+    border: 1px solid rgb(167, 159, 159);
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: black;
+    text-align: center;
+}
+.register_btn_service:hover{
+    background-color: rgb(235, 232, 232);
+    color:black;
+}
+.reg_field{
+    margin-left: 2rem;
+}
+.register_btn{
+    background-color: #f87708;
+    font-size: 25px;
+    padding: 16px 40px;
+    color: rgb(255, 251, 251);
+    border: none;
+    border-radius: 10rem;
+    margin-top: 20px;
+    padding: 15px;
+}
+#register_img{
+    height: 5rem;
+}
+#error_msg{
+    color: red;
+}
+
+/* Login */
+
+.login_btn{
+    background-color: #f87708;
+    font-size: 20px;
+    padding: 16px 40px;
+    color: rgb(255, 251, 251);
+    border: none;
+    border-radius: 10rem;
+    margin-top: 20px;
+    padding: 10px 10px;
+    width: 15rem;
+   
+}
+
+.login_img{
+    height: 20rem;
+}
