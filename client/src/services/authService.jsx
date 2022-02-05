@@ -11,9 +11,9 @@ class authService{
     static LoginWithGoogle (googleData){
         return instance.post(`/auth/google`,{ token:googleData.tokenId });
     }
-    // static LoginWithFacebook (){
-    //     return instance.get(`/auth/facebook`);
-    // }
+    static LoginWithFacebook (accessToken,userId){
+        return instance.post(`/auth/facebook`,{accessToken,userId});
+    }
   
 }
 

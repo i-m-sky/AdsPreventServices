@@ -12,4 +12,8 @@ route.post('/domain',auth,accountController.addDomain);
 //google auth
 route.post('/auth/google',authController.googleOauth);
 
+//facebook auth
+
+route.post('/auth/facebook',authController.facebookOauth)
+
 module.exports = route;

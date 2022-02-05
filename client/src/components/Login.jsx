@@ -36,7 +36,6 @@ const Login = () => {
 
     useEffect(() => {
 
-
         if (!user) {
             navigate('/login');
         }
@@ -48,18 +47,21 @@ const Login = () => {
     const responseGoogle = async(googleData) => {
 
      const res =  await authService.LoginWithGoogle(googleData)
-     saveToken(res.data.user);
-     dispatch({type:AUTH_SUCCESS,payload:res.data.user})
-   
-    
+     if(res.data.status===true){
+        saveToken(res.data.user);
+        dispatch({type:AUTH_SUCCESS,payload:res.data.user});
+     }
+     
     }
-    const responseFacebook = (response) => {
-        console.log(response)
+    const responseFacebook = async(facebookData) => {
+        const res = await authService.LoginWithFacebook(facebookData.accessToken,facebookData.userID) 
+        console.log('backend response data',res)
+        saveToken(res.data.user);
+        dispatch({type:AUTH_SUCCESS,payload:res.data.user});
     }
-    const componentClicked = (response)=>{
-        console.log(response)
+    const componentClicked = (data)=>{
+       
     }
-
 
     return (
         <>
@@ -71,12 +73,7 @@ const Login = () => {
                         </div>
                         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                             <h4 className='mb-4'>Login to ClickCease</h4>
-                            <div className='d-md-flex text-center '>
-
-                                {/* <button className='register_btn_service' > <i className="fab fa-google me-2"></i>Continue with Google</button>
-                                <button className='register_btn_service' > <i className="fab fa-facebook me-2 " id='f_button'></i>Continue with Facebook</button> */}
-
-                            </div>
+                          
                             <GoogleLogin
                                 clientId="269579076451-tm2155fqa73munm0sjak4i87k83rc4p1.apps.googleusercontent.com"
                                 buttonText="Login with Google"
@@ -87,11 +84,11 @@ const Login = () => {
                             />
                            
                             <FacebookLogin
-                                appId="246407954321802"
-                                autoLoad={true}
+                                appId="387509146475492"
+                                autoLoad={false}
                                 fields="name,email,picture"
-                                // onClick={componentClicked}
-                                // callback={responseFacebook}
+                                onClick={componentClicked}
+                                callback={responseFacebook}
                                 cssClass='facebook-btn'
                                 icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px'/>}
 

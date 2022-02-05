@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink,Link } from 'react-router-dom'
 
 const Home = () => {
     return (
@@ -13,7 +13,7 @@ const Home = () => {
 
                         ClickCease™ Google Ads click fraud protection and Facebook Ads fraud prevention software will block fake impressions and clicks.
                     </span>
-                    <button className='custom-home-btn'>START YOUR TRIAL</button>
+                   <NavLink to="/login"> <button className='custom-home-btn'>START YOUR TRIAL</button></NavLink>
                 </div>
                 <div className="col-md-6 mt-3">
                     <img id='home_img' src="../images/Fraud.png" alt="" />
