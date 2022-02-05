@@ -16,8 +16,12 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "google-ads-api": "^9.0.0",
+    "google-auth-library": "^7.11.0",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.5"
+    "mongoose": "^6.1.5",
+    "passport": "^0.5.2",
+    "passport-facebook": "^3.0.0"
   }
 }

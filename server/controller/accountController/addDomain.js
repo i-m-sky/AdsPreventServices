@@ -21,7 +21,7 @@ const addDomain =  async(req,res)=>{
             { $push: { domain:req.body.domain } }
          )
   
-          res.status(200).json('New domain added ')
+          res.status(200).json('New domain added ');
 
         } catch (error) {
           return res.status(500).json("opps something went wrong");
