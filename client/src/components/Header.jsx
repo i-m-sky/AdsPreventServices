@@ -10,7 +10,7 @@ const Header = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-light p-3 bg-dark">
                 <div className="container-fluid">
-                    <Link className="navbar-brand fs-1 text-light mb-2" to="#">ClicKCease</Link>
+                    <Link className="navbar-brand fs-1 text-light mb-2" to="#">AdProtector</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

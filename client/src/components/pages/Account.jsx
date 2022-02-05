@@ -10,9 +10,8 @@ const Account = () => {
 
     const logoutUser = ()=>{
         deleteToken()
-        dispatch({type:AUTH_FAIL})
+        dispatch({type:AUTH_FAIL});
         navigate('login')
-      
     }
 
     return (
@@ -34,4 +33,4 @@ const Account = () => {
     )
 }
 
-export default Account
+export default Account;

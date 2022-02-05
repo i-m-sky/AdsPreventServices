@@ -3,34 +3,40 @@ import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginAction } from '../features/actions/authAction'
-import {useNavigate} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import authService from '../services/authService'
+import { GoogleLogin } from 'react-google-login'
+import FacebookLogin from 'react-facebook-login'
+import { FaFacebook } from 'react-icons/fa';
+import { saveToken } from '../services/authService'
+import { AUTH_SUCCESS } from '../features/actions-types'
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().min(4).max(32).required(),
-  });
-  
+    password: yup.string().min(4).max(50).required(),
+});
+
 
 const Login = () => {
     const navigate = useNavigate()
-     const dispatch = useDispatch()
-     const {user,loading,error} = useSelector((state)=>state.authReducer)
+    const dispatch = useDispatch()
+    const { user, loading, error } = useSelector((state) => state.authReducer)
 
-     const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
-      });
-      const onSubmitHandler = (data) => {
+    });
+    const onSubmitHandler = (data) => {
         dispatch(loginAction(data));
         reset();
-      };
+    };
 
     useEffect(() => {
-      
-     
+
+
         if (!user) {
             navigate('/login');
         }
@@ -38,6 +44,23 @@ const Login = () => {
             navigate('/dashboard');
         }
     }, [error, navigate, user])
+
+    const responseGoogle = async(googleData) => {
+
+     const res =  await authService.LoginWithGoogle(googleData)
+     saveToken(res.data.user);
+     dispatch({type:AUTH_SUCCESS,payload:res.data.user})
+   
+    
+    }
+    const responseFacebook = (response) => {
+        console.log(response)
+    }
+    const componentClicked = (response)=>{
+        console.log(response)
+    }
+
+
     return (
         <>
             <section>
@@ -47,31 +70,61 @@ const Login = () => {
                             <img src="images/Loginimg.jpg" className="img-fluid login_img" alt="Phone image" />
                         </div>
                         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                            <h4>Login to ClickCease</h4>
-                            <form  onSubmit={handleSubmit(onSubmitHandler)}>
+                            <h4 className='mb-4'>Login to ClickCease</h4>
+                            <div className='d-md-flex text-center '>
+
+                                {/* <button className='register_btn_service' > <i className="fab fa-google me-2"></i>Continue with Google</button>
+                                <button className='register_btn_service' > <i className="fab fa-facebook me-2 " id='f_button'></i>Continue with Facebook</button> */}
+
+                            </div>
+                            <GoogleLogin
+                                clientId="269579076451-tm2155fqa73munm0sjak4i87k83rc4p1.apps.googleusercontent.com"
+                                buttonText="Login with Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                                className='google-btn'
+                            />
+                           
+                            <FacebookLogin
+                                appId="246407954321802"
+                                autoLoad={true}
+                                fields="name,email,picture"
+                                // onClick={componentClicked}
+                                // callback={responseFacebook}
+                                cssClass='facebook-btn'
+                                icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px'/>}
+
+                            />
+                            <div className="divider d-flex align-items-center my-3">
+                                <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                            </div>
+                            <form onSubmit={handleSubmit(onSubmitHandler)}>
                                 <div className="form-outline mb-4">
                                     <input
-                                    {...register("email")}
-                                    type="email" 
-                                    id="form1Example13" 
-                                    className="form-control form-control-lg"
+                                        {...register("email")}
+                                        type="email"
+                                        id="form1Example13"
+                                        className="form-control form-control-lg"
+                                        placeholder='Enter email'
                                     />
-                                     <p id='error_msg'>{errors.email?.message}</p>
+                                    <p id='error_msg'>{errors.email?.message}</p>
                                     <label className="form-label" htmlFor="form1Example13">Email address</label>
                                 </div>
-                                
+
 
                                 <div className="form-outline mb-4">
                                     <input
-                                    {...register("password")}
-                                     type="password" 
-                                    id="form1Example23" 
-                                    className="form-control form-control-lg" 
+                                        {...register("password")}
+                                        type="password"
+                                        id="form1Example23"
+                                        className="form-control form-control-lg"
+                                        placeholder='Enter Password'
                                     />
-                                     <p id='error_msg'>{errors.password?.message}{error}</p>
+                                    <p id='error_msg'>{errors.password?.message}{error}</p>
                                     <label className="form-label" htmlFor="form1Example23">Password</label>
                                 </div>
-                              
+
                                 <div className="d-flex justify-content-around align-items-center mb-4">
 
                                     <div className="form-check">
@@ -85,24 +138,18 @@ const Login = () => {
                                         <label className="form-check-label" htmlFor="form1Example3"> Remember me </label>
                                     </div>
                                     <Link to="#!">Forgot password?</Link>
-                                   
+
                                 </div>
 
                                 <div className="text-center">
-                                <button type="submit" className="login_btn">Log in</button>
+                                    <button type="submit" className="login_btn">Log in</button>
 
-                                <div className="divider d-flex align-items-center my-4">
-                                    <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-                                </div>
+
                                 </div>
                             </form>
-                            <div className='d-md-flex text-center'>
-                                    <Link to="#"> <button className='register_btn_service'> <i className="fab fa-google me-2"></i>Continue with Google</button></Link>
-                                    <Link to="#"> <button className='register_btn_service'> <i className="fab fa-facebook me-2"></i>Continue with Facebook</button></Link>
-                                    
-                                </div>
-                                <Link to="/register">No account? Sign up
-                                    </Link>
+
+                            <Link to="/register">No account? Sign up
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,6 @@
     margin-top: -1rem;
 }
 
-
 /* Home component */
 
 #home_img{
@@ -74,18 +73,25 @@
     margin-top: 0; 
  }
 
-.register_btn_service{
-    border: 1px solid rgb(167, 159, 159);
-    text-decoration: none;
-    padding: 13px;
-    border-radius: 30px;
-    margin-bottom: 20px;
-    margin-left: 10px;
-    color: black;
-    text-align: center;
+.google-btn{
+    width: 11rem;
+    margin-right: 1rem;
+   
+
 }
+.facebook-btn{
+    width:12rem;
+    height: 2.7rem;
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    color: rgb(114, 114, 114);
+    font-size: .9rem;
+    border-radius: 2px;
+}
+
 .register_btn_service:hover{
-    background-color: rgb(235, 232, 232);
+    background-color: rgb(243, 239, 239);
     color:black;
 }
 .reg_field{

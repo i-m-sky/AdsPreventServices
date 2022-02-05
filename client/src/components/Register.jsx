@@ -6,6 +6,10 @@ import { registerAction } from '../features/actions/authAction';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { GoogleLogin } from 'react-google-login'
+import FacebookLogin from 'react-facebook-login'
+import { FaFacebook } from 'react-icons/fa';
+
 const Register = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -36,6 +40,15 @@ const Register = () => {
         }
     }, [navigate, user])
 
+
+    const responseGoogle = (response) => {
+        console.log(response)
+        
+    }
+    const responseFacebook = (response) => {
+        console.log(response)
+    }
+
     return (
         <>
             <section  >
@@ -57,9 +70,26 @@ const Register = () => {
                             <div className="divider d-flex align-items-center my-4">
                                 <h2 className="text-center fw-bold mx-3 mb-0">  Create your ClickCease account to start your trial</h2>
                             </div>
-                            <div className='d-md-flex text-center'>
-                                <Link to="#"> <button className='register_btn_service'> <i className="fab fa-google me-2"></i>Continue with Google</button></Link>
-                                <Link to="#"> <button className='register_btn_service'> <i className="fab fa-facebook me-2"></i>Continue with Facebook</button></Link>
+                            <div className='d-md-flex text-center '>
+                            <GoogleLogin
+                                clientId="269579076451-tm2155fqa73munm0sjak4i87k83rc4p1.apps.googleusercontent.com"
+                                buttonText="Login with Google"
+                                onSuccess={responseGoogle}
+                                onFailure={responseGoogle}
+                                cookiePolicy={'single_host_origin'}
+                                className='google-btn'
+                            />
+                           
+                            <FacebookLogin
+                                appId="246407954321802"
+                                autoLoad={true}
+                                fields="name,email,picture"
+                                // onClick={componentClicked}
+                                callback={responseFacebook}
+                                cssClass='facebook-btn'
+                                icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px'/>}
+
+                            />
                             </div>
                             <div className="divider d-flex align-items-center my-4">
                                 <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>

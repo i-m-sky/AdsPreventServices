@@ -1,4 +1,5 @@
 import instance from "../http/axios"
+
 class authService{
     static register(name,email,password,domain){
        return instance.post(`/auth/register`,{name,email,password,domain})
@@ -7,6 +8,13 @@ class authService{
         console.log("form service:",email,password)
         return instance.post(`/auth/login`,{email,password})
     }
+    static LoginWithGoogle (googleData){
+        return instance.post(`/auth/google`,{ token:googleData.tokenId });
+    }
+    // static LoginWithFacebook (){
+    //     return instance.get(`/auth/facebook`);
+    // }
+  
 }
 
 //save token in browser's  localstorage
