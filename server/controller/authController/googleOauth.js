@@ -8,14 +8,14 @@ const googleOauth = async (req, res) => {
 
   try {
     const { token } = req.body
-
+    
     const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
     const ticket = await client.verifyIdToken({
       idToken: token,
       audience: process.env.GOOGLE_CLIENT_ID
     });
     const { name, email, picture } = ticket.getPayload();
-
+   
     const exist = await User.exists({ email: email });
 
     if (exist) {
@@ -33,7 +33,7 @@ const googleOauth = async (req, res) => {
       return res.status(200).json({ status: true, message: "Register success", user: { user, token } })
     }
   } catch (error) {
-    return res.status(500).json("opps something went wrong ");
+    return res.status(500).json("opps something went wrong");
   }
 }
 

@@ -8,12 +8,12 @@ const localRegister =  async(req,res)=>{
 
           name: joi.string().min(3).max(20).required(),
           email: joi.string().email().required(),
-          password: joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
+          password: joi.string().required(),
           phone:joi.string().min(10).max(15),
           domain:joi.string().min(5).max(50)
 
         });
-    
+  
         const { error } = validateRegister.validate(req.body);
     
         if (error) {

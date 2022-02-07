@@ -45,7 +45,7 @@ const Login = () => {
     }, [error, navigate, user])
 
     const responseGoogle = async(googleData) => {
-
+        console.log(googleData)
      const res =  await authService.LoginWithGoogle(googleData)
      if(res.data.status===true){
         saveToken(res.data.user);
@@ -55,7 +55,6 @@ const Login = () => {
     }
     const responseFacebook = async(facebookData) => {
         const res = await authService.LoginWithFacebook(facebookData.accessToken,facebookData.userID) 
-        console.log('backend response data',res)
         saveToken(res.data.user);
         dispatch({type:AUTH_SUCCESS,payload:res.data.user});
     }

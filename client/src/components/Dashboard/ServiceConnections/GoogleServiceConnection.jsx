@@ -1,6 +1,8 @@
 import React from 'react'
+import GoogleAuthButton from '../../Buttons/GoogleAuthButton';
 
 const GoogleServiceConnection = () => {
+    
     return (
         <>
             <div className="container">
@@ -14,7 +16,7 @@ const GoogleServiceConnection = () => {
                             <h2>Connect with Google</h2>
                             <p>Link your email and in the following step
                                 sync the relevant Google Ads account</p>
-                            <button className='service-btn2'><i className="fab fa-google me-2"></i>Link with Google</button>
+                        <GoogleAuthButton  value="Link with google"/>
                         </div>
                     </div>
                   
