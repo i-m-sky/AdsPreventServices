@@ -7,7 +7,7 @@ const connection = (req,res)=>{
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
         developer_token: process.env.DEVELOPER_TOKEN,
 
-    })
+    });
 
     const customer = client.Customer({
         customer_account_id: '299-753-2433',

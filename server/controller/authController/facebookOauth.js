@@ -2,10 +2,9 @@ const User = require("../../model/User");
 const bcrypt = require('bcrypt');
 const Jwtservice = require("../../services/JwtService");
 
-const axios = require("axios")
+const axios = require("axios");
 
 const facebookOauth = async (req, res) => {
-
 
     try {
         const { accessToken, userId } = req.body
@@ -33,4 +32,4 @@ const facebookOauth = async (req, res) => {
     }
 }
 
-module.exports = facebookOauth
+module.exports = facebookOauth;
