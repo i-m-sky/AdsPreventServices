@@ -11,7 +11,7 @@ const userDataFromStorage = localStorage.getItem("user_data")
 
 const initialState = {
     loading: false,
-    user:userDataFromStorage ,
+    user:userDataFromStorage,
     error:null
 }
 export const authReducer = (state = initialState, { type, payload }) => {

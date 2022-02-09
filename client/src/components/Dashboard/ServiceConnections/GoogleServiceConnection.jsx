@@ -2,7 +2,7 @@ import React from 'react'
 import GoogleAuthButton from '../../Buttons/GoogleAuthButton';
 
 const GoogleServiceConnection = () => {
-    
+
     return (
         <>
             <div className="container">
@@ -16,10 +16,10 @@ const GoogleServiceConnection = () => {
                             <h2>Connect with Google</h2>
                             <p>Link your email and in the following step
                                 sync the relevant Google Ads account</p>
-                        <GoogleAuthButton  value="Link with google"/>
+                            <GoogleAuthButton value="Link with google" />
                         </div>
                     </div>
-                  
+
                     <div className="col-md-6 gm_common">
                         <div className="manual-div ">
                             <h2>Link Manually</h2>
@@ -27,7 +27,7 @@ const GoogleServiceConnection = () => {
                                 and access request to get connected</p>
                         </div>
                         <div className='manual-input'>
-                        <input type="text" placeholder='123-456-7890' id='google_id' />
+                            <input type="text" placeholder='123-456-7890' id='google_id' />
                             <button className='service-btn'>Connect Googel Ads Account</button>
                         </div>
                     </div>

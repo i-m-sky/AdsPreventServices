@@ -11,6 +11,7 @@ import FacebookLogin from 'react-facebook-login'
 import { FaFacebook } from 'react-icons/fa';
 
 const Register = () => {
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { user, loading, error } = useSelector((state) => state.authReducer);
@@ -26,7 +27,7 @@ const Register = () => {
       });
 
     const onSubmitHandler = (data) => {
-      dispatch(registerAction(data));
+        dispatch(registerAction(data));
         reset();
     };
 

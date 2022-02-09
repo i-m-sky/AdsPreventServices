@@ -42,7 +42,7 @@ const Login = () => {
         else if (user) {
             navigate('/dashboard');
         }
-    }, [error, navigate, user])
+    }, [ user])
 
     const responseGoogle = async(googleData) => {
         console.log(googleData)
