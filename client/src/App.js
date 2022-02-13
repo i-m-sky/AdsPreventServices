@@ -10,7 +10,7 @@ Modal.setAppElement('#root');
 const App = () => {
  
 const { user,loading} = useSelector((state) => state.authReducer);
-console.log("user data ",user)
+
   return (
     <>
      <Header/>

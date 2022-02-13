@@ -1,6 +1,7 @@
 import instance from "../http/axios"
 
 class authService{
+    
     static register(name,email,password,domain){
        return instance.post(`/auth/register`,{name,email,password,domain})
     }
@@ -13,6 +14,9 @@ class authService{
     }
     static LoginWithFacebook (accessToken,userId){
         return instance.post(`/auth/facebook`,{accessToken,userId});
+    }
+    static LinkGoogleAds (){
+        return instance.post(`/link-google-ads/`,{});
     }
   
 }

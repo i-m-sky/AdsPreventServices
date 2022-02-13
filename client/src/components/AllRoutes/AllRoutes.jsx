@@ -11,7 +11,7 @@ import FraudAnalyticsGoogle from "../Dashboard/FraudAnalytics/FraudAnalyticsGoog
 import FraudAnalyticsFacebook from "../Dashboard/FraudAnalytics/FraudAnalyticsFacebook";
 import FraudAnalyticsMicrosoft from "../Dashboard/FraudAnalytics/FraudAnalyticsMicrosoft";
 import GoogleServiceConnection from "../Dashboard/ServiceConnections/GoogleServiceConnection";
-
+import GoogleRedirect from "../Dashboard/ServiceConnections/GoogleRedirect";
 
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
@@ -27,7 +27,9 @@ const AllRoutes = () => {
         { path: '/', element: <Home /> },
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
+        {path:'google/redirect',element:<ProtectedRoutes><GoogleRedirect/></ProtectedRoutes>},
         { path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
+       
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },

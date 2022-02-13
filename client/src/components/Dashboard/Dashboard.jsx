@@ -8,7 +8,7 @@ const Dashboard = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     const openModal = () => {
-        setIsOpen(true)
+        setIsOpen(true);
     }
     return (
         <>

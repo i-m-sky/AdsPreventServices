@@ -11,8 +11,7 @@ const GoogleAuthButton = (props) => {
 
     const responseGoogle = async (googleData) => {
 
-        console.log("This is google data",googleData)
-      
+      console.log(googleData)
     }
 
     return (
