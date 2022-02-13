@@ -12,7 +12,7 @@ route.post('/domain',auth,accountController.addDomain);
 
 
 //google ads
-route.post('/google/ads',googleAdsController.connection);
+route.post('/google-ads',googleAdsController.GoogleAdsCampaigns);
 
 //google auth
 route.post('/auth/google',authController.googleOauth);
@@ -22,7 +22,6 @@ route.post('/auth/facebook',authController.facebookOauth);
 
 
 //Ip routes
-
 route.get('/spamhausip',ipController.SpamhausIp);
 route.get('/myip-ms',ipController.myip);
 

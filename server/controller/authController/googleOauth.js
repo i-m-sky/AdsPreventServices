@@ -5,7 +5,6 @@ const bcypt = require('bcrypt');
 
 const googleOauth = async (req, res) => {
 
-
   try {
     const { token } = req.body
     

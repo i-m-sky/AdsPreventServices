@@ -7,14 +7,6 @@ const SpamIpSchema = new mongoose.Schema({
         required:true,
         unique:true
     },
-    countries:{
-        type:String,
-        default:null
-    },
-    state:{
-        type:String,
-        default:null
-    },
     ipranges:{
         type:Array,
         default:[]

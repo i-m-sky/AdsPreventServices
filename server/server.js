@@ -4,10 +4,8 @@ const app  =  express ();
 const port = process.env.Port;
 const cors = require("cors");
 require("./db/db");
-const passport = require('passport');
 const route = require("./route");
 
-app.use(passport.initialize());
 app.use(cors({
     origin:"http://localhost:3000"
 }));

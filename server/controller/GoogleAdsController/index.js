@@ -1,5 +1,5 @@
-const connection = require("./connection")
+const GoogleAdsCampaigns = require("./GoogleAdsCampaigns")
 
 module.exports = {
-    connection
+    GoogleAdsCampaigns
 }
