@@ -13,6 +13,7 @@ import FraudAnalyticsMicrosoft from "../Dashboard/FraudAnalytics/FraudAnalyticsM
 import GoogleServiceConnection from "../Dashboard/ServiceConnections/GoogleServiceConnection";
 import GoogleRedirect from "../Dashboard/ServiceConnections/GoogleRedirect";
 
+
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
 
@@ -27,9 +28,8 @@ const AllRoutes = () => {
         { path: '/', element: <Home /> },
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
-        {path:'google/redirect',element:<ProtectedRoutes><GoogleRedirect/></ProtectedRoutes>},
-        { path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
-       
+        {path:'google-redirect',element:<GoogleRedirect/>},
+        {path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },

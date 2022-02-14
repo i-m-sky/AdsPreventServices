@@ -22,8 +22,8 @@ const schema = yup.object().shape({
 
 
 const Login = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const { user, loading, error } = useSelector((state) => state.authReducer)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
@@ -42,7 +42,7 @@ const Login = () => {
         else if (user) {
             navigate('/dashboard');
         }
-    }, [user]);
+    }, [ user])
 
     const responseGoogle = async(googleData) => {
         console.log(googleData)

@@ -5,24 +5,27 @@ const accountController = require("../controller/accountController");
 const googleAdsController = require("../controller/GoogleAdsController");
 const ipController = require("../controller/ipController")
 
+
 //main routes
-route.post('/auth/register',authController.localRegister);
-route.post('/auth/login',authController.localLogin);
-route.post('/domain',auth,accountController.addDomain);
+route.post('/auth/register', authController.localRegister);
+route.post('/auth/login', authController.localLogin);
+route.post('/domain', auth, accountController.addDomain);
 
 
 //google ads
-route.post('/google-ads',googleAdsController.GoogleAdsCampaigns);
+route.get('/google-ads', googleAdsController.LinkWithGoogleAds);
+route.post('/google-code', googleAdsController.GoogleToken)
+
 
 //google auth
-route.post('/auth/google',authController.googleOauth);
+route.post('/auth/google', authController.googleOauth);
 
 //facebook auth
-route.post('/auth/facebook',authController.facebookOauth);
+route.post('/auth/facebook', authController.facebookOauth);
 
 
 //Ip routes
-route.get('/spamhausip',ipController.SpamhausIp);
-route.get('/myip-ms',ipController.myip);
+route.get('/spamhausip', ipController.SpamhausIp);
+route.get('/myip-ms', ipController.myip);
 
 module.exports = route;

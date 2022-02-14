@@ -1,5 +1,7 @@
-const GoogleAdsCampaigns = require("./GoogleAdsCampaigns")
+const LinkWithGoogleAds = require("./LinkWithGoogleAds");
+const GoogleToken = require('./GoogleToken')
 
 module.exports = {
-    GoogleAdsCampaigns
+    LinkWithGoogleAds,
+    GoogleToken
 }
