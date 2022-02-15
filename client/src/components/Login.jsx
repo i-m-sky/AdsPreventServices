@@ -30,6 +30,7 @@ const Login = () => {
         resolver: yupResolver(schema),
     });
     const onSubmitHandler = (data) => {
+        console.log("data++++++++++++++")
         dispatch(loginAction(data));
         reset();
     };
@@ -42,24 +43,25 @@ const Login = () => {
         else if (user) {
             navigate('/dashboard');
         }
-    }, [ user])
+    }, [user])
 
-    const responseGoogle = async(googleData) => {
+    const responseGoogle = async (googleData) => {
         console.log(googleData)
-     const res =  await authService.LoginWithGoogle(googleData)
-     if(res.data.status===true){
-        saveToken(res.data.user);
-        dispatch({type:AUTH_SUCCESS,payload:res.data.user});
-     }
-     
+        const res = await authService.LoginWithGoogle(googleData);
+        console.log(res)
+        if (res.data.status === true) {
+            saveToken(res.data.user);
+            dispatch({ type: AUTH_SUCCESS, payload: res.data.user });
+        }
+
     }
-    const responseFacebook = async(facebookData) => {
-        const res = await authService.LoginWithFacebook(facebookData.accessToken,facebookData.userID) 
+    const responseFacebook = async (facebookData) => {
+        const res = await authService.LoginWithFacebook(facebookData.accessToken, facebookData.userID)
         saveToken(res.data.user);
-        dispatch({type:AUTH_SUCCESS,payload:res.data.user});
+        dispatch({ type: AUTH_SUCCESS, payload: res.data.user });
     }
-    const componentClicked = (data)=>{
-       
+    const componentClicked = (data) => {
+
     }
 
     return (
@@ -72,7 +74,7 @@ const Login = () => {
                         </div>
                         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                             <h4 className='mb-4'>Login to ClickCease</h4>
-                          
+
                             <GoogleLogin
                                 clientId="269579076451-tm2155fqa73munm0sjak4i87k83rc4p1.apps.googleusercontent.com"
                                 buttonText="Login with Google"
@@ -81,7 +83,7 @@ const Login = () => {
                                 cookiePolicy={'single_host_origin'}
                                 className='google-btn'
                             />
-                           
+
                             <FacebookLogin
                                 appId="387509146475492"
                                 autoLoad={false}
@@ -89,7 +91,7 @@ const Login = () => {
                                 onClick={componentClicked}
                                 callback={responseFacebook}
                                 cssClass='facebook-btn'
-                                icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px'/>}
+                                icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px' />}
 
                             />
                             <div className="divider d-flex align-items-center my-3">

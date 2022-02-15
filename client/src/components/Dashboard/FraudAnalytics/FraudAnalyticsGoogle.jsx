@@ -4,9 +4,10 @@ import DataOnTheWay from './DataOnTheWay';
 
 const FraudAnalyticsGoogle = () => {
 
-  const account = false;
+  const LinkGoogle = JSON.parse(localStorage.getItem("LinkGoogle"));
+  console.log(LinkGoogle)
 
-  if(account){
+  if(LinkGoogle){
   
     return (
       <>

@@ -13,6 +13,7 @@ const localLogin = async(req,res)=>{
     });
 
     const { error } = validateLogin.validate(req.body);
+  
 
     if (error) {
         return res.status(200).send({ status: false, message: error.message });

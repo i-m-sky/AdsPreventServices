@@ -2,7 +2,7 @@ import React from 'react'
 import NotAccountConnect from '../AccoutOverview/NotAccountConnect'
 import DataOnTheWay from './DataOnTheWay'
 const FraudAnalyticsMicrosoft = () => {
-  const Account = true
+  const Account = false
   if (Account) {
     return (
       <>

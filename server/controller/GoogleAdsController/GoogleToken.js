@@ -1,6 +1,9 @@
 const { google } = require('googleapis');
+const GoogleRefreshToken = require("../../model/GoogleRefreshToken")
 
 const GoogleToken = async (req, res) => {
+
+
 
     try {
 
@@ -12,9 +15,9 @@ const GoogleToken = async (req, res) => {
 
         );
         const code = req.body.code;
-        console.log("code", code)
 
         const { tokens } = await oauth2Client.getToken(code)
+
         oauth2Client.setCredentials(tokens);
 
         oauth2Client.on('tokens', (tokens) => {
@@ -28,8 +31,26 @@ const GoogleToken = async (req, res) => {
         console.log("refresh_token: ", tokens.refresh_token);
 
 
-        return res.status(200).json({ status: true })
 
+        if (tokens.refresh_token) {
+
+            const exist = await GoogleRefreshToken.exists({ userId: req.user.id });
+
+            if (exist) {
+                return res.status(200).json({ status: false, message: "Already exist" });
+            }
+
+            const data = new GoogleRefreshToken({
+                userId: req.user.id,
+                refresh_Token: tokens.refresh_token
+            });
+
+            const result = await data.save();
+            console.log(result);
+
+            return res.status(200).json({ LinkGoogle: true })
+        }
+        return res.status(200).json({ LinkGoogle: true })
 
     } catch (error) {
         return res.status(200).json('opps something went wrong')

@@ -7,12 +7,13 @@ const googleOauth = async (req, res) => {
 
   try {
     const { token } = req.body
-    
+    console.log("Token",token)
     const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
     const ticket = await client.verifyIdToken({
       idToken: token,
       audience: process.env.GOOGLE_CLIENT_ID
     });
+
     const { name, email, picture } = ticket.getPayload();
    
     const exist = await User.exists({ email: email });

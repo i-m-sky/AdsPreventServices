@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import getheader from '../../../config/getHeader';
 import instance from '../../../http/axios'
 
 const GoogleRedirect = () => {
@@ -16,9 +17,11 @@ const GoogleRedirect = () => {
         }
        let res = await instance.post('/google-code' , data)
 
-       if(res.data.status === true ) {
-        navigate("/dashboard/fraudanalyticsgoogle")
-
+       if(res.data.LinkGoogle === true ) {
+     
+        localStorage.setItem("LinkGoogle",res.data.LinkGoogle);
+        navigate("/dashboard/fraudanalyticsgoogle");
+        
        }
     }
 

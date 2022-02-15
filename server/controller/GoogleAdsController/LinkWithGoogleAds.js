@@ -4,6 +4,7 @@ const route = require("express").Router;
 
 const LinkWithGoogleAds = async (req, res) => {
 
+
     try {
 
         const oauth2Client = new google.auth.OAuth2(
@@ -14,11 +15,16 @@ const LinkWithGoogleAds = async (req, res) => {
             
         );
 
+
+        const scopes = [
+            'https://www.googleapis.com/auth/adwords'
+        ]
+
         const url = oauth2Client.generateAuthUrl({
             access_type: 'offline',
-            scope: 'https://www.googleapis.com/auth/adwords'
+            scope: scopes
         });
-
+        console.log(url)
        return res.json({url,status:true});
 
     } catch (error) {

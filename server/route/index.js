@@ -14,7 +14,8 @@ route.post('/domain', auth, accountController.addDomain);
 
 //google ads
 route.get('/google-ads', googleAdsController.LinkWithGoogleAds);
-route.post('/google-code', googleAdsController.GoogleToken)
+route.post('/google-code',auth, googleAdsController.GoogleToken);
+route.get('/google-campaigs',auth,googleAdsController.GoogleAdsCampaigs);
 
 
 //google auth
@@ -29,3 +30,5 @@ route.get('/spamhausip', ipController.SpamhausIp);
 route.get('/myip-ms', ipController.myip);
 
 module.exports = route;
+
+
