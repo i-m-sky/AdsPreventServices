@@ -17,6 +17,7 @@ const GoogleRedirect = () => {
         }
        let res = await instance.post('/google-code' , data)
 
+       console.log(res);
        if(res.data.LinkGoogle === true ) {
      
         localStorage.setItem("LinkGoogle",res.data.LinkGoogle);

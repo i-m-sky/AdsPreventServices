@@ -12,10 +12,12 @@ route.post('/auth/login', authController.localLogin);
 route.post('/domain', auth, accountController.addDomain);
 
 
+
 //google ads
 route.get('/google-ads', googleAdsController.LinkWithGoogleAds);
 route.post('/google-code',auth, googleAdsController.GoogleToken);
 route.get('/google-campaigs',auth,googleAdsController.GoogleAdsCampaigs);
+route.post('/google-create-campaign',googleAdsController.CreateCampaigs);
 
 
 //google auth

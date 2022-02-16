@@ -5,7 +5,7 @@ const GoogleServiceConnection = () => {
         <>
             <div className="container">
                 <div className='text-center mt-4'>
-                    <h2>Let's get akash.com protected</h2>
+                    <h2>Let's get protected</h2>
                     <p>Connect your Google Ads account or MCC for automatic IP detection and blocking</p>
                 </div>
                 <div className="row mt-4">

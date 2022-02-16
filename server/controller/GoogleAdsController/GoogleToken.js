@@ -4,7 +4,6 @@ const GoogleRefreshToken = require("../../model/GoogleRefreshToken")
 const GoogleToken = async (req, res) => {
 
 
-
     try {
 
         const oauth2Client = new google.auth.OAuth2(
@@ -16,8 +15,8 @@ const GoogleToken = async (req, res) => {
         );
         const code = req.body.code;
 
-        const { tokens } = await oauth2Client.getToken(code)
-
+        const  {tokens}  = await oauth2Client.getToken(code)
+           
         oauth2Client.setCredentials(tokens);
 
         oauth2Client.on('tokens', (tokens) => {
@@ -30,32 +29,29 @@ const GoogleToken = async (req, res) => {
         console.log("access_token: ", tokens.access_token);
         console.log("refresh_token: ", tokens.refresh_token);
 
+        if (tokens.refresh_token || tokens.access_token) {
 
-
-        if (tokens.refresh_token) {
-
-            const exist = await GoogleRefreshToken.exists({ userId: req.user.id });
-
-            if (exist) {
-                return res.status(200).json({ status: false, message: "Already exist" });
+            if(tokens.refresh_token){
+                const data = new GoogleRefreshToken({
+                    userId: req.user.id,
+                    refresh_Token: tokens.refresh_token
+                });
+    
+                const result = await data.save();
+                console.log(result);
+    
+                return res.status(200).json({ LinkGoogle: true })
+            }else{
+                return res.status(200).json({ LinkGoogle: true })
             }
-
-            const data = new GoogleRefreshToken({
-                userId: req.user.id,
-                refresh_Token: tokens.refresh_token
-            });
-
-            const result = await data.save();
-            console.log(result);
-
-            return res.status(200).json({ LinkGoogle: true })
+           
         }
-        return res.status(200).json({ LinkGoogle: true })
+       
+        return res.status(200).json({ LinkGoogle: false })
 
     } catch (error) {
         return res.status(200).json('opps something went wrong')
     }
-
 
 }
 
