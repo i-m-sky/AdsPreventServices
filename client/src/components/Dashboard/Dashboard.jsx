@@ -2,14 +2,15 @@
 import React from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useState } from 'react';
-import AddDomain from '../Modals/AddDomain';
+import GoogleClientIdModal from '../Modals/GoogleClientIdModal';
+
 
 const Dashboard = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
-
-    const openModal = () => {
+    const openModal = ()=>{
         setIsOpen(true)
     }
+   
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,6 +33,7 @@ const Dashboard = () => {
 
                         <li className="nav-item dash_reload mt-4">
                             Reload
+                           
                         </li>
                         <li className="nav-item dropdown fs-5 mt-3 ">
                             <Link className=" data-toggle text-dark dash_dash" to="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,7 +58,8 @@ const Dashboard = () => {
                             </ul>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link dash_adspy" to="#">AdSpy</Link>
+                            <Link className="nav-link dash_adspy"   to="#">AdSpy</Link>
+                           
                         </li>
                         <li className="nav-item dropdown fs-5 mt-2 ">
                             <Link className="nav-link data-toggle text-dark" to="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,10 +83,10 @@ const Dashboard = () => {
                                 <li><Link className="dropdown-item" to="#">Domain Tracking setup</Link></li>
                             </ul>
                         </li>
-                        <li><button className='mt-3' id='add_domain' onClick={openModal} >Add Domain</button></li>
+                        <li><button className='mt-3' id='add_domain'onClick={openModal} >Add Domain</button></li>
                     </ul>
                 </div>
-
+            <GoogleClientIdModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
             </nav>
             <div>
                 <Outlet />

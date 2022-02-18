@@ -14,6 +14,10 @@ class Services {
            'code':code
         });
     }
+
+    static SendManagerId(id){
+        return instance.post(`/google-managerid`,{managerId:id})
+    }
   
   
 

@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer';
 import AllRoutes from './components/AllRoutes/AllRoutes';
 import { useSelector} from 'react-redux';
-import Modal from 'react-modal'
+import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 const App = () => {

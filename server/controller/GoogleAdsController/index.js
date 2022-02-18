@@ -1,11 +1,11 @@
-const LinkWithGoogleAds = require("./LinkWithGoogleAds");
-const GoogleToken = require('./GoogleToken');
+const SetupGoogleAds = require('./SetupGoogleAds');
 const GoogleAdsCampaigs = require('./GoogleAdsCampaigs');
-const CreateCampaigs = require ("./CreateCampaigs")
+const CreateCampaigs = require ("./CreateCampaigs");
+const GetManagerId = require("./GetManagerId")
 
 module.exports = {
-    LinkWithGoogleAds,
-    GoogleToken,
+    SetupGoogleAds,
     GoogleAdsCampaigs,
-    CreateCampaigs
+    CreateCampaigs,
+    GetManagerId
 }

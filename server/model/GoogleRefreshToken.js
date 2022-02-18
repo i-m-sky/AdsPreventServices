@@ -10,9 +10,19 @@ const GoogleRefreshTokenSchema = new mongoose.Schema({
        type:String,
        required:true,
        unique:true
+   },
+   manager_id:{
+       type:String,
+       unique:true,
+       default:""
+   },
+   customer_id:{
+       type:String,
+       unique:true,
+       default:""
    }
   
-},{timestamps:true});
+},{timestamps:false});
 
 const GoogleRefreshToken = mongoose.model("google_refresh_token",GoogleRefreshTokenSchema);
 
