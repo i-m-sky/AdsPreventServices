@@ -1,30 +1,26 @@
-
-const GoogleRefreshToken = require("../../model/GoogleRefreshToken");
-const { GoogleAdsApi, enums } = require('google-ads-api')
+const { GoogleAdsApi, enums, OnQueryStart } = require('google-ads-api')
 
 const GoogleAdsCampaigs = async (req, res) => {
   try {
 
-    
-    const data = await GoogleRefreshToken.findOne({ userId:  req.user.id })
-
-    const client = new GoogleAdsApi({
+    const client = new GoogleAd({
       client_id: process.env.GOOGLE_CLIENT_ID,
       client_secret: process.env.GOOGLE_CLIENT_SECRET,
       developer_token: process.env.GOOGLE_DEVELOPER_TOKEN,
     })
+    const refreshToken = '1//0gphOrz0rSDKECgYIARAAGBASNwF-L9Iron4-eWWM5T3QY8Le-tDrL0G3WsDsJJpjS_gieTNnmiO7poe5z9z0XUIt3Y9PDU8oJCo'
 
-    const customer = client.Customer({
-      customer_id: "3219055209",
-      login_customer_id: '2279363686', 
-      refresh_token: refreshToken,
-    });
 
-    const campaigns = await customer.campaigns.list();
 
-    console.log("campaigns: ", campaigns)
-    return res.json(campaigns)
-  
+    const customers = await client.listAccessibleCustomers(refreshToken);
+
+    console.log(customers)
+    return res.json(customers)
+    // const customer = client.Customer({
+    //   customer_id: "3219055209",
+    //   login_customer_id: '2279363686', 
+    //   refresh_token: refreshToken,
+    // });
 
 
     //   const report = await customer.report({
@@ -51,7 +47,7 @@ const GoogleAdsCampaigs = async (req, res) => {
     // return res.status(200).json(report)
 
   } catch (error) {
-    return res.status(200).json(error)
+    return res.status(200).json(error.message)
   }
 }
 

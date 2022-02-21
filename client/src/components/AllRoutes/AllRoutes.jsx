@@ -12,6 +12,7 @@ import FraudAnalyticsFacebook from "../Dashboard/FraudAnalytics/FraudAnalyticsFa
 import FraudAnalyticsMicrosoft from "../Dashboard/FraudAnalytics/FraudAnalyticsMicrosoft";
 import GoogleServiceConnection from "../Dashboard/ServiceConnections/GoogleServiceConnection";
 import GoogleRedirect from "../Dashboard/ServiceConnections/GoogleRedirect";
+import Subscription from "../Subscription/Subscription";
 
 
 const AllRoutes = () => {
@@ -29,6 +30,7 @@ const AllRoutes = () => {
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
         {path:'google-redirect',element:<GoogleRedirect/>},
+        {path:'subscription',element:<Subscription/>},
         {path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
             children: [
                 { path: '', element: <AccountOverview /> },

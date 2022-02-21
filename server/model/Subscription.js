@@ -2,25 +2,27 @@ const mongoose = require('mongoose');
 
 const SubscriptionSchema = new mongoose.Schema({
 
-    userId:{
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    amount:{
-        type:Number,
+    amount: {
+        type: Number,
+        default: 0
     },
-    startDate:{
+    startDate: {
         type: Date,
         default: Date.now
     },
-    lastProcess:{
+    lastProcess: {
         type: Date,
     },
-    nextPayment:{
+    nextPayment: {
         type: Date,
     },
-},{timestamps:true});
+   
+}, { timestamps: true });
 
-const Subscription = mongoose.model("Subscription",SubscriptionSchema);
+const Subscription = mongoose.model("Subscription", SubscriptionSchema);
 
 module.exports = Subscription;

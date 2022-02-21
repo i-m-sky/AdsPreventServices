@@ -173,3 +173,34 @@
     font-weight:bold;
     font-size:1.5rem;        
 }
+.firstsubs{
+    background-color: #eeeeee;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+
+.secondsubs{
+    background-color: #eeeeee;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+#amount{
+    font-size: 4rem;
+   
+}
+.btn_subscription{
+    padding:1rem 4rem 1rem 4rem;
+    border-radius: 27px;
+    background-color: #f87708;
+    color: white;
+    border: none;
+
+}
+.firstsubs-data{
+    text-align: left;
+}
+.text-dest{
+    color: #ada9a9;
+}

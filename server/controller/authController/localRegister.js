@@ -1,5 +1,6 @@
 const joi = require("joi");
 const User = require("../../model/User");
+const Subscriptions = require("../../model/Subscription");
 const Jwtservice = require("../../services/JwtService");
 const bcrypt = require("bcrypt")
 const localRegister =  async(req,res)=>{
@@ -37,8 +38,9 @@ const localRegister =  async(req,res)=>{
           const { name, email,phone,domain } = req.body;
     
           const createuser = new User({ name, email,phone, password: passhash,domain });
-    
+         
           const result = await createuser.save();
+
          
           const user = { id: result.id, name: result.name, role: result.role }
           

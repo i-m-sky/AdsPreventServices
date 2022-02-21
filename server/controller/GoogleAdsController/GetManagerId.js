@@ -1,12 +1,18 @@
-const GoogleRefreshToken = require("../../model/GoogleRefreshToken")
 
-const GetManagerId = (req, res) => {
+const Subscription = require("../../model/Subscription")
+
+const GetManagerId = async(req, res) => {
     try {
         const managerId = req.body.managerId;
         if(!managerId){
             return res.status(200).json('Manager id NOT FOUND')
         }
-        const result = await = GoogleRefreshToken.find()
+
+        const subs = await subscription.find({userId:req.user.id});
+
+        // const subscription = new GoogleAd({});
+              
+        // const subs = await subscription.save();
 
 
     } catch (error) {

@@ -29,8 +29,6 @@ const GoogleRedirect = () => {
 
        console.log("resdata: ",res);
        if(res.data.length >= 1 ) {
-       
-        
         setManagerId(res.data)
         openModal()
        }
