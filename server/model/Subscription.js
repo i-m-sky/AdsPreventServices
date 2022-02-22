@@ -20,7 +20,10 @@ const SubscriptionSchema = new mongoose.Schema({
     nextPayment: {
         type: Date,
     },
-   
+    status:{
+        type:Boolean,
+        default:true
+    }
 }, { timestamps: true });
 
 const Subscription = mongoose.model("Subscription", SubscriptionSchema);

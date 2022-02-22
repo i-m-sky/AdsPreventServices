@@ -1,9 +1,11 @@
 const route = require("express").Router()
 const auth = require("../middleware/auth")
+const subs = require("../middleware/subs")
 const authController = require("../controller/authController");
 const accountController = require("../controller/accountController");
 const googleAdsController = require("../controller/GoogleAdsController");
-const ipController = require("../controller/ipController")
+const ipController = require("../controller/ipController");
+
 
 
 
@@ -15,10 +17,11 @@ route.post('/domain', auth, accountController.addDomain);
 
 
 //google ads
-route.post('/google-setupads',auth, googleAdsController.SetupGoogleAds);
+route.post('/google-setupads',auth,subs, googleAdsController.SetupGoogleAds);
 route.get('/google-campaigs',googleAdsController.GoogleAdsCampaigs);
 route.post('/google-create-campaign',auth,googleAdsController.CreateCampaigs);
 route.post('/google-managerid',auth,googleAdsController.GetManagerId);
+route.post('/google-client',auth,googleAdsController.GoogleClient);
 
 
 

@@ -4,10 +4,12 @@ import instance from '../../http/axios';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import Services from '../../services/services';
+import GoogleClientId from './GoogleClientId';
 
 const GoogleClientIdModal = (props) => {
 
-    const [managerId,setManagerId] = useState();
+    const [managerId, setManagerId] = useState();
+    const [modalIsOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const customStyles = {
         content: {
@@ -27,14 +29,16 @@ const GoogleClientIdModal = (props) => {
 
     }
     console.log("manager", props.managerId)
-    
-
-const getData = async(item)=>{
-    const res = await Services.SendManagerId(item)
-    console.log(res)
-}   
 
 
+    const getData = async (item) => {
+        const res = await Services.SendManagerId(item)
+        console.log("res data", res)
+        if (res.data.status === true) {
+            navigate(`/clientid/${res.data.ManagerId}`)
+        }
+
+    }
     return (
         <>
             <Modal
@@ -51,17 +55,20 @@ const getData = async(item)=>{
                         <h2>Select your Google Ads Manager Id</h2>
 
                         <div className='manual-input'>
-                           
-                                {props.managerId?props.managerId.map((item) =>
-                                   <div onClick={()=>getData(item)}> <button className='select_item'>Manager - {item} </button>  </div>
-                                ):null}
+
+                            {props.managerId ? props.managerId.map((item) =>
+                                <div onClick={() => getData(item)}> <button className='select_item'>Manager - {item} </button>  </div>
+                            ) : null}
 
 
                         </div>
                     </div>
 
                 </div>
+                {/* <GoogleClientId modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} /> */}
             </Modal>
+       
+               
         </>
     )
 }

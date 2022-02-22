@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const GoogleAdSchema = new mongoose.Schema({
+const GoogleAd = new mongoose.Schema({
     subsId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subscription'
@@ -11,13 +11,13 @@ const GoogleAdSchema = new mongoose.Schema({
     },
     manager_id: {
         type: String,
-        
+        unique:true,
+        default:null
     },
     customer_id: {
         type: String,
-      
     }
 });
 
-const GoogleAdWord = new mongoose.model("GoogleAdWord",GoogleAdSchema);
+const GoogleAdWord = new mongoose.model("GoogleAdWord",GoogleAd);
 module.exports = GoogleAdWord;

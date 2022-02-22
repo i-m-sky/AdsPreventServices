@@ -83,7 +83,7 @@ const Register = () => {
                            
                             <FacebookLogin
                                 appId="246407954321802"
-                                autoLoad={true}
+                                autoLoad={false}
                                 fields="name,email,picture"
                                 // onClick={componentClicked}
                                 callback={responseFacebook}

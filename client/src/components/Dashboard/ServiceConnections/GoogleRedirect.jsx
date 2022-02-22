@@ -32,6 +32,9 @@ const GoogleRedirect = () => {
         setManagerId(res.data)
         openModal()
        }
+       else if(res.data.Subscription===false){
+        navigate('/subscription')
+       }
        else{
         setNotfound("Google ads Account Not found ")
        }

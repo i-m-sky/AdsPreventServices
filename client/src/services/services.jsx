@@ -18,6 +18,10 @@ class Services {
     static SendManagerId(id){
         return instance.post(`/google-managerid`,{managerId:id})
     }
+
+    static SendClientId(managerId,clientId){
+        return instance.post('/google-client',{managerId,clientId})
+    }
   
   
 

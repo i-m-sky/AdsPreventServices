@@ -7,6 +7,7 @@ const SetupGoogleAds = async (req, res) => {
 
     try {
 
+        console.log("subscription id: ");
         const oauth2Client = new google.auth.OAuth2(
 
             process.env.GOOGLE_CLIENT_ID,
@@ -35,8 +36,8 @@ const SetupGoogleAds = async (req, res) => {
             client_secret: process.env.GOOGLE_CLIENT_SECRET,
             developer_token: process.env.GOOGLE_DEVELOPER_TOKEN,
         })
-       
-       const customers = await client.listAccessibleCustomers(tokens.refresh_token);
+
+        const customers = await client.listAccessibleCustomers(tokens.refresh_token);
         console.log(customers)
         const allcustomer = []
         for (let i = 0; i < customers.resource_names.length; i++) {
@@ -45,37 +46,23 @@ const SetupGoogleAds = async (req, res) => {
         }
         console.log(allcustomer)
 
-        if(allcustomer.length >= 1 ){
+        if (allcustomer.length >= 1) {
 
-            if(tokens.refresh_token){
+            if (tokens.refresh_token) {
 
-                const subscription = new Subscription({
+                    const GoogleA = new GoogleAdWord({
+                        subsId: req.user.subsId,
+                        refresh_Token: tokens.refresh_token
+                    })
+                     await GoogleA.save();
 
-                    userId:req.user.id,
-                    lastProcess:new Date().setDate(new Date().getDate()),
-                    nextPayment:new Date().setDate(new Date().getDate()+7),
-
-                });
-              
-                const result = await subscription.save();
-
-                console.log("result: ",result);
-
-                const GoogleA = new GoogleAdWord({
-                    subsId:result.id,
-                    refresh_Token:tokens.refresh_token
-                })
-                const result2 = await GoogleA.save();
-                console.log("result2:",result2)
-
-                return res.status(200).json(allcustomer);
+                    return res.status(200).json(allcustomer);  
             }
-            return res.status(200).json(allcustomer);
+
         }
-        
-            return res.status(200).json("No google ads account available");
-        
-      
+
+        return res.status(200).json("No google ads account available");
+
     } catch (error) {
         return res.status(200).json(error);
     }
