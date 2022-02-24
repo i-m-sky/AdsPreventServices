@@ -30,7 +30,6 @@ const Login = () => {
         resolver: yupResolver(schema),
     });
     const onSubmitHandler = (data) => {
-        console.log("data++++++++++++++")
         dispatch(loginAction(data));
         reset();
     };
@@ -48,7 +47,6 @@ const Login = () => {
     const responseGoogle = async (googleData) => {
         console.log(googleData)
         const res = await authService.LoginWithGoogle(googleData);
-        console.log(res)
         if (res.data.status === true) {
             saveToken(res.data.user);
             dispatch({ type: AUTH_SUCCESS, payload: res.data.user });

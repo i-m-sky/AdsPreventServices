@@ -4,7 +4,7 @@ const SpamIp = require('../../model/SpamIp')
 
 const Listing = async (Iplist) => {
         try {
-                const createIp = new SpamIp({ ip: Iplist });
+                const createIp = new SpamIp({resource:"SpamhausIp", ip: Iplist,weightage:0 });
                 const result = await createIp.save();
                 console.log(result);
 

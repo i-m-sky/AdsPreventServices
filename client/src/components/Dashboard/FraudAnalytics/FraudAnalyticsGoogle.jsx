@@ -2,12 +2,12 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import NotAccountConnect from '../AccoutOverview/NotAccountConnect'
 import DataOnTheWay from './DataOnTheWay';
+import { useSelector } from 'react-redux';
 
 const FraudAnalyticsGoogle = () => {
 
-  const { status } = useParams();
-  console.log("status: ", status)
-  
+  const { status } = useSelector((state) => state.googleReducer)
+  console.log("status: ",status.status)
   if (status) {
 
     return (

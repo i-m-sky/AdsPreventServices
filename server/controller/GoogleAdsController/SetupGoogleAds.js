@@ -38,25 +38,24 @@ const SetupGoogleAds = async (req, res) => {
         })
 
         const customers = await client.listAccessibleCustomers(tokens.refresh_token);
-        console.log(customers)
+
         const allcustomer = []
         for (let i = 0; i < customers.resource_names.length; i++) {
             let customerlist = customers.resource_names[i].split('/');
             allcustomer.push(customerlist[1]);
         }
-        console.log(allcustomer)
 
         if (allcustomer.length >= 1) {
 
             if (tokens.refresh_token) {
 
-                    const GoogleA = new GoogleAdWord({
-                        subsId: req.user.subsId,
-                        refresh_Token: tokens.refresh_token
-                    })
-                     await GoogleA.save();
+                const GoogleA = new GoogleAdWord({
+                    subsId: req.user.subsId,
+                    refresh_Token: tokens.refresh_token
+                })
+                await GoogleA.save();
 
-                    return res.status(200).json(allcustomer);  
+                return res.status(200).json(allcustomer);
             }
 
         }
@@ -70,3 +69,6 @@ const SetupGoogleAds = async (req, res) => {
 }
 
 module.exports = SetupGoogleAds;
+
+
+//curl - X POST \https://googleads.googleapis.com/v1/customers/{CUSTOMER_ID}/campaignCriteria:mutate \ -H 'Authorization: Bearer {your access token}' \ -H 'Content-Type: application/json' \ -H 'developer-token: {your developer token}' \ -H 'login-customer-id: {manager account id, if needed}' \ -d '{ "customer_id": "{CUSTOMER ID - ex: 1234567890}", "operations": [ { "create": { "campaign": "customers/{CUSTOMER_ID}/campaigns/{CAMPAIGN_ID}", "negative": "true", "ip_block": { "ip_address": "127.0.0.1" } } } ] }

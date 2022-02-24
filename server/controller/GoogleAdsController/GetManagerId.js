@@ -13,7 +13,6 @@ const GetManagerId = async(req, res) => {
         const subsId = subs[0]._id
 
         const result = await GoogleAdWord.update({subsId:subsId},{$set:{manager_id:managerId}})
-        console.log("res",result)
 
         return res.status(200).json({ManagerId:managerId,status:true});
 

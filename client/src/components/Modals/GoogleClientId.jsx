@@ -39,8 +39,8 @@ const GoogleClientId = (props) => {
 
                         <div className='manual-input'>
 
-                          <input type="text" placeholder='Enter your google client id' />
-                          <input type="submit" />
+                            <input type="text" placeholder='Enter your google client id' />
+                            <input type="submit" />
 
                         </div>
                     </div>

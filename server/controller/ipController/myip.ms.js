@@ -5,9 +5,17 @@ const Listing = async(IpList) => {
     try {
         console.log(IpList)
         for(let i = 0; i<IpList.length; i++) {
-            const createIp = new SpamIp({ip:IpList[i]});
-            const result = await createIp.save();
-            console.log(result);
+            const findIp = await SpamIp.find({ip:IpList[i]});
+            const ipdata = findIp.ip;
+            if(findIp.ip===IpList[i]){
+                
+                const updateweightage = await SpamIp.update({ipdata:IpList[i]},{$set:{weightage:+1}})
+            }
+            else{
+                const createIp = new SpamIp({ip:IpList[i]});
+                const result = await createIp.save();
+                console.log("Result: ",result)
+            }
         }
     } catch (e) {
         return;
