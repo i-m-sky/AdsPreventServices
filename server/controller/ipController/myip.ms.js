@@ -1,20 +1,23 @@
 const SpamIp = require('../../model/SpamIp');
 const axios = require('axios')
 
-const Listing = async(IpList) => {
+const Listing = async (IpList) => {
     try {
         console.log(IpList)
-        for(let i = 0; i<IpList.length; i++) {
-            const findIp = await SpamIp.find({ip:IpList[i]});
-            const ipdata = findIp.ip;
-            if(findIp.ip===IpList[i]){
-                
-                const updateweightage = await SpamIp.update({ipdata:IpList[i]},{$set:{weightage:+1}})
-            }
-            else{
-                const createIp = new SpamIp({ip:IpList[i]});
+        for (let i = 0; i < IpList.length; i++) {
+            const exists = await SpamIp.findOne({ ip: IpList[i] });
+
+            if (exists) {
+
+                if (exists['resource'] != 'SpamhausIp') {
+                    const updateweightage = await SpamIp.updateOne({ ip: exists['ip'] }, { $inc: { weightage: +1 } })
+                }
+
+            } else {
+                //Save records here
+                const createIp = new SpamIp({ resource: "myip.ms", ip: IpList[i], weightage: 0 });
                 const result = await createIp.save();
-                console.log("Result: ",result)
+                console.log("Result: ", result)
             }
         }
     } catch (e) {

@@ -14,6 +14,7 @@ import GoogleServiceConnection from "../Dashboard/ServiceConnections/GoogleServi
 import GoogleRedirect from "../Dashboard/ServiceConnections/GoogleRedirect";
 import Subscription from "../Subscription/Subscription";
 import ChoiceOneGoogleAccount from "../Dashboard/ServiceConnections/ChoiceOneGoogleAccount";
+import DetectedIps from "../../GoogleAds/DetectedIps";
 
 
 const AllRoutes = () => {
@@ -37,7 +38,10 @@ const AllRoutes = () => {
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },
-                {path:'fraudanalyticsgoogle',element:<FraudAnalyticsGoogle/>},
+                {path:'fraudanalyticsgoogle',element:<FraudAnalyticsGoogle/>,
+                children:[
+                    {path:'detectedips',element:<DetectedIps/>}
+                ]  },
                 {path:'fraudanalyticsmicrosoft',element:<FraudAnalyticsMicrosoft/>},
                 {path:'fraudanalyticsfacebook',element:<FraudAnalyticsFacebook/>},
                 {path:'googleserviceconnection',element:<GoogleServiceConnection/>}   

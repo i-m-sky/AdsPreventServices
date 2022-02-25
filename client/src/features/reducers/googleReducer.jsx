@@ -4,7 +4,7 @@ const AD_SUCCESS = 'AD_SUCCESS'
 const AD_FAIL = 'AD_FAIL'
 
 const googleDataFromStorage = localStorage.getItem("googleAds")
-  ? JSON.parse(localStorage.getItem("googleAds"))
+  ? JSON.parse(localStorage.getItem("googleAds").status)
   : false;
 
 

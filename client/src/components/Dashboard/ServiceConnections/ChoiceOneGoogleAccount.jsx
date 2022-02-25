@@ -20,19 +20,19 @@ const ChoiceOneGoogleAccount = () => {
 
   const clientSubmit = async (e) => {
     e.preventDefault();
-    dispatch(googleAction(id, clientid));
+   // dispatch(googleAction(id, clientid));
   }
 
 const user = true
   useEffect(() => {
 
     if (!status) {
-      dispatch({ type: AD_FAIL });
-      navigate(`/clientid/${id}`);
+      // dispatch({ type: AD_FAIL });
+      // navigate(`/clientid/${id}`);
     }
     else if (status) {
-      dispatch({ type: AD_SUCCESS });
-      navigate('/dashboard/fraudanalyticsgoogle');
+      // dispatch({ type: AD_SUCCESS });
+      // navigate('/dashboard/fraudanalyticsgoogle');
     }
 }, [status])
 

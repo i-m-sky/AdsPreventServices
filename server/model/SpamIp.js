@@ -4,6 +4,7 @@ const SpamIpSchema = new mongoose.Schema({
 
     resource:{
         type:String,
+        required:true
     },
     ip:{
         type:String,
@@ -12,13 +13,14 @@ const SpamIpSchema = new mongoose.Schema({
     },
     weightage:{
         type:Number,
+        default:0
     },
     ipranges:{
         type:Array,
         default:[]
     }
     
-},{timestamps:false});
+},{timestamps:true});
 
 const SpamIp = new mongoose.model("SpamIp",SpamIpSchema);
 

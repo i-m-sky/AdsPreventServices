@@ -5,6 +5,6 @@ import { googleReducer } from "./googleReducer";
 
 export const reducer = combineReducers({
     authReducer,
-    googleReducer
+    //googleReducer
    
 })
