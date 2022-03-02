@@ -9,7 +9,7 @@ const FraudAnalyticsGoogle = () => {
   // const { GoogleClient } = useSelector((state) => state.googleReducer)
 
   // console.log("status: ",status.status)
-  const link = true
+  const link = false
  if (link) {
 
     return (
@@ -22,6 +22,7 @@ const FraudAnalyticsGoogle = () => {
               <Link to="/dashboard/fraudanalyticsgoogle/detectedips"> <button className='analytics-btn'>Detected Ips</button> </Link>
               <button className='analytics-btn'>Countries</button>
               <button className='analytics-btn'>Keywords</button>
+              <button className='analytics-btn'>Campaigns</button>
               <button className='analytics-btn'>Ip Ranges</button>
               <button className='analytics-btn'>Devices</button>
             </div>

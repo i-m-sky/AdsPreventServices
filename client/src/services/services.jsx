@@ -22,6 +22,13 @@ class Services {
     static SendClientId(managerId, clientId) {
         return instance.post('/google-client', { managerId, clientId })
     }
+    static detectedips(){
+        return instance.get('/detectedips');
+    }
+    static blockIp(customerid){
+        return axios.post(`/https://googleads.googleapis.com/v10/customers/${customerid}/campaignCriteria:mutate`,{   
+        });
+    }
 
 }
 export const saveGoogleData = (data) => {

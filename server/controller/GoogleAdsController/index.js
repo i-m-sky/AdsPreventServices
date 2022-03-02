@@ -5,11 +5,13 @@ const GetManagerId = require("./GetManagerId");
 const GoogleClient = require("./GoogleClient");
 const GoogleCampaignCriteria  = require("./GoogleCampaignCriteria");
 
+
 module.exports = {
     SetupGoogleAds,
     GoogleAdsCampaigs,
     CreateCampaigs,
     GetManagerId,
     GoogleClient,
-    GoogleCampaignCriteria
+    GoogleCampaignCriteria,
+    
 }

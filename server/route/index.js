@@ -17,12 +17,13 @@ route.post('/domain', auth, accountController.addDomain);
 
 
 //google ads
-route.post('/google-setupads',auth,subs, googleAdsController.SetupGoogleAds);
+route.post('/google-setupads',auth, googleAdsController.SetupGoogleAds);
 route.get('/google-campaigs',googleAdsController.GoogleAdsCampaigs);
 route.post('/google-create-campaign',auth,googleAdsController.CreateCampaigs);
 route.post('/google-managerid',auth,googleAdsController.GetManagerId);
 route.post('/google-client',auth,googleAdsController.GoogleClient);
 route.get('/googlecampaigncriteria',googleAdsController.GoogleCampaignCriteria);
+
 
 
 
@@ -37,7 +38,8 @@ route.post('/auth/facebook', authController.facebookOauth);
 //Ip routes
 route.get('/spamhausip', ipController.SpamhausIp);
 route.get('/myip-ms', ipController.myip);
-route.get('/tetectedips',ipController.DetectedIps)
+route.get('/detectedips',ipController.DetectedIps)
+
 
 
 module.exports = route;

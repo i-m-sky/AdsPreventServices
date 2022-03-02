@@ -31,20 +31,23 @@ const AllRoutes = () => {
         { path: '/', element: <Home /> },
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
-        {path:'google-redirect',element:<GoogleRedirect/>},
-        {path:'subscription',element:<Subscription/>},
-        {path:'clientid/:id',element:<ChoiceOneGoogleAccount/>},
-        {path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
+        { path: 'google-redirect', element: <GoogleRedirect /> },
+        { path: 'subscription', element: <Subscription /> },
+        { path: 'clientid/:id', element: <ChoiceOneGoogleAccount /> },
+        {
+            path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },
-                {path:'fraudanalyticsgoogle',element:<FraudAnalyticsGoogle/>,
-                children:[
-                    {path:'detectedips',element:<DetectedIps/>}
-                ]  },
-                {path:'fraudanalyticsmicrosoft',element:<FraudAnalyticsMicrosoft/>},
-                {path:'fraudanalyticsfacebook',element:<FraudAnalyticsFacebook/>},
-                {path:'googleserviceconnection',element:<GoogleServiceConnection/>}   
+                {
+                    path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />,
+                    children: [
+                        { path: 'detectedips', element: <DetectedIps /> }
+                    ]
+                },
+                { path: 'fraudanalyticsmicrosoft', element: <FraudAnalyticsMicrosoft /> },
+                { path: 'fraudanalyticsfacebook', element: <FraudAnalyticsFacebook /> },
+                { path: 'googleserviceconnection', element: <GoogleServiceConnection /> }
             ]
         }
     ]);

@@ -74,7 +74,7 @@ const Login = () => {
                             <h4 className='mb-4'>Login to ClickCease</h4>
 
                             <GoogleLogin
-                                clientId="269579076451-tm2155fqa73munm0sjak4i87k83rc4p1.apps.googleusercontent.com"
+                                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                 buttonText="Login with Google"
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
@@ -83,7 +83,7 @@ const Login = () => {
                             />
 
                             <FacebookLogin
-                                appId="387509146475492"
+                                appId={process.env.REACT_APP_FACEBOOK_APP_ID}
                                 autoLoad={false}
                                 fields="name,email,picture"
                                 onClick={componentClicked}

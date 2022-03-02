@@ -1,13 +1,11 @@
 const { google } = require('googleapis');
 const Subscription = require("../../model/Subscription");
-const GoogleAdWord = require("../../model/GoogleAdWord");
-const { GoogleAdsApi } = require('google-ads-api')
+const axios = require('axios')
 
 const SetupGoogleAds = async (req, res) => {
 
     try {
 
-        console.log("subscription id: ");
         const oauth2Client = new google.auth.OAuth2(
 
             process.env.GOOGLE_CLIENT_ID,
@@ -21,54 +19,51 @@ const SetupGoogleAds = async (req, res) => {
 
         oauth2Client.setCredentials(tokens);
 
-        oauth2Client.on('tokens', (tokens) => {
-            if (tokens.refresh_token) {
-                console.log(tokens.refresh_token);
+        const accessToken = tokens.access_token
+        const refreshToken = tokens.refresh_token
+
+        console.log(accessToken, refreshToken)
+
+        const allcustomers = await axios.get(`https://googleads.googleapis.com/v10/customers:listAccessibleCustomers`, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'developer-token': process.env.GOOGLE_DEVELOPER_TOKEN
             }
-            console.log(tokens.access_token);
         });
 
-        console.log("access_token: ", tokens.access_token);
-        console.log("refresh_token: ", tokens.refresh_token);
+      
 
-        const client = new GoogleAdsApi({
-            client_id: process.env.GOOGLE_CLIENT_ID,
-            client_secret: process.env.GOOGLE_CLIENT_SECRET,
-            developer_token: process.env.GOOGLE_DEVELOPER_TOKEN,
-        })
+       let endpoints = [];
 
-        const customers = await client.listAccessibleCustomers(tokens.refresh_token);
+       for(let i=0 ;i<allcustomers.data.resourceNames.length;i++){
 
-        const allcustomer = []
-        for (let i = 0; i < customers.resource_names.length; i++) {
-            let customerlist = customers.resource_names[i].split('/');
-            allcustomer.push(customerlist[1]);
-        }
+        endpoints.push(`https://googleads.googleapis.com/v9/${allcustomers.data.resourceNames[i]}`)
 
-        if (allcustomer.length >= 1) {
+     }
+       
+     console.log("urls",endpoints)
 
-            if (tokens.refresh_token) {
 
-                const GoogleA = new GoogleAdWord({
-                    subsId: req.user.subsId,
-                    refresh_Token: tokens.refresh_token
-                })
-                await GoogleA.save();
+     const account = []
 
-                return res.status(200).json(allcustomer);
+      for(let i=0; i<endpoints.length;i++){
+        const customers = await axios.get(endpoints[i], {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'developer-token': process.env.GOOGLE_DEVELOPER_TOKEN
             }
-
-        }
-
-        return res.status(200).json("No google ads account available");
+        });
+       
+         account.push(customers.data)
+       
+     }
+     console.log(account)
+     return res.status(200).json({status:true,account})
 
     } catch (error) {
-        return res.status(200).json(error);
+        return res.status(200).json(error.message);
     }
 
 }
 
 module.exports = SetupGoogleAds;
-
-
-//curl - X POST \https://googleads.googleapis.com/v1/customers/{CUSTOMER_ID}/campaignCriteria:mutate \ -H 'Authorization: Bearer {your access token}' \ -H 'Content-Type: application/json' \ -H 'developer-token: {your developer token}' \ -H 'login-customer-id: {manager account id, if needed}' \ -d '{ "customer_id": "{CUSTOMER ID - ex: 1234567890}", "operations": [ { "create": { "campaign": "customers/{CUSTOMER_ID}/campaigns/{CAMPAIGN_ID}", "negative": "true", "ip_block": { "ip_address": "127.0.0.1" } } } ] }

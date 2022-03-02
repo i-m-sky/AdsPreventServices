@@ -73,7 +73,7 @@ const Register = () => {
                             </div>
                             <div className='d-md-flex text-center '>
                             <GoogleLogin
-                                clientId="269579076451-tm2155fqa73munm0sjak4i87k83rc4p1.apps.googleusercontent.com"
+                                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                 buttonText="Login with Google"
                                 onSuccess={responseGoogle}
                                 onFailure={responseGoogle}
@@ -82,7 +82,7 @@ const Register = () => {
                             />
                            
                             <FacebookLogin
-                                appId="246407954321802"
+                                appId={process.env.REACT_APP_FACEBOOK_APP_ID}
                                 autoLoad={false}
                                 fields="name,email,picture"
                                 // onClick={componentClicked}

@@ -13,7 +13,7 @@ const Footer = () => {
                             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 
                                 <h6 className=" fw-bold mb-4">
-                                    <i className="fas fa-gem me-3"></i>Click Ceases
+                                    <i className="fas fa-gem me-3"></i>{process.env.REACT_APP_TITLE}
                                 </h6>
                                 <p>
                                     ClickCease™ is an ad fraud and click-fraud detection and protection service software. Our anti click-fraud service protects Google Ads and Bing by using our industry leading detection algorithms blocking fraudulent IPs automatically. ClickCease™ protects Facebook Ads by detecting and blocking fake users from wasting impressions. ClickCease™ is not affiliated with any search engine and is an independent provider.

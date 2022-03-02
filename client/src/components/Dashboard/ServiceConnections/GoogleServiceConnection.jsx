@@ -14,7 +14,7 @@ const GoogleServiceConnection = () => {
                             <h2>Connect with Google</h2>
                             <p>Link your email and in the following step
                                 sync the relevant Google Ads account</p>
-                            <a href='https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fadwords&response_type=code&client_id=292773158439-7rv4ttopnpkbhle61ml1f8u19roj92d5.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fgoogle-redirect'><button className='service-btn'> Link with Google </button></a>
+                            <a href={process.env.REACT_APP_GOOGLE_AUTH_URL}><button className='service-btn'> Link with Google </button></a>
                         </div>
                     </div>
 

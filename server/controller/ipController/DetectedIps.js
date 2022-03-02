@@ -5,9 +5,10 @@ const DetectedIps = async(req,res)=>{
     try {
 
 
-        const result = await SpamIp.find().sort({weightage:-1,updatedAt:-1}).limit(100)
+        const result = await SpamIp.find().sort({weightage:-1,updatedAt:-1}).limit(10)
         console.log(result)
-        return res.status(200).json(result)
+      
+        return res.status(200).json({status:true,result})
     } catch (error) {
         return res.status(500).json(error.message)   
     }
