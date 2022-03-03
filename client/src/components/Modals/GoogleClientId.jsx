@@ -33,19 +33,7 @@ const GoogleClientId = (props) => {
                 style={customStyles}
 
             >
-                <div className="container">
-                    <div className='text-center mt-4'>
-                        <h2>Select your Google Ads Manager Id</h2>
-
-                        <div className='manual-input'>
-
-                            <input type="text" placeholder='Enter your google client id' />
-                            <input type="submit" />
-
-                        </div>
-                    </div>
-
-                </div>
+               
             </Modal>
         </>
 

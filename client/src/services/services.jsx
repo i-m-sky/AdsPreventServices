@@ -14,13 +14,16 @@ class Services {
             'code': code
         });
     }
-
-    static SendManagerId(id) {
-        return instance.post(`/google-managerid`, { managerId: id })
+    static GoogleAdsSetup(code){
+        return instance.post('/google-setupads' , {code});
     }
 
-    static SendClientId(managerId, clientId) {
-        return instance.post('/google-client', { managerId, clientId })
+    static SendManagerId(id,refreshToken) {
+        return instance.post(`/google-managerid`, { managerId: id,refreshToken })
+    }
+
+    static SendClientId(managerId, clientId,refreshToken) {
+        return instance.post('/google-client', { managerId, clientId,refreshToken })
     }
     static detectedips(){
         return instance.get('/detectedips');

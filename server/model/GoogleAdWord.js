@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const GoogleAd = new mongoose.Schema({
-    subsId:{
+    userId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Subscription'
+        ref: 'User'
     },
     refresh_Token: {
         type: String,
@@ -11,11 +11,11 @@ const GoogleAd = new mongoose.Schema({
     },
     manager_id: {
         type: String,
-        unique:true,
-        default:null
+        default:""
     },
     customer_id: {
         type: String,
+        default:""
     }
 });
 

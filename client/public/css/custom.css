@@ -134,14 +134,24 @@
 }
 .select_item{
     background-color: #ffffff;
-    font-size: 20px;
-    padding: 16px 40px;
-    color:#f87708;
-    border: 1px solid #f87708 ;
+    border: none;
     border-radius: 10rem;
-    margin-top: 20px;
-    padding: 10px 10px;
-    width: 15rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+    padding: 1rem 3rem 1rem 3rem;
+    text-align: left;
+    line-height: 1px;
+    width: 20rem;
+
+    
+  
+}
+.google-accounts{
+    display: flex;
+}
+#googlead{
+    height: 3rem;
+    display:inline;
+    margin-left: 2rem;
 }
 .select_item:hover{
     background-color: #f87708;

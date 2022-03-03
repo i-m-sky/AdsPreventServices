@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { googleAction } from '../../../features/actions/googleAction';
@@ -8,33 +8,38 @@ import { useDispatch ,useSelector} from 'react-redux';
 const AD_FAIL = 'AD_FAIL';
 const AD_SUCCESS = 'AD_SUCCESS'
 
-const ChoiceOneGoogleAccount = () => {
+const ChoiceOneGoogleAccount = (props) => {
 
-  const {isGoogle, status } = useSelector((state) => state.googleReducer)
+  console.log(props , "jddbjsdb")
 
-  console.log("isGoogle: ",isGoogle,"status: ",status)
+  const location = useNavigate;
+  console.log(location , "location")
+
   const dispatch = useDispatch()
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const [clientid, setClientid] = useState();
+  // const navigate = useNavigate();
+// const { id,refreshToken } = useParams();
+
+// console("in enter your client id:",id, refreshToken)
+
+  const [clientid, setClientid] = useState("");
 
   const clientSubmit = async (e) => {
     e.preventDefault();
-   // dispatch(googleAction(id, clientid));
+  //  dispatch(googleAction(id, clientid,refreshToken));
   }
 
-const user = true
-  useEffect(() => {
+// const user = true
+//   useEffect(() => {
 
-    if (!status) {
-      // dispatch({ type: AD_FAIL });
-      // navigate(`/clientid/${id}`);
-    }
-    else if (status) {
-      // dispatch({ type: AD_SUCCESS });
-      // navigate('/dashboard/fraudanalyticsgoogle');
-    }
-}, [status])
+//     if (!status) {
+//       // dispatch({ type: AD_FAIL });
+//       // navigate(`/clientid/${id}`);
+//     }
+//     else if (status) {
+//       // dispatch({ type: AD_SUCCESS });
+//       // navigate('/dashboard/fraudanalyticsgoogle');
+//     }
+// }, [status])
 
   return (
     <>
@@ -50,7 +55,7 @@ const user = true
               <p>Submit your Google Ads account or MCC
                 and access request to get connected</p>
             </div>
-            <div className='manual-input'>
+            {/* <div className='manual-input'>
               <form onSubmit={clientSubmit}>
                 <input
                   type="text"
@@ -61,7 +66,7 @@ const user = true
                 />
                 <input type="submit" className='service-btn' />
               </form>
-            </div>
+            </div> */}
           </div>
           <div className="col-md-3">
 

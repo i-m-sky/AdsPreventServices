@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal';
 import instance from '../../http/axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate  } from 'react-router-dom';
 import { useState } from 'react'
 import Services from '../../services/services';
 import GoogleClientId from './GoogleClientId';
@@ -28,15 +28,18 @@ const GoogleClientIdModal = (props) => {
         navigate('/dashboard/googleserviceconnection')
 
     }
-    console.log("manager", props.managerId)
+    console.log("data from google redirect", props.clientDetails,props.refreshToken)
 
-
+console.log(props.refreshToken,"REFRESHHHH")
     const getData = async (item) => {
-        const res = await Services.SendManagerId(item)
-        console.log("res data", res)
+        
+        const res = await Services.SendManagerId(item,props.refreshToken)
+        console.log("managerid res",res)
         if (res.data.status === true) {
-            navigate(`/clientid/${res.data.ManagerId}`)
+            let id = props.refreshToken;
+            navigate(`/clientid/${res.data.result.managerId}` , {state: 'data'});
         }
+
 
     }
     return (
@@ -52,13 +55,27 @@ const GoogleClientIdModal = (props) => {
             >
                 <div className="container">
                     <div className='text-center mt-4'>
-                        <h2>Select your Google Ads Manager Id</h2>
+                        <h2>Select your Google Ads Account</h2>
 
-                        <div className='manual-input'>
+                        <div className='manual-input mt-2'>
 
-                            {props.managerId ? props.managerId.map((item) =>
-                                <div onClick={() => getData(item)}> <button className='select_item'>Manager - {item} </button>  </div>
+                            {props.clientDetails ? props.clientDetails.map((item) =>
+
+                                <div > <button className='select_item mt-3' onClick={() => getData(item.id)}>
+                                    <div className="google-accounts" >
+                                        <h4>{item.descriptiveName}</h4>
+                                        <img src="/images/GoogleAds.png" alt="" id='googlead' /><br />
+                                    </div>
+
+                                    <span>{item.id}</span>
+
+                                </button>  </div>
+
                             ) : null}
+
+
+
+
 
 
                         </div>
@@ -67,8 +84,8 @@ const GoogleClientIdModal = (props) => {
                 </div>
                 {/* <GoogleClientId modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} /> */}
             </Modal>
-       
-               
+
+
         </>
     )
 }

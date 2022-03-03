@@ -33,7 +33,7 @@ const AllRoutes = () => {
         { path: 'register', element: <Register /> },
         { path: 'google-redirect', element: <GoogleRedirect /> },
         { path: 'subscription', element: <Subscription /> },
-        { path: 'clientid/:id', element: <ChoiceOneGoogleAccount /> },
+        { path: 'clientid/:id/', element: <ChoiceOneGoogleAccount /> },
         {
             path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
             children: [
