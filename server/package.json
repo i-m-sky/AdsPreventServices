@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "form-data": "^4.0.0",
     "google-ads-api": "^9.0.0",
     "google-auth-library": "^7.11.0",
     "googleapis": "^95.0.0",

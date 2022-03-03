@@ -14,22 +14,22 @@ class Services {
             'code': code
         });
     }
-    static GoogleAdsSetup(code){
-        return instance.post('/google-setupads' , {code});
+    static GoogleAdsSetup(code) {
+        return instance.post('/google-setupads', { code });
     }
 
-    static SendManagerId(id,refreshToken) {
-        return instance.post(`/google-managerid`, { managerId: id,refreshToken })
+    static SendManagerId(id, refreshToken) {
+        return instance.post(`/google-managerid`, { managerId: id, refreshToken })
     }
 
-    static SendClientId(managerId, clientId,refreshToken) {
-        return instance.post('/google-client', { managerId, clientId,refreshToken })
+    static SendClientId(managerId, clientId, refreshToken) {
+        return instance.post('/google-client', { managerId, clientId, refreshToken })
     }
-    static detectedips(){
+    static detectedips() {
         return instance.get('/detectedips');
     }
-    static blockIp(customerid){
-        return axios.post(`/https://googleads.googleapis.com/v10/customers/${customerid}/campaignCriteria:mutate`,{   
+    static blockIp(customerid) {
+        return axios.post(`/https://googleads.googleapis.com/v10/customers/${customerid}/campaignCriteria:mutate`, {
         });
     }
 

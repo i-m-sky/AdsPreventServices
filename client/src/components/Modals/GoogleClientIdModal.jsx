@@ -35,9 +35,10 @@ console.log(props.refreshToken,"REFRESHHHH")
         
         const res = await Services.SendManagerId(item,props.refreshToken)
         console.log("managerid res",res)
+
         if (res.data.status === true) {
             let id = props.refreshToken;
-            navigate(`/clientid/${res.data.result.managerId}` , {state: 'data'});
+            navigate(`/clientid/${res.data.result.managerId}/${btoa(props.refreshToken)}`);
         }
 
 

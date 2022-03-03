@@ -1,45 +1,39 @@
 import React from 'react'
-import { useLocation, useParams } from 'react-router-dom';
-import { useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { googleAction } from '../../../features/actions/googleAction';
-import { useDispatch ,useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {saveGoogleData} from '../../../services/services'
+import Services from '../../../services/services';
 
 const AD_FAIL = 'AD_FAIL';
 const AD_SUCCESS = 'AD_SUCCESS'
 
 const ChoiceOneGoogleAccount = (props) => {
 
-  console.log(props , "jddbjsdb")
-
-  const location = useNavigate;
-  console.log(location , "location")
-
   const dispatch = useDispatch()
-  // const navigate = useNavigate();
-// const { id,refreshToken } = useParams();
+  const navigate = useNavigate();
 
-// console("in enter your client id:",id, refreshToken)
+
+  const { id, refreshToken } = useParams();
 
   const [clientid, setClientid] = useState("");
 
+  const managerId = id;
+  const refresh_token = atob(refreshToken);
+
   const clientSubmit = async (e) => {
     e.preventDefault();
-  //  dispatch(googleAction(id, clientid,refreshToken));
+    const res = await Services.SendClientId(managerId,clientid,refresh_token)
+   if(res.data.status===true){
+    saveGoogleData(res.data)
+    navigate('/dashboard/fraudanalyticsgoogle')
+   }else{
+     alert("Invalid Client id")
+   }
   }
 
-// const user = true
-//   useEffect(() => {
-
-//     if (!status) {
-//       // dispatch({ type: AD_FAIL });
-//       // navigate(`/clientid/${id}`);
-//     }
-//     else if (status) {
-//       // dispatch({ type: AD_SUCCESS });
-//       // navigate('/dashboard/fraudanalyticsgoogle');
-//     }
-// }, [status])
 
   return (
     <>
@@ -55,7 +49,7 @@ const ChoiceOneGoogleAccount = (props) => {
               <p>Submit your Google Ads account or MCC
                 and access request to get connected</p>
             </div>
-            {/* <div className='manual-input'>
+            <div className='manual-input'>
               <form onSubmit={clientSubmit}>
                 <input
                   type="text"
@@ -66,7 +60,7 @@ const ChoiceOneGoogleAccount = (props) => {
                 />
                 <input type="submit" className='service-btn' />
               </form>
-            </div> */}
+            </div>
           </div>
           <div className="col-md-3">
 
