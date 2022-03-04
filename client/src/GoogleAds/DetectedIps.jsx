@@ -8,6 +8,7 @@ const DetectedIps = () => {
     const [ips, setIps] = useState("");
     const [checked, setChecked] = useState(false);
     const [currentip, setCurrentIp] = useState();
+    // const [callip, setCallIp] = useState(false);
 
     const detectedIp = async () => {
         const res = await services.detectedips();
@@ -17,16 +18,20 @@ const DetectedIps = () => {
     const setCheck = (data, ip) => {
         setChecked(data)
         setCurrentIp(ip)
+        // setCallIp(true)
 
     }
     
-    const BlockIp = ()=>{
+    const BlockIp = async(currentip)=>{
+        const res = await services.ExcludeIp(currentip)
+        console.log("exclude ip res",res)
         console.log(checked,currentip)
     }
+   console.log("ip",currentip)
 
     useEffect(() => {
-       BlockIp();
-    }, [checked])
+       BlockIp(currentip);
+    }, [currentip])
 
     useEffect(() => {
         detectedIp()
@@ -61,10 +66,10 @@ const DetectedIps = () => {
                                         <th scope="row" className='iplist'>{data.ip}</th>
                                         <td>{data.weightage >= 2 ? "Critical" : "Low"}</td>
                                         <td> <label class="switch ml-3">
-
-                                            <input type="checkbox" checked={checked[index]} onChange={(e) => setCheck(e.target.checked, data.ip)} />
+                                            
+                                            <input type="checkbox"  checked={checked[index]} onChange={(e) => setCheck(e.target.checked, data.ip)}/>
                                             <span class="slider round"></span>
-
+                                       
                                         </label></td>
                                         <td>-</td>
                                     </tr>

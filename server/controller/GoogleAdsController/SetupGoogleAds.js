@@ -46,13 +46,11 @@ const SetupGoogleAds = async (req, res) => {
 
         console.log("urls", endpoints)
 
-
         const account = []
 
-        for (let i = 0; i < endpoints.length; i++) {
+        for (let i = 2; i < endpoints.length; i++) {
             const customers = await axios.get(endpoints[i], {
                 headers: {
-
                     'Authorization': `Bearer ${accessToken}`,
                     'developer-token': process.env.GOOGLE_DEVELOPER_TOKEN
                 }

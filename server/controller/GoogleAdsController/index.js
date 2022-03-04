@@ -4,6 +4,7 @@ const CreateCampaigs = require ("./CreateCampaigs");
 const GetManagerId = require("./GetManagerId");
 const GoogleClient = require("./GoogleClient");
 const GoogleCampaignCriteria  = require("./GoogleCampaignCriteria");
+const ExcludeIp = require("./ExcludeIp");
 
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
     GetManagerId,
     GoogleClient,
     GoogleCampaignCriteria,
+    ExcludeIp,
     
 }

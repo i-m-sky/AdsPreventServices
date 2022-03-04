@@ -20,6 +20,9 @@ const GoogleClient = async (req, res) => {
     const generateAccesstoken = await axios.post(`https://oauth2.googleapis.com/token?access_type=offline`, form,
       { headers: form.getHeaders() })
 
+
+    console.log("accesstoken",generateAccesstoken);
+
     const camp = await axios.post(`https://googleads.googleapis.com/v9/customers/${clientId}/googleAds:search`, {
 
       "query": "SELECT campaign.id, campaign.name, campaign.status, campaign.serving_status FROM campaign"

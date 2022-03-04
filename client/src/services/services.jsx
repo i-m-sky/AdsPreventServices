@@ -2,6 +2,8 @@ import axios from "axios";
 import instance from "../http/axios";
 import getheader from '../config/getHeader';
 
+const result = localStorage.getItem('googleAds')?JSON.parse(localStorage.getItem('googleAds')).result:null
+console.log(result)
 class Services {
 
     static LinkWithGoogle() {
@@ -28,9 +30,11 @@ class Services {
     static detectedips() {
         return instance.get('/detectedips');
     }
-    static blockIp(customerid) {
-        return axios.post(`/https://googleads.googleapis.com/v10/customers/${customerid}/campaignCriteria:mutate`, {
-        });
+    static ExcludeIp(ip) {
+        return instance.post(`/exclude-ip`,{
+            ip:ip,
+            account:result
+        })
     }
 
 }
