@@ -16,6 +16,9 @@ const GoogleAd = new mongoose.Schema({
     customer_id: {
         type: String,
         default:""
+    },
+    campaigns:{
+        type:Array
     }
 });
 

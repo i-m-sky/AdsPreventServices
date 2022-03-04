@@ -53,10 +53,13 @@ const GoogleClient = async (req, res) => {
       subsId:subs._id,
       refresh_Token:refreshToken,
       manager_id:managerId,
-      customer_id:clientId
+      customer_id:clientId,
+      campaigns:camp.data.results
     })
 
     const result = await data.save();
+
+    console.log("result: ",result)
 
     return res.status(200).json({ status: true, result })
 
