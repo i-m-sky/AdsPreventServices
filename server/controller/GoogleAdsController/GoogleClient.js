@@ -20,9 +20,6 @@ const GoogleClient = async (req, res) => {
     const generateAccesstoken = await axios.post(`https://oauth2.googleapis.com/token?access_type=offline`, form,
       { headers: form.getHeaders() })
 
-    console.log("access", generateAccesstoken.data.access_token);
-
-
     const camp = await axios.post(`https://googleads.googleapis.com/v9/customers/${clientId}/googleAds:search`, {
 
       "query": "SELECT campaign.id, campaign.name, campaign.status, campaign.serving_status FROM campaign"
@@ -37,8 +34,8 @@ const GoogleClient = async (req, res) => {
 
     console.log("campaigns: ", camp)
 
-    await GoogleAdWord.update({ refresh_Token: refreshToken }, { $set: { customer_id: clientId } })
-    const result = await GoogleAdWord.find({ refresh_Token: refreshToken })
+    await GoogleAdWord.updateOne({ refresh_Token: refreshToken }, { $set: { customer_id: clientId } })
+    const result = await GoogleAdWord.findOne({ refresh_Token: refreshToken })
     return res.status(200).json({ status: true, result })
 
   } catch (error) {

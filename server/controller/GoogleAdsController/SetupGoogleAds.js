@@ -61,8 +61,6 @@ const SetupGoogleAds = async (req, res) => {
             account.push(customers.data)
 
         }
-
-        console.log("account data: ", account)
         const data = new GoogleAdWord({
             userId: req.user.id,
             refresh_Token: refreshToken

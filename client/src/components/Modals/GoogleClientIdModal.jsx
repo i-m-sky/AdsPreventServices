@@ -1,15 +1,10 @@
 import React from 'react'
 import Modal from 'react-modal';
-import instance from '../../http/axios';
-import { useLocation, useNavigate  } from 'react-router-dom';
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Services from '../../services/services';
-import GoogleClientId from './GoogleClientId';
 
 const GoogleClientIdModal = (props) => {
 
-    const [managerId, setManagerId] = useState();
-    const [modalIsOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const customStyles = {
         content: {
@@ -28,20 +23,13 @@ const GoogleClientIdModal = (props) => {
         navigate('/dashboard/googleserviceconnection')
 
     }
-    console.log("data from google redirect", props.clientDetails,props.refreshToken)
-
-console.log(props.refreshToken,"REFRESHHHH")
     const getData = async (item) => {
-        
-        const res = await Services.SendManagerId(item,props.refreshToken)
-        console.log("managerid res",res)
+
+        const res = await Services.SendManagerId(item, props.refreshToken)
 
         if (res.data.status === true) {
-            let id = props.refreshToken;
             navigate(`/clientid/${res.data.result.managerId}/${btoa(props.refreshToken)}`);
         }
-
-
     }
     return (
         <>
@@ -73,20 +61,11 @@ console.log(props.refreshToken,"REFRESHHHH")
                                 </button>  </div>
 
                             ) : null}
-
-
-
-
-
-
                         </div>
                     </div>
 
                 </div>
-                {/* <GoogleClientId modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} /> */}
             </Modal>
-
-
         </>
     )
 }

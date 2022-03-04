@@ -1,16 +1,10 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import getheader from '../../../config/getHeader';
-import instance from '../../../http/axios'
 import Services from '../../../services/services';
 import GoogleClientIdModal from '../../Modals/GoogleClientIdModal';
 
 
 const GoogleRedirect = () => {
-
-
-    const navigate = useNavigate();
 
     const code = new URL(window.location.href).searchParams.get('code');
 
@@ -32,12 +26,6 @@ const GoogleRedirect = () => {
             setRefreshToken(res.data.refreshToken)
             openModal()
         }
-        // else if (res.data.staus !== true) {
-        //     navigate('/subscription')
-        // }
-        // else {
-        //     setNotfound("Google ads Account Not found")
-        // }
     }
 
     useEffect(() => {

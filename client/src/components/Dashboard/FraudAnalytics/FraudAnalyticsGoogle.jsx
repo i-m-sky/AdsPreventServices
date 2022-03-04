@@ -1,16 +1,13 @@
 import React from 'react'
-import { useParams,Link,   Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import NotAccountConnect from '../AccoutOverview/NotAccountConnect'
 import DataOnTheWay from './DataOnTheWay';
-//import { useSelector } from 'react-redux';
 
 const FraudAnalyticsGoogle = () => {
 
-  // const { GoogleClient } = useSelector((state) => state.googleReducer)
+  const status = localStorage.getItem('googleAds')?JSON.parse(localStorage.getItem('googleAds')).status:false
 
-  // console.log("status: ",status.status)
-  const link = false
- if (link) {
+ if (status) {
 
     return (
       <>

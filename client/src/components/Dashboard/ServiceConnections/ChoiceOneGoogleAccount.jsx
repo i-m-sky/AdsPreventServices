@@ -1,20 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { googleAction } from '../../../features/actions/googleAction';
-import { useDispatch, useSelector } from 'react-redux';
 import {saveGoogleData} from '../../../services/services'
 import Services from '../../../services/services';
 
-const AD_FAIL = 'AD_FAIL';
-const AD_SUCCESS = 'AD_SUCCESS'
-
 const ChoiceOneGoogleAccount = (props) => {
 
-  const dispatch = useDispatch()
   const navigate = useNavigate();
-
 
   const { id, refreshToken } = useParams();
 

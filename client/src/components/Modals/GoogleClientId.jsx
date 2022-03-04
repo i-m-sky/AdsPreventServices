@@ -31,13 +31,9 @@ const GoogleClientId = (props) => {
                 overlayClassName="Overlay"
                 onRequestClose={closeModal}
                 style={customStyles}
-
-            >
-               
+            > 
             </Modal>
         </>
-
-
     )
 }
 
