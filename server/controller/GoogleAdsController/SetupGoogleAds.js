@@ -1,7 +1,7 @@
 const { google } = require('googleapis');
 const Subscription = require("../../model/Subscription");
-const GoogleAdWord = require("../../model/GoogleAdWord")
-const axios = require('axios')
+const GoogleAdWord = require("../../model/GoogleAdWord");
+const axios = require('axios');
 
 const SetupGoogleAds = async (req, res) => {
 
@@ -48,7 +48,7 @@ const SetupGoogleAds = async (req, res) => {
 
         const account = []
 
-        for (let i = 2; i < endpoints.length; i++) {
+        for (let i = 0; i < endpoints.length; i++) {
             const customers = await axios.get(endpoints[i], {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
@@ -59,15 +59,7 @@ const SetupGoogleAds = async (req, res) => {
             account.push(customers.data)
 
         }
-        const data = new GoogleAdWord({
-            userId: req.user.id,
-            refresh_Token: refreshToken
-        })
-
-        const result = await data.save();
-        console.log(result)
-
-
+        
         return res.status(200).json({ status: true, accounts: account,accessToken,refreshToken })
 
     } catch (error) {

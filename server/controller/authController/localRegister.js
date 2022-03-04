@@ -41,7 +41,6 @@ const localRegister =  async(req,res)=>{
          
           const result = await createuser.save();
 
-         
           const user = { id: result.id, name: result.name, role: result.role }
           
           const token = Jwtservice.sign(user);

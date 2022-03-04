@@ -27,7 +27,7 @@ const ExcludeIp = async (req, res) => {
             "query": "SELECT campaign.id, campaign.name, campaign.status, campaign.serving_status FROM campaign"
 
         }, {
-            headers: {
+           headers: {
                 "Authorization": `Bearer ${generateAccesstoken.data.access_token}`,
                 "developer-token": process.env.GOOGLE_DEVELOPER_TOKEN,
                 "login-customer-id": account.manager_id
@@ -39,7 +39,7 @@ const ExcludeIp = async (req, res) => {
         console.log("ip: ", req.body.ip, "resourceName: ", campaign.data.results[0].campaign.resourceName, "accoutn_id: ", account.customer_id)
 
 
-        //Exclude ip address from google ads account
+        //Exclude ip address google ads account
 
         const exclude = await axios.post(`https://googleads.googleapis.com/v10/customers/${account.customer_id}/campaignCriteria:mutate`,
             {

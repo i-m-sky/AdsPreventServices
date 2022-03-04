@@ -1,14 +1,17 @@
 const GoogleAdWord = require("../../model/GoogleAdWord")
 const axios = require("axios")
 const FormData = require('form-data');
+const Subscription = require("../../model/Subscription")
 
 const GoogleClient = async (req, res) => {
 
   try {
 
-    const {managerId,clientId,refreshToken} = req.body;
-   
-    const data = await GoogleAdWord.find({ refresh_Token: refreshToken });
+    const { managerId, clientId, refreshToken } = req.body;
+
+    if(!managerId && !clientId && !refreshToken){
+      return res.status(401).json("Bad request ! clientId, managerId and refreshToken required")
+    }
 
     const form = new FormData();
     form.append('client_id', process.env.GOOGLE_CLIENT_ID);
@@ -21,7 +24,7 @@ const GoogleClient = async (req, res) => {
       { headers: form.getHeaders() })
 
 
-    console.log("accesstoken",generateAccesstoken);
+    console.log("accesstoken", generateAccesstoken.data);
 
     const camp = await axios.post(`https://googleads.googleapis.com/v9/customers/${clientId}/googleAds:search`, {
 
@@ -35,10 +38,26 @@ const GoogleClient = async (req, res) => {
       }
     })
 
-    console.log("campaigns: ", camp)
+    console.log("campaigns: ", camp.data.results)
 
-    await GoogleAdWord.updateOne({ refresh_Token: refreshToken }, { $set: { customer_id: clientId } })
-    const result = await GoogleAdWord.findOne({ refresh_Token: refreshToken })
+    const subscription = new Subscription({
+      userId: req.user.id,
+      lastProcess: new Date().setDate(new Date().getDate()),
+      nextPayment: new Date().setDate(new Date().getDate() + 7),
+      status: true
+    });
+
+    const subs = await subscription.save();
+
+    const data = new GoogleAdWord({
+      subsId:subs._id,
+      refresh_Token:refreshToken,
+      manager_id:managerId,
+      customer_id:clientId
+    })
+
+    const result = await data.save();
+
     return res.status(200).json({ status: true, result })
 
   } catch (error) {
