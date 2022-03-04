@@ -1,6 +1,4 @@
 const { google } = require('googleapis');
-const Subscription = require("../../model/Subscription");
-const GoogleAdWord = require("../../model/GoogleAdWord");
 const axios = require('axios');
 
 const SetupGoogleAds = async (req, res) => {
@@ -23,8 +21,8 @@ const SetupGoogleAds = async (req, res) => {
         const accessToken = tokens.access_token
         const refreshToken = tokens.refresh_token
 
-        if(!refreshToken){
-            return res.status(200).json({ status: false, message:"Google google ads account already linked" })
+        if (!refreshToken) {
+            return res.status(200).json({ status: false, message: "Google google ads account already linked" })
         }
 
         console.log("AccessToken: ", accessToken, "RefreshToken: ", refreshToken)
@@ -59,8 +57,8 @@ const SetupGoogleAds = async (req, res) => {
             account.push(customers.data)
 
         }
-        
-        return res.status(200).json({ status: true, accounts: account,accessToken,refreshToken })
+
+        return res.status(200).json({ status: true, accounts: account, accessToken, refreshToken })
 
     } catch (error) {
         return res.status(200).json(error.message);
