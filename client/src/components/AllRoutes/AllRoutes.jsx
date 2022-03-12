@@ -40,12 +40,7 @@ const AllRoutes = () => {
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },
-                {
-                    path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />,
-                    children: [
-                        { path: 'detectedips', element: <DetectedIps /> }
-                    ]
-                },
+                {path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />},
                 { path: 'fraudanalyticsmicrosoft', element: <FraudAnalyticsMicrosoft /> },
                 { path: 'fraudanalyticsfacebook', element: <FraudAnalyticsFacebook /> },
                 { path: 'googleserviceconnection', element: <GoogleServiceConnection /> }

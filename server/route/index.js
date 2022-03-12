@@ -21,10 +21,7 @@ route.post('/google-setupads',auth, googleAdsController.SetupGoogleAds);
 route.post('/google-managerid',auth,googleAdsController.GetManagerId);
 route.post('/google-client',auth,googleAdsController.GoogleClient);
 route.post('/exclude-ip',auth,googleAdsController.ExcludeIp);
-
-// route.get('/google-campaigs',googleAdsController.GoogleAdsCampaigs);
-// route.post('/google-create-campaign',auth,googleAdsController.CreateCampaigs);
-// route.get('/googlecampaigncriteria',googleAdsController.GoogleCampaignCriteria);
+route.post('/getcampaigns',auth,googleAdsController.GetCampaigns);
 
 
 //google auth

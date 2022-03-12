@@ -7,7 +7,6 @@ const GoogleAd = new mongoose.Schema({
     },
     refresh_Token: {
         type: String,
-        unique:true
     },
     manager_id: {
         type: String,
@@ -17,9 +16,9 @@ const GoogleAd = new mongoose.Schema({
         type: String,
         default:""
     },
-    campaigns:{
-        type:Array
-    }
+    // campaigns:{
+    //     type:Array
+    // }
 });
 
 const GoogleAdWord = new mongoose.model("GoogleAdWord",GoogleAd);

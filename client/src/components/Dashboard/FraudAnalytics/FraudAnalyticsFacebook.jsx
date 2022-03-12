@@ -1,6 +1,7 @@
 import React from 'react'
 import NotAccountConnect from '../AccoutOverview/NotAccountConnect'
 import DataOnTheWay from './DataOnTheWay'
+import { Outlet } from 'react-router-dom'
 const FraudAnalyticsFacebook = () => {
 
   const Account = false

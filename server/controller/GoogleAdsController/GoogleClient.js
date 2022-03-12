@@ -1,7 +1,8 @@
 const GoogleAdWord = require("../../model/GoogleAdWord")
 const axios = require("axios")
 const FormData = require('form-data');
-const Subscription = require("../../model/Subscription")
+const Subscription = require("../../model/Subscription");
+const GoogleCampaign = require('../../model/GoogleCampaign');
 
 const GoogleClient = async (req, res) => {
 
@@ -9,7 +10,7 @@ const GoogleClient = async (req, res) => {
 
     const { managerId, clientId, refreshToken } = req.body;
 
-    if(!managerId && !clientId && !refreshToken){
+    if (!managerId && !clientId && !refreshToken) {
       return res.status(401).json("Bad request ! clientId, managerId and refreshToken required")
     }
 
@@ -38,7 +39,7 @@ const GoogleClient = async (req, res) => {
       }
     })
 
-    console.log("campaigns: ", camp.data.results)
+    console.log("campaigns length: ", camp.data.results.length)
 
     const subscription = new Subscription({
       userId: req.user.id,
@@ -50,21 +51,28 @@ const GoogleClient = async (req, res) => {
     const subs = await subscription.save();
 
     const data = new GoogleAdWord({
-      subsId:subs._id,
-      refresh_Token:refreshToken,
-      manager_id:managerId,
-      customer_id:clientId,
-      campaigns:camp.data.results
-    })
+      subsId: subs._id,
+      refresh_Token: refreshToken,
+      manager_id: managerId,
+      customer_id: clientId,
+      // campaigns:camp.data.results
+    });
 
     const result = await data.save();
 
-    console.log("result: ",result)
+
+    for (let i = 0; i < camp.data.results.length; i++) {
+      const schema = new GoogleCampaign({
+        GoogleAdId: result._id,
+        campaign: camp.data.results[i]
+      });
+      await schema.save();
+    }
 
     return res.status(200).json({ status: true, result })
 
   } catch (error) {
-    return res.status(200).json({ status: false, message: error.message })
+    return res.status(500).json({ status: false, message: error.message })
   }
 }
 module.exports = GoogleClient;

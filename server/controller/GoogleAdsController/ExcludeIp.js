@@ -24,7 +24,7 @@ const ExcludeIp = async (req, res) => {
 
         const campaign = await axios.post(`https://googleads.googleapis.com/v10/customers/${account.customer_id}/googleAds:search`, {
 
-            "query": "SELECT campaign.id, campaign.name, campaign.status, campaign.serving_status FROM campaign"
+            "query":"SELECT campaign.id, campaign.name, campaign.status, campaign.serving_status FROM campaign"
 
         }, {
            headers: {

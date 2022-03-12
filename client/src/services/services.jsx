@@ -36,6 +36,9 @@ class Services {
             account:result
         })
     }
+    static getCampaigns(GoogleAdsId){
+        return instance.post(`/getcampaigns`,{GoogleAdsId});
+    }
 
 }
 export const saveGoogleData = (data) => {

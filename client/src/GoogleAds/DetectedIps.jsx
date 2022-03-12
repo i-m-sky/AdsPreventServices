@@ -37,10 +37,6 @@ const DetectedIps = () => {
         detectedIp()
     }, [])
 
-
-
-
-
     return (
         <>
             <div className="container mt-3">
