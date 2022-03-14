@@ -14,7 +14,7 @@ const Campaigns = () => {
         }
     }
 
-    console.log(resdata)
+    console.log("ttttttttt",resdata)
 
     useEffect(() => {
         getCampaigns(GoogleAdsId)
@@ -28,6 +28,7 @@ const Campaigns = () => {
                 {resdata.length > 0 ? resdata.map((data, index) => (
                    
                     <div className="row mt-4">
+                        {console.log("data",data)}
                         <div className="col-md-2">
                         </div>
                         <div className="col-md-8 detectediplist" >
@@ -38,23 +39,23 @@ const Campaigns = () => {
                                     <tbody>
                                         <tr className='detecttable'>
                                             <th>Name</th>
-                                            <td>{data.campaign}</td>
+                                            <td>{data.campaign.campaign.name}</td>
                                         </tr>
                                         <tr className='detecttable'>
                                             <th>resourceName</th>
-                                            <td>customers/5400575380/campaigns/16267506879</td>
+                                            <td>{data.campaign.campaign.resourceName}</td>
                                         </tr>
                                         <tr className='detecttable'>
                                             <th>Status</th>
-                                            <td>ENABLED</td>
+                                            <td>{data.campaign.campaign.status}</td>
                                         </tr>
                                         <tr className='detecttable'>
                                             <th>servingStatus</th>
-                                            <td>serving</td>
+                                            <td>{data.campaign.campaign.servingStatus}</td>
                                         </tr>
                                         <tr className='detecttable'>
                                             <th>id</th>
-                                            <td>16267506879</td>
+                                            <td>{data._id}</td>
                                         </tr>
                                     </tbody>
                                 </table>

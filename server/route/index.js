@@ -7,8 +7,6 @@ const googleAdsController = require("../controller/GoogleAdsController");
 const ipController = require("../controller/ipController");
 
 
-
-
 //main routes
 route.post('/auth/register', authController.localRegister);
 route.post('/auth/login', authController.localLogin);
@@ -35,7 +33,6 @@ route.post('/auth/facebook', authController.facebookOauth);
 route.get('/spamhausip', ipController.SpamhausIp);
 route.get('/myip-ms', ipController.myip);
 route.get('/detectedips',ipController.DetectedIps)
-
 
 
 module.exports = route;

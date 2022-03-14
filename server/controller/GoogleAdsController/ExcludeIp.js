@@ -5,9 +5,14 @@ const FormData = require('form-data');
 const ExcludeIp = async (req, res) => {
 
     try {
-        const { ip, account } = req.body;
+        console.log("excludeIp run")
+        const { ip, account,resourceName } = req.body;
 
-         console.log("body data: ",req.body)
+        if (!ip && !account && !resourceName) {
+            return res.status(401).json("Bad request ! IpAddress, account and resourceName required")
+          }
+
+         console.log("Exclude: ",req.body)
 
         const form = new FormData();
         form.append('client_id', process.env.GOOGLE_CLIENT_ID);
@@ -34,17 +39,12 @@ const ExcludeIp = async (req, res) => {
             }
         })
 
-        console.log("campaign: ", campaign.data.results[0].campaign.resourceName)
-
-        console.log("ip: ", req.body.ip, "resourceName: ", campaign.data.results[0].campaign.resourceName, "accoutn_id: ", account.customer_id)
-
-
         //Exclude ip address google ads account
 
         const exclude = await axios.post(`https://googleads.googleapis.com/v10/customers/${account.customer_id}/campaignCriteria:mutate`,
             {
                 "customer_id": `1234567890`, "operations": [
-                    { "create": { "campaign": `${campaign.data.results[0].campaign.resourceName}`, "negative": "true", "ip_block": { "ip_address": `${ip}` } } }
+                    { "create": { "campaign": `${resourceName}`, "negative": "true", "ip_block": { "ip_address": `${ip}` } } }
                 ]
 
             }, {

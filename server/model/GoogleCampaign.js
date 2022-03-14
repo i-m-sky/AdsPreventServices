@@ -7,6 +7,9 @@ const GoogleCampaignSchema = new mongoose.Schema({
     },
     campaign:{
         type:Object
+    },
+    excludeIp:{
+        type:[]
     }
 });
 

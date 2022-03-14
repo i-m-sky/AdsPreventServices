@@ -282,6 +282,10 @@
     border-radius: 10px;
     padding: 2rem;
  }
+.detectediplist:hover{
+    background-color: #f5f3f3;
+    cursor: pointer;
+}
 
  .critical{
      background-color: rgba(241, 9, 9, 0.144);

@@ -7,8 +7,10 @@ const GoogleCampaign = require('../../model/GoogleCampaign');
 const GoogleClient = async (req, res) => {
 
   try {
-
+console.log("Google client")
     const { managerId, clientId, refreshToken } = req.body;
+
+    console.log(req.body)
 
     if (!managerId && !clientId && !refreshToken) {
       return res.status(401).json("Bad request ! clientId, managerId and refreshToken required")
@@ -37,7 +39,9 @@ const GoogleClient = async (req, res) => {
         "developer-token": process.env.GOOGLE_DEVELOPER_TOKEN,
         "login-customer-id": managerId
       }
-    })
+    });
+
+    console.log("campaigns",camp)
 
     console.log("campaigns length: ", camp.data.results.length)
 
@@ -55,7 +59,6 @@ const GoogleClient = async (req, res) => {
       refresh_Token: refreshToken,
       manager_id: managerId,
       customer_id: clientId,
-      // campaigns:camp.data.results
     });
 
     const result = await data.save();
