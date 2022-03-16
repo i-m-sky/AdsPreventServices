@@ -5,7 +5,6 @@ class authService{
        return instance.post(`/auth/register`,{name,email,password,domain})
     }
     static login(email,password){
-        console.log("form service:",email,password)
         return instance.post(`/auth/login`,{email,password})
     }
     static LoginWithGoogle (googleData){

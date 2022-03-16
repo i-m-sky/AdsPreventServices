@@ -2,7 +2,6 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import Services from '../services/services';
 
-
 const Campaigns = () => {
     const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
     const [resdata, resSetRes] = useState([]);

@@ -21,16 +21,6 @@ const Dashboard = () => {
                 <div className="collapse navbar-collapse ml-4" id="navbarSupportedContent">
                     <ul className="navbar-nav dash_ul">
 
-
-                        <li className="nav-item dropdown fs-5 mt-2 account_button">
-                            <Link className="nav-link dropdown-toggle text-dark" to="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Akash.com
-                            </Link>
-                            <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><Link className="dropdown-item" to="/">Home</Link></li>
-                            </ul>
-                        </li>
-
                         <li className="nav-item dash_reload mt-4">
                             Reload
                            
@@ -83,7 +73,7 @@ const Dashboard = () => {
                                 <li><Link className="dropdown-item" to="#">Domain Tracking setup</Link></li>
                             </ul>
                         </li>
-                        <li><button className='mt-3' id='add_domain'onClick={openModal} >Add Domain</button></li>
+                      
                     </ul>
                 </div>
             <GoogleClientIdModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>

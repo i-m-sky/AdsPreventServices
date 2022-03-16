@@ -1,15 +1,13 @@
 import React from 'react'
-import { useLocation,Link, Outlet } from 'react-router-dom';
-import DetectedIps from '../../../GoogleAds/DetectedIps';
+import { Link, Outlet } from 'react-router-dom';
 import NotAccountConnect from '../AccoutOverview/NotAccountConnect'
 import DataOnTheWay from './DataOnTheWay';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import Campaigns from '../../../GoogleAds/Campaigns';
 
 const FraudAnalyticsGoogle = () => {
   const [clickdata, setClickData] = useState("default");
   const status = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).status : false
-  const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
  
   if (status) {
     return (

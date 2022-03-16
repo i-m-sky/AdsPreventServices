@@ -26,8 +26,7 @@ const DetectedIps = () => {
     }
 
     const BlockIp = async (currentip, result,resdata) => {
-         const res = await services.ExcludeIp(currentip,result,resourceName)
-         console.log("Block ip:",res)
+          await services.ExcludeIp(currentip,result,resourceName)
      }
 
     const setCheck = (data, ip) => {
@@ -37,8 +36,6 @@ const DetectedIps = () => {
         getCampaigns()
         detectedIp()
     }, [])
-
-    console.log("resourceName", resourceName)
     return (
         <>
             <div className="container mt-3">

@@ -23,7 +23,6 @@ const AccountOverviewData = (props) => {
             <table className="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">DOMAIN <i className="fas fa-sort"></i></th>
                         <th scope="col">AD CLICKS <i className="fas fa-sort"></i></th>
                         <th scope="col">BLOCKED IPS <i className="fas fa-sort"></i> </th>
                         <th scope="col">CLEANER TRAFFIC <i className="fas fa-sort"></i></th>
@@ -35,7 +34,7 @@ const AccountOverviewData = (props) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">Google.com</th>
+                       
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
@@ -45,7 +44,7 @@ const AccountOverviewData = (props) => {
                         <td>Larry</td>
                     </tr>
                     <tr>
-                        <th scope="row">Facebook.com</th>
+                
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>

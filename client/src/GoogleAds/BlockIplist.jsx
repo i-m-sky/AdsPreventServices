@@ -1,8 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import services from '../../src/services/services';
-
-const result = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result : null
 const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
 
 const BlockIplist = () => {
@@ -21,19 +19,16 @@ const BlockIplist = () => {
 
     const list = async () => {
         const res = await services.BlockIplist(resourceName);
-        console.log("block ip list",res.data.result[0].excludeIp)
          SetBlockIplist(res.data.result[0].excludeIp)
     }
 
     useEffect(() => {
         getCampaigns()
-        
     }, [])
     useEffect(() => {
         list()
     }, [resourceName])
 
-    console.log("resourceName", resourceName)
     return (
         <>
             <div className="container mt-3">

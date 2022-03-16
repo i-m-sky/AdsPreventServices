@@ -45,7 +45,6 @@ const Login = () => {
     }, [user])
 
     const responseGoogle = async (googleData) => {
-        console.log(googleData)
         const res = await authService.LoginWithGoogle(googleData);
         if (res.data.status === true) {
             saveToken(res.data.user);

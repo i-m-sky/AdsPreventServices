@@ -9,11 +9,9 @@ import authService from '../../services/authService';
 import { saveToken } from '../../services/authService';
 //login Action
 export const loginAction = ({email,password}) => async(dispatch)=>{
-   console.log(email,password)
     dispatch({type:AUTH_REQUEST})
     try {
     const res = await authService.login(email,password)
-    console.log("response data",res)
     if(res.data.status===true){
 
         //after geting response from api call saveToken function.
