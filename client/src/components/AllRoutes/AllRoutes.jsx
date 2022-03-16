@@ -15,8 +15,7 @@ import GoogleRedirect from "../Dashboard/ServiceConnections/GoogleRedirect";
 import Subscription from "../Subscription/Subscription";
 import ChoiceOneGoogleAccount from "../Dashboard/ServiceConnections/ChoiceOneGoogleAccount";
 import DetectedIps from "../../GoogleAds/DetectedIps";
-import BlockIp from "../../GoogleAds/BlockIp";
-
+import BlockIplist from "../../GoogleAds/BlockIplist";
 
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
@@ -41,12 +40,13 @@ const AllRoutes = () => {
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },
-                {path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />,
-                children:[
-                    {path:'detectedips',element:<DetectedIps/>},
-                    {path:'blockip/:resource',element:<BlockIp/>}
-                ]
-            },
+                {
+                    path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />,
+                    children: [
+                        { path: 'detectedips', element: <DetectedIps /> },
+                        {path:'blockiplist',element:<BlockIplist/>}
+                    ]
+                },
                 { path: 'fraudanalyticsmicrosoft', element: <FraudAnalyticsMicrosoft /> },
                 { path: 'fraudanalyticsfacebook', element: <FraudAnalyticsFacebook /> },
                 { path: 'googleserviceconnection', element: <GoogleServiceConnection /> }

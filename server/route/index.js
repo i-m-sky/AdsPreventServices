@@ -32,7 +32,8 @@ route.post('/auth/facebook', authController.facebookOauth);
 //Ip routes
 route.get('/spamhausip', ipController.SpamhausIp);
 route.get('/myip-ms', ipController.myip);
-route.get('/detectedips',ipController.DetectedIps)
+route.get('/detectedips',ipController.DetectedIps);
+route.post('/blockiplist',ipController.BlockedIplist);
 
 
 module.exports = route;

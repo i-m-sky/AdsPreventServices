@@ -39,6 +39,9 @@ class Services {
     static getCampaigns(GoogleAdsId){
         return instance.post(`/getcampaigns`,{GoogleAdsId});
     }
+    static BlockIplist(resourceName){
+        return instance.post('/blockiplist',{resourceName});
+    }
 
 }
 export const saveGoogleData = (data) => {

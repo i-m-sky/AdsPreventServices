@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import {saveGoogleData} from '../../../services/services'
+import { saveGoogleData } from '../../../services/services'
 import Services from '../../../services/services';
 
 const ChoiceOneGoogleAccount = (props) => {
@@ -18,13 +18,13 @@ const ChoiceOneGoogleAccount = (props) => {
 
   const clientSubmit = async (e) => {
     e.preventDefault();
-    const res = await Services.SendClientId(managerId,clientid,refresh_token)
-   if(res.data.status===true){
-    saveGoogleData(res.data)
-    navigate('/dashboard/fraudanalyticsgoogle')
-   }else{
-     alert("Invalid Client id")
-   }
+    const res = await Services.SendClientId(managerId, clientid, refresh_token)
+    if (res.data.status === true) {
+      saveGoogleData(res.data)
+      navigate('/dashboard/fraudanalyticsgoogle')
+    } else if (res.data.status === false) {
+      alert("Invalid Client id")
+    }
   }
 
 

@@ -14,16 +14,12 @@ const Campaigns = () => {
         }
     }
 
-    console.log("ttttttttt",resdata)
-
     useEffect(() => {
         getCampaigns(GoogleAdsId)
     }, [])
 
     return (
         <>
-        
-      
             <div className="container mt-3">
                 {resdata.length > 0 ? resdata.map((data, index) => (
                    

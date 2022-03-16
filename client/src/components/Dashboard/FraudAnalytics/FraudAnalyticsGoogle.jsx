@@ -9,6 +9,7 @@ import Campaigns from '../../../GoogleAds/Campaigns';
 const FraudAnalyticsGoogle = () => {
   const [clickdata, setClickData] = useState("default");
   const status = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).status : false
+  const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
  
   if (status) {
     return (
@@ -21,6 +22,7 @@ const FraudAnalyticsGoogle = () => {
               <button className='analytics-btn' onClick={() => setClickData('countries')}>Countries</button>
               <button className='analytics-btn' onClick={() => setClickData('Keywords')}>Keywords</button>
               <button className='analytics-btn' onClick={() => setClickData('campaigns')}>Campaigns</button>
+              <Link to="/dashboard/fraudanalyticsgoogle/blockiplist"> <button className='analytics-btn' >Blocked Ips</button></Link>
               <button className='analytics-btn' onClick={() => setClickData('iranges')}>Ip Ranges</button>
               <button className='analytics-btn' onClick={() => setClickData('devices')}>Devices</button>
             </div>

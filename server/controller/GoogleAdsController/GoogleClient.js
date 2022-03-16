@@ -1,5 +1,5 @@
 const GoogleAdWord = require("../../model/GoogleAdWord")
-const axios = require("axios")
+const axios = require("axios");
 const FormData = require('form-data');
 const Subscription = require("../../model/Subscription");
 const GoogleCampaign = require('../../model/GoogleCampaign');
@@ -7,7 +7,7 @@ const GoogleCampaign = require('../../model/GoogleCampaign');
 const GoogleClient = async (req, res) => {
 
   try {
-console.log("Google client")
+    // console.log("Google client")
     const { managerId, clientId, refreshToken } = req.body;
 
     console.log(req.body)
@@ -24,16 +24,15 @@ console.log("Google client")
 
 
     const generateAccesstoken = await axios.post(`https://oauth2.googleapis.com/token?access_type=offline`, form,
-      { headers: form.getHeaders() })
+      { headers: form.getHeaders() });
 
-
-    console.log("accesstoken", generateAccesstoken.data);
+      console.log("accesstoken",generateAccesstoken.data)
 
     const camp = await axios.post(`https://googleads.googleapis.com/v9/customers/${clientId}/googleAds:search`, {
 
       "query": "SELECT campaign.id, campaign.name, campaign.status, campaign.serving_status FROM campaign"
 
-    }, {
+    },{
       headers: {
         "Authorization": `Bearer ${generateAccesstoken.data.access_token}`,
         "developer-token": process.env.GOOGLE_DEVELOPER_TOKEN,
@@ -41,9 +40,7 @@ console.log("Google client")
       }
     });
 
-    console.log("campaigns",camp)
-
-    console.log("campaigns length: ", camp.data.results.length)
+   
 
     const subscription = new Subscription({
       userId: req.user.id,
@@ -64,7 +61,7 @@ console.log("Google client")
     const result = await data.save();
 
 
-    for (let i = 0; i < camp.data.results.length; i++) {
+    for(let i = 0; i < camp.data.results.length; i++) {
       const schema = new GoogleCampaign({
         GoogleAdId: result._id,
         campaign: camp.data.results[i]
