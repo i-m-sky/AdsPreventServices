@@ -7,15 +7,17 @@ import Register from "../Register";
 import Dashboard from "../Dashboard/Dashboard";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import FraudAnalyticsGoogle from "../Dashboard/FraudAnalytics/FraudAnalyticsGoogle";
+import FraudAnalytics from "../Dashboard/FraudAnalytics/FraudAnalytics";
 import FraudAnalyticsFacebook from "../Dashboard/FraudAnalytics/FraudAnalyticsFacebook";
 import FraudAnalyticsMicrosoft from "../Dashboard/FraudAnalytics/FraudAnalyticsMicrosoft";
-import GoogleServiceConnection from "../Dashboard/ServiceConnections/GoogleServiceConnection";
-import GoogleRedirect from "../Dashboard/ServiceConnections/GoogleRedirect";
+import GoogleServiceConnection from "../Dashboard/ServiceConnections/Google/GoogleServiceConnection";
+import GoogleRedirect from "../Dashboard/ServiceConnections/Google/GoogleRedirect";
 import Subscription from "../Subscription/Subscription";
-import ChoiceOneGoogleAccount from "../Dashboard/ServiceConnections/ChoiceOneGoogleAccount";
+import ChoiceOneGoogleAccount from '../Dashboard/ServiceConnections/Google/ChoiceOneGoogleAccount'
 import DetectedIps from "../../GoogleAds/DetectedIps";
 import BlockIplist from "../../GoogleAds/BlockIplist";
+import FraudAnalyticsGoogle from "../Dashboard/FraudAnalytics/FraudAnalyticsGoogle";
+import FacebookServiceConnection from "../Dashboard/ServiceConnections/Facebook/FacebookServiceConnection";
 
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
@@ -40,6 +42,7 @@ const AllRoutes = () => {
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },
+                {path: 'fraudanalytics/:adstype', element: <FraudAnalytics />},
                 {
                     path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />,
                     children: [
@@ -47,9 +50,10 @@ const AllRoutes = () => {
                         {path:'blockiplist',element:<BlockIplist/>}
                     ]
                 },
-                { path: 'fraudanalyticsmicrosoft', element: <FraudAnalyticsMicrosoft /> },
-                { path: 'fraudanalyticsfacebook', element: <FraudAnalyticsFacebook /> },
-                { path: 'googleserviceconnection', element: <GoogleServiceConnection /> }
+                { path: 'connection/google', element: <GoogleServiceConnection /> },
+                { path: 'connection/facebook', element: <FacebookServiceConnection /> },
+                { path: 'connection/microsoft', element: <FraudAnalyticsMicrosoft /> },
+             
             ]
         }
     ]);

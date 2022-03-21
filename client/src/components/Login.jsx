@@ -53,6 +53,7 @@ const Login = () => {
 
     }
     const responseFacebook = async (facebookData) => {
+        console.log(facebookData);
         const res = await authService.LoginWithFacebook(facebookData.accessToken, facebookData.userID)
         saveToken(res.data.user);
         dispatch({ type: AUTH_SUCCESS, payload: res.data.user });
@@ -82,9 +83,10 @@ const Login = () => {
                             />
 
                             <FacebookLogin
-                                appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+                                appId='709419267156564'
                                 autoLoad={false}
                                 fields="name,email,picture"
+                                scope="ads_management,ads_read"
                                 onClick={componentClicked}
                                 callback={responseFacebook}
                                 cssClass='facebook-btn'

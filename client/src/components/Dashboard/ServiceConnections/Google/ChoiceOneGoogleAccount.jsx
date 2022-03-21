@@ -2,8 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { saveGoogleData } from '../../../services/services'
-import Services from '../../../services/services';
+import { saveGoogleData } from '../../../../services/services'
+import Services from '../../../../services/services'
 
 const ChoiceOneGoogleAccount = (props) => {
 

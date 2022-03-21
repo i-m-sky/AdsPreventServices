@@ -42,9 +42,9 @@ const Dashboard = () => {
                                 Fraud Analytics
                             </Link>
                             <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><Link className="dropdown-item" to="/dashboard/fraudanalyticsgoogle">Googe Ads</Link></li>
-                                <li><Link className="dropdown-item" to="/dashboard/fraudanalyticsfacebook">Facebook Ads</Link></li>
-                                <li><Link className="dropdown-item" to="/dashboard/fraudanalyticsmicrosoft">Microsoft Ads</Link></li>
+                                <li><Link className="dropdown-item" to="/dashboard/fraudanalytics/google">Google Ads</Link></li>
+                                <li><Link className="dropdown-item" to="/dashboard/fraudanalytics/facebook">Facebook Ads</Link></li>
+                                <li><Link className="dropdown-item" to="/dashboard/fraudanalytics/microsoft">Microsoft Ads</Link></li>
                             </ul>
                         </li>
                         <li className="nav-item">

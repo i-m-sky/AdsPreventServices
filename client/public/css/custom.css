@@ -89,6 +89,16 @@
     font-size: .9rem;
     border-radius: 2px;
 }
+.facebook-btn-link{
+    width:12rem;
+    height: 2.7rem;
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    color: rgb(114, 114, 114);
+    font-size: .9rem;
+    border-radius: 15px;
+}
 
 .register_btn_service:hover{
     background-color: rgb(243, 239, 239);

@@ -4,6 +4,7 @@ const subs = require("../middleware/subs")
 const authController = require("../controller/authController");
 const accountController = require("../controller/accountController");
 const googleAdsController = require("../controller/GoogleAdsController");
+const facebookAdsController = require("../controller/FacebookAdsController");
 const ipController = require("../controller/ipController");
 
 
@@ -20,6 +21,9 @@ route.post('/google-managerid',auth,googleAdsController.GetManagerId);
 route.post('/google-client',auth,googleAdsController.GoogleClient);
 route.post('/exclude-ip',auth,googleAdsController.ExcludeIp);
 route.post('/getcampaigns',auth,googleAdsController.GetCampaigns);
+
+//facebook ads
+route.post('/facebookad',auth,facebookAdsController.FacebookAdSetup);
 
 
 //google auth

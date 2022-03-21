@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
-import Services from '../../../services/services';
-import GoogleClientIdModal from '../../Modals/GoogleClientIdModal';
+import Services from '../../../../services/services';
+import GoogleClientIdModal from '../../../Modals/GoogleClientIdModal';
 
 
 const GoogleRedirect = () => {

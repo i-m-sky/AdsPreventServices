@@ -29,18 +29,21 @@ class Services {
     static detectedips() {
         return instance.get('/detectedips');
     }
-    static ExcludeIp(ip,result,resourceName) {
-        return instance.post(`/exclude-ip`,{
-            ip:ip,
-            account:result,
+    static ExcludeIp(ip, result, resourceName) {
+        return instance.post(`/exclude-ip`, {
+            ip: ip,
+            account: result,
             resourceName
         })
     }
-    static getCampaigns(GoogleAdsId){
-        return instance.post(`/getcampaigns`,{GoogleAdsId});
+    static getCampaigns(GoogleAdsId) {
+        return instance.post(`/getcampaigns`, { GoogleAdsId });
     }
-    static BlockIplist(resourceName){
-        return instance.post('/blockiplist',{resourceName});
+    static BlockIplist(resourceName) {
+        return instance.post('/blockiplist', { resourceName });
+    }
+    static FacebookAd(data){
+        return instance.post('/facebookad',{data})
     }
 
 }
