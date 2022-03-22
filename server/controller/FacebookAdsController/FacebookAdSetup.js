@@ -1,30 +1,22 @@
 const bizSdk = require('facebook-nodejs-business-sdk');
+const axios = require("axios")
 const FacebookAdSetup = async (req, res) => {
     try {
-        const { data } = req.body
-        const accessToken = data.accessToken;
-        // console.log("access", accessToken)
-        // const api = adsSdk.FacebookAdsApi.init(accessToken);
-        // const AdAccount = adsSdk.AdAccount;
-        // const account = new AdAccount('act_292452864950209');
-        // const da = await account.read([AdAccount.Fields.name, AdAccount.Fields.age,AdAccount.Fields.amount_spent])
-        // console.log(da)
+        const { access_Token } = req.body
+        // console.log(access_Token.accessToken)
 
+        if (!access_Token.accessToken) {
+            return res.status(200).json("access token must be set in body");
+        }
+        const access_token = access_Token.accessToken;
 
-        const FacebookAdsApi = bizSdk.FacebookAdsApi.init(accessToken);
-        const AdAccount = bizSdk.AdAccount;
-        const Campaign = bizSdk.Campaign;
+        const Adsaccount = await axios.get(`https://graph.facebook.com/v13.0/me/adaccounts?fields=name,account_id,account_status,id&access_token=${access_token}`)
 
-        const account = new AdAccount('act_292452864950209');
-    
-        const accountdata = await account.read([AdAccount.Fields.name]);
-        console.log("account data: ",accountdata);
-        const camp = await accountdata.getCampaigns([Campaign.Fields.name,Campaign.Fields.id], { limit: 10 })
-        console.log("cmap",camp)
-
-
+        console.log(Adsaccount.data)
+        return res.status(200).json({status:true,Adsaccount:Adsaccount.data})
+        
     } catch (error) {
-        console.log("error", error)
+        // console.log("error", error)
         return res.status(500).json(error)
     }
 }

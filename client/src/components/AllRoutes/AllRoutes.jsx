@@ -18,6 +18,7 @@ import DetectedIps from "../../GoogleAds/DetectedIps";
 import BlockIplist from "../../GoogleAds/BlockIplist";
 import FraudAnalyticsGoogle from "../Dashboard/FraudAnalytics/FraudAnalyticsGoogle";
 import FacebookServiceConnection from "../Dashboard/ServiceConnections/Facebook/FacebookServiceConnection";
+import FacebookSelectAccount from "../Dashboard/ServiceConnections/Facebook/FacebookSelectAccount";
 
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
@@ -42,18 +43,19 @@ const AllRoutes = () => {
             children: [
                 { path: '', element: <AccountOverview /> },
                 { path: 'domainoverview', element: <DomainOverview /> },
-                {path: 'fraudanalytics/:adstype', element: <FraudAnalytics />},
+                { path: 'facebook-account', element: <FacebookSelectAccount /> },
+                { path: 'fraudanalytics/:adstype', element: <FraudAnalytics /> },
                 {
                     path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />,
                     children: [
                         { path: 'detectedips', element: <DetectedIps /> },
-                        {path:'blockiplist',element:<BlockIplist/>}
+                        { path: 'blockiplist', element: <BlockIplist /> }
                     ]
                 },
                 { path: 'connection/google', element: <GoogleServiceConnection /> },
                 { path: 'connection/facebook', element: <FacebookServiceConnection /> },
                 { path: 'connection/microsoft', element: <FraudAnalyticsMicrosoft /> },
-             
+
             ]
         }
     ]);

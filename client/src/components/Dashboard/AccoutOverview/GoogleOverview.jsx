@@ -1,11 +1,12 @@
 import React from 'react'
 import NotAccountConnect from './NotAccountConnect'
+const status = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).status : false
 const GoogleOverview = (props) => {
-    const account = false
-  if(account){
+   
+  if(status){
   return (
     <>
-
+  <h2 className='text-center google-overview'>Goolge Account Overview</h2>
       <table className='table-sm' id='data_table'>
         <thead>
           <tr>
@@ -25,7 +26,6 @@ const GoogleOverview = (props) => {
       <table className="table table-hover">
         <thead>
           <tr>
-            <th scope="col">DOMAIN <i className="fas fa-sort"></i></th>
             <th scope="col">AD CLICKS <i className="fas fa-sort"></i></th>
             <th scope="col">BLOCKED IPS <i className="fas fa-sort"></i> </th>
             <th scope="col">CLEANER TRAFFIC <i className="fas fa-sort"></i></th>
@@ -37,7 +37,7 @@ const GoogleOverview = (props) => {
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Google.com</th>
+         
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
@@ -47,7 +47,7 @@ const GoogleOverview = (props) => {
             <td>Larry</td>
           </tr>
           <tr>
-            <th scope="row">Facebook.com</th>
+         
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>

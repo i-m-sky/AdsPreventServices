@@ -23,9 +23,9 @@ const Account = () => {
             <li><Link className="dropdown-item" to="/">Home</Link></li>
             <li><Link className="dropdown-item" to="/dashboard">Dashboard</Link></li>
             <li><Link className="dropdown-item" to="#">Account Setting</Link></li>
-            <li><Link className="dropdown-item" to="#">Billing & domain</Link></li>
+            {/* <li><Link className="dropdown-item" to="#">Billing & domain</Link></li>
             <li><Link className="dropdown-item" to="#">Account History</Link></li>
-            <li><Link className="dropdown-item" to="#">Share Account</Link></li>
+            <li><Link className="dropdown-item" to="#">Share Account</Link></li> */}
             <li><Link className="dropdown-item" to onClick={logoutUser}>Logout</Link></li>
 
         </ul>

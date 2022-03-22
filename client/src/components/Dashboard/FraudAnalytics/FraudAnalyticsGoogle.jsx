@@ -18,11 +18,11 @@ const FraudAnalyticsGoogle = () => {
             <div>
              <Link to="/dashboard/fraudanalyticsgoogle/detectedips"> <button className='analytics-btn' >Detected Ips</button></Link>
               <button className='analytics-btn' onClick={() => setClickData('countries')}>Countries</button>
-              <button className='analytics-btn' onClick={() => setClickData('Keywords')}>Keywords</button>
+              {/* <button className='analytics-btn' onClick={() => setClickData('Keywords')}>Keywords</button> */}
               <button className='analytics-btn' onClick={() => setClickData('campaigns')}>Campaigns</button>
               <Link to="/dashboard/fraudanalyticsgoogle/blockiplist"> <button className='analytics-btn' >Blocked Ips</button></Link>
-              <button className='analytics-btn' onClick={() => setClickData('iranges')}>Ip Ranges</button>
-              <button className='analytics-btn' onClick={() => setClickData('devices')}>Devices</button>
+              {/* <button className='analytics-btn' onClick={() => setClickData('iranges')}>Ip Ranges</button> */}
+              {/* <button className='analytics-btn' onClick={() => setClickData('devices')}>Devices</button> */}
             </div>
             <Outlet/>
             {clickdata === "default" ? <DataOnTheWay /> : clickdata === 'campaigns' ? <Campaigns /> : <DataOnTheWay />}

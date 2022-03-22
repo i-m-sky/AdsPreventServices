@@ -89,6 +89,14 @@
     font-size: .9rem;
     border-radius: 2px;
 }
+#DashId{
+    text-decoration: none;
+    color:black;
+    size: 20ren;
+}
+.google-overview{
+    color: #f87708;
+}
 .facebook-btn-link{
     width:12rem;
     height: 2.7rem;
@@ -98,6 +106,11 @@
     color: rgb(114, 114, 114);
     font-size: .9rem;
     border-radius: 15px;
+}
+.fbadssel{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    padding: 4rem;
 }
 
 .register_btn_service:hover{
@@ -157,9 +170,14 @@
 }
 .google-accounts{
     display: flex;
+    padding: 1rem;
+}
+.facebook-account{
+    padding: .5rem;
+   
 }
 #googlead{
-    height: 3rem;
+    
     display:inline;
     margin-left: 2rem;
 }

@@ -43,7 +43,7 @@ class Services {
         return instance.post('/blockiplist', { resourceName });
     }
     static FacebookAd(data){
-        return instance.post('/facebookad',{data})
+        return instance.post('/facebookad',{access_Token:data})
     }
 
 }

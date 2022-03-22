@@ -2,14 +2,17 @@ import React from 'react'
 import FacebookLogin from 'react-facebook-login'
 import { FaFacebook } from 'react-icons/fa';
 import Services from '../../../../services/services';
+import {useNavigate} from 'react-router-dom'
 const FacebookServiceConnection = () => {
 
-
+const navigate = useNavigate();
     const responseFacebook = async (facebookData) => {
-        console.log(facebookData.accessToken);
+        console.log(facebookData);
         const res = await Services.FacebookAd(facebookData);
-
-        
+        if(res.data.status===true){
+            navigate('/dashboard/facebook-account',{state:{data:res.data}})
+        }
+        console.log("res data",res)
     }
     const componentClicked = (data) => {
 
@@ -28,7 +31,7 @@ const FacebookServiceConnection = () => {
                                     appId='709419267156564'
                                     autoLoad={false}
                                     fields="name,email,picture"
-                                    scope="ads_management,ads_read"
+                                    scope="ads_management,ads_read,attribution_read,business_management"
                                     onClick={componentClicked}
                                     callback={responseFacebook}
                                     cssClass='facebook-btn-link'

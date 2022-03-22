@@ -26,15 +26,7 @@ const Dashboard = () => {
                            
                         </li>
                         <li className="nav-item dropdown fs-5 mt-3 ">
-                            <Link className=" data-toggle text-dark dash_dash" to="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dashboard
-                            </Link>
-
-                            <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><NavLink className="dropdown-item" to="/dashboard">Account Overview</NavLink></li>
-                                <li><NavLink className="dropdown-item" to="/dashboard/domainoverview">Domain Overview</NavLink></li>
-
-                            </ul>
+                        <NavLink to="/dashboard" id="DashId">Account Overview</NavLink>
                             <hr id='dash_hr' />
                         </li>
                         <li className="nav-item dropdown fs-5 mt-2 ">
