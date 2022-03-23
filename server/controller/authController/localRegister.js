@@ -32,7 +32,7 @@ const localRegister =  async(req,res)=>{
           passhash = await bcrypt.hash(req.body.password, 10);
     
         } catch (error) {
-          return res.status(500).json("opps something went wrong");
+          return res.status(500).json({status:false,message:"opps something went wrong"});
         }
         try {
           const { name, email,phone,domain } = req.body;

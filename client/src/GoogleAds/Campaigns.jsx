@@ -1,16 +1,18 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import Services from '../services/services';
+import { PostApi } from '../services/Services'
 
 const Campaigns = () => {
     const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
     const [resdata, resSetRes] = useState([]);
 
     const getCampaigns = async (GoogleAdsId) => {
-        const res = await Services.getCampaigns(GoogleAdsId);
-        if (res.data.status === true) {
-            resSetRes(res.data.campaigns)
-        }
+        PostApi(`/getcampaigns`,{GoogleAdsId}).then((data)=>{
+            if (data.status === true) {
+                resSetRes(data.campaigns)
+            }
+        })
+
     }
 
     useEffect(() => {

@@ -16,7 +16,7 @@ class Services {
         });
     }
     static GoogleAdsSetup(code) {
-        return instance.post('/google-setupads', { code });
+        return instance.post('/google-setupads', { code })
     }
 
     static SendManagerId(id, refreshToken) {

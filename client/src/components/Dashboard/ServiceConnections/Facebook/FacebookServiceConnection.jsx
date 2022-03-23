@@ -1,18 +1,18 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
 import { FaFacebook } from 'react-icons/fa';
-import Services from '../../../../services/services';
+import {PostApi} from '../../../../services/Services';
 import {useNavigate} from 'react-router-dom'
 const FacebookServiceConnection = () => {
 
 const navigate = useNavigate();
     const responseFacebook = async (facebookData) => {
-        console.log(facebookData);
-        const res = await Services.FacebookAd(facebookData);
-        if(res.data.status===true){
-            navigate('/dashboard/facebook-account',{state:{data:res.data,access_token:res.data.access_token}})
-        }
-        console.log("res data",res)
+        PostApi(`/facebookad`,{access_Token:facebookData.accessToken}).then((data)=>{
+            console.log("facebook",data)
+            if(data.status===true){
+                navigate('/dashboard/facebook-account',{state:{data:data,access_token:data.access_token}})
+            }
+        })
     }
     const componentClicked = (data) => {
 
@@ -39,9 +39,6 @@ const navigate = useNavigate();
                                 />
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </>

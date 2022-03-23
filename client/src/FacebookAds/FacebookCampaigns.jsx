@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import Services from '../services/services';
+import { PostApi } from '../services/Services'
 
 const Campaigns = () => {
     const FacebookAdsAccount = localStorage.getItem('facebookAds') ? JSON.parse(localStorage.getItem('facebookAds')).result.account_id : null
@@ -9,11 +9,17 @@ const Campaigns = () => {
 
     
     const getCampaigns = async (FacebookAdsAccount) => {
-        const res = await Services.getFacebookCampaigns(FacebookAdsAccount);
-        console.log("facebook campain data",res.data)
-        if(res.data.status === true){
-            resSetRes(res.data.camp)   
-        }
+
+        PostApi(`/facebookcampaigns`,{FacebookAdsAccount}).then((data)=>{
+            if(data.status===true){
+                resSetRes(data.camp)   
+            }
+        })
+        // const res = await Services.getFacebookCampaigns(FacebookAdsAccount);
+        // console.log("facebook campain data",res.data)
+        // if(res.data.status === true){
+            
+        // }
     
     }
 

@@ -2,8 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { saveGoogleData } from '../../../../services/services'
-import Services from '../../../../services/services'
+import { PostApi,saveGoogleData} from '../../../../services/Services';
+
 
 const ChoiceOneGoogleAccount = (props) => {
 
@@ -11,20 +11,23 @@ const ChoiceOneGoogleAccount = (props) => {
 
   const { id, refreshToken } = useParams();
 
-  const [clientid, setClientid] = useState("");
+  const [clientId, setClientid] = useState("");
 
   const managerId = id;
   const refresh_token = atob(refreshToken);
 
   const clientSubmit = async (e) => {
     e.preventDefault();
-    const res = await Services.SendClientId(managerId, clientid, refresh_token)
-    if (res.data.status === true) {
-      saveGoogleData(res.data)
-      navigate('/dashboard/fraudanalyticsgoogle')
-    } else if (res.data.status === false) {
-      alert("Invalid Client id")
-    }
+    PostApi(`google-client`,{managerId,clientId,refreshToken:refresh_token}).then((data)=>{
+      if (data.status === true) {
+        saveGoogleData(data)
+        navigate('/dashboard/fraudanalyticsgoogle')
+      } else if (data.status === false) {
+        alert("Invalid Client id")
+      }
+    })
+    
+   
   }
 
 
@@ -48,7 +51,7 @@ const ChoiceOneGoogleAccount = (props) => {
                   type="text"
                   placeholder='123-456-7890'
                   id='google_id'
-                  value={clientid}
+                  value={clientId}
                   onChange={(e) => setClientid(e.target.value)}
                 />
                 <input type="submit" className='service-btn' />

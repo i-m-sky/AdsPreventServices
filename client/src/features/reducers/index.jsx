@@ -3,6 +3,4 @@ import {authReducer} from './authReducer';
 
 export const reducer = combineReducers({
     authReducer,
-    
-   
 })

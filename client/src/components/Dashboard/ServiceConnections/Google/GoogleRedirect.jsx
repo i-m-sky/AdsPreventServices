@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import Services from '../../../../services/services';
+import { PostApi } from '../../../../services/Services';
 import GoogleClientIdModal from '../../../Modals/GoogleClientIdModal';
 
 
@@ -17,15 +17,14 @@ const GoogleRedirect = () => {
 
     const sendValue = async (code) => {
 
-
-        const res = await Services.GoogleAdsSetup(code)
-
-        console.log("resdata: ", res.data.accounts);
-        if (res.data.status === true) {
-            setClientDetails(res.data.accounts)
-            setRefreshToken(res.data.refreshToken)
-            openModal()
-        }
+        PostApi(`/google-setupads`,{code}).then((data)=>{
+            if (data.status === true) {
+                setClientDetails(data.accounts)
+                setRefreshToken(data.refreshToken)
+                openModal()
+            }
+        })
+   
     }
 
     useEffect(() => {

@@ -10,7 +10,6 @@ const GetFacebookData = async(req,res)=>{
             return res.status(200).json({message:"access_token and account_id must be set in req body"});
         }
 
-        console.log("hello")
         const subscrip = new subscription({
             userId: req.user.id,
             lastProcess: new Date().setDate(new Date().getDate()),

@@ -91,7 +91,6 @@ const Login = () => {
                                 callback={responseFacebook}
                                 cssClass='facebook-btn'
                                 icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px' />}
-
                             />
                             <div className="divider d-flex align-items-center my-3">
                                 <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import services from '../../src/services/services';
+import { GetApi, PostApi } from '../services/Services';
+
 const result = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result : null
 const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
 
@@ -13,20 +14,28 @@ const DetectedIps = () => {
     const [resourceName, SetResourceName] = useState();
 
     const getCampaigns = async () => {
-        const res = await services.getCampaigns(GoogleAdsId);
-        if (res.data.status === true) {
-            SetResourceName(res.data.campaigns[0].campaign.campaign.resourceName)
-            resSetRes(res.data.campaigns)
-        }
+
+        PostApi(`/getcampaigns`,{GoogleAdsId}).then((data)=>{
+            if(data.status === true){
+                SetResourceName(data.campaigns[0].campaign.campaign.resourceName)
+                resSetRes(data.campaigns)
+            }
+        })
     }
 
     const detectedIp = async () => {
-        const res = await services.detectedips();
-        setIps(res.data.result)
+
+        GetApi(`/detectedips`).then((data)=>{
+            setIps(data.result)
+        })
+        
     }
 
     const BlockIp = async (currentip, result,resdata) => {
-          await services.ExcludeIp(currentip,result,resourceName)
+        PostApi(`/exclude-ip`,{currentip,result,resourceName}).then((data)=>{
+            return data;
+        })
+         
      }
 
     const setCheck = (data, ip) => {

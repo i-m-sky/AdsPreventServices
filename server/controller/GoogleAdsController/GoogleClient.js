@@ -7,7 +7,7 @@ const GoogleCampaign = require('../../model/GoogleCampaign');
 const GoogleClient = async (req, res) => {
 
   try {
-    // console.log("Google client")
+     console.log("Google client",req.body)
     const { managerId, clientId, refreshToken } = req.body;
 
     console.log(req.body)
