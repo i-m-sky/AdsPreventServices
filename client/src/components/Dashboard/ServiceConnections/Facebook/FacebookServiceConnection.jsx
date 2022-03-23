@@ -10,7 +10,7 @@ const navigate = useNavigate();
         console.log(facebookData);
         const res = await Services.FacebookAd(facebookData);
         if(res.data.status===true){
-            navigate('/dashboard/facebook-account',{state:{data:res.data}})
+            navigate('/dashboard/facebook-account',{state:{data:res.data,access_token:res.data.access_token}})
         }
         console.log("res data",res)
     }

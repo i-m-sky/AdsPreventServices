@@ -1,14 +1,22 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
-import { FaFacebook } from 'react-icons/fa';
+import { useLocation,useNavigate } from 'react-router-dom'
+import Services from '../../../../services/services';
+import { saveFacebookData } from '../../../../services/services';
 const FacebookSelectAccount = () => {
     const location = useLocation();
+    const navigate = useNavigate();
 
-    const data = location.state.data.Adsaccount.data
+    const data = location.state.data.Adsaccount.data;
+    const access_token = location.state.data.access_token;
+    console.log(access_token)
 
 
-    const getData = (id) => {
-        console.log("Facebook ads id", id)
+    const getData = async(id) => {
+        const res = await Services.FacebookSetup(access_token,id);
+        if(res.data.status===true){
+            saveFacebookData(res.data);
+            navigate('/dashboard/fraudanalytics/facebook');
+        }
     }
 
 
