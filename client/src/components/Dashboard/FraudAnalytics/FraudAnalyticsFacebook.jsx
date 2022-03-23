@@ -2,38 +2,48 @@ import React from 'react'
 import NotAccountConnect from '../AccoutOverview/NotAccountConnect'
 import DataOnTheWay from './DataOnTheWay'
 import { Outlet } from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import {useState} from 'react'
+import FacebookCampaigns from '../../../FacebookAds/FacebookCampaigns'
 const FraudAnalyticsFacebook = () => {
+  const status = localStorage.getItem('facebookAds') ? JSON.parse(localStorage.getItem('facebookAds')).status : false
+  const [clickdata, setClickData] = useState("default");
 
-  const Account = false
-  if(Account){
+  if (status) {
     return (
       <>
         <div className='container-fluid mt-5 '>
           <h3 className='mr-4' id='analytics-main-id'>Facebok Ads Fraud Analytics</h3>
           <div className='analytics-main-div'>
-            <div >
-              <button className='analytics-btn'>Detected Ips</button>
-              <button className='analytics-btn'>Countries</button>
-              <button className='analytics-btn'>Keywords</button>
-              <button className='analytics-btn'>Ip Ranges</button>
-              <button className='analytics-btn'>Devices</button>
+            <div>
+             {/* <Link to="/dashboard/fraudanalyticsgoogle/detectedips"> <button className='analytics-btn' >Detected Ips</button></Link> */}
+             <button className='analytics-btn' onClick={() => setClickData('campaigns')}>Campaigns</button>
+              <button className='analytics-btn' onClick={() => setClickData('countries')}>Countries</button>
+              <button className='analytics-btn' onClick={() => setClickData('countries')}>States</button>
+              {/* <button className='analytics-btn' onClick={() => setClickData('Keywords')}>Keywords</button> */}
+              
+              {/* <Link to="/dashboard/fraudanalyticsgoogle/blockiplist"> <button className='analytics-btn' >Blocked Ips</button></Link> */}
+              {/* <button className='analytics-btn' onClick={() => setClickData('iranges')}>Ip Ranges</button> */}
+              <button className='analytics-btn' onClick={() => setClickData('devices')}>Devices</button>
             </div>
-            <DataOnTheWay />
+            <Outlet/>
+            {clickdata === "default" ? <DataOnTheWay /> : clickdata === 'campaigns' ? <FacebookCampaigns /> : <DataOnTheWay />}
+            
           </div>
         </div>
       </>
     )
   }
-  else{
-    return(
+  else {
+    return (
       <div className='mt-5'>
-            <NotAccountConnect value='Facebook'/>
+        <NotAccountConnect value='Facebook' />
       </div>
-  
+
     )
   }
 
-  
+
 }
 
 export default FraudAnalyticsFacebook
