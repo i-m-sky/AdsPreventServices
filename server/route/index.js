@@ -24,7 +24,8 @@ route.post('/getcampaigns',auth,googleAdsController.GetCampaigns);
 
 //facebook ads
 route.post('/facebookad',auth,facebookAdsController.FacebookAdSetup);
-
+route.post('/setupfacebook',auth,facebookAdsController.GetFacebookData);
+route.post('/facebookcampaigns',auth,facebookAdsController.GetFacebookCampaign);
 
 //google auth
 route.post('/auth/google', authController.googleOauth);
