@@ -45,10 +45,18 @@ class Services {
     static FacebookAd(data){
         return instance.post('/facebookad',{access_Token:data})
     }
-
+    static FacebookSetup(access_token,account_id){
+        return instance.post('/setupfacebook',{access_token,account_id})
+    }
+    static getFacebookCampaigns(account_id){
+        return instance.post('/facebookcampaigns',{account_id});
+    }
 }
 export const saveGoogleData = (data) => {
     localStorage.setItem("googleAds", JSON.stringify(data))
+}
+export const saveFacebookData = (data)=>{
+    localStorage.setItem("facebookAds", JSON.stringify(data))
 }
 
 export default Services;
