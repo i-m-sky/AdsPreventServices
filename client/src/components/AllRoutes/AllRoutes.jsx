@@ -19,6 +19,7 @@ import BlockIplist from "../../GoogleAds/BlockIplist";
 import FraudAnalyticsGoogle from "../Dashboard/FraudAnalytics/FraudAnalyticsGoogle";
 import FacebookServiceConnection from "../Dashboard/ServiceConnections/Facebook/FacebookServiceConnection";
 import FacebookSelectAccount from "../Dashboard/ServiceConnections/Facebook/FacebookSelectAccount";
+import PageNotFound from '../pages/NotFoundPage'
 
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
@@ -57,7 +58,8 @@ const AllRoutes = () => {
                 { path: 'connection/microsoft', element: <FraudAnalyticsMicrosoft /> },
 
             ]
-        }
+        },
+        {path:"*",element:<PageNotFound/>}
     ]);
 
     return element;

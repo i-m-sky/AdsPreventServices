@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 const FacebookServiceConnection = () => {
 
 const navigate = useNavigate();
+
     const responseFacebook = async (facebookData) => {
         PostApi(`/facebookad`,{access_Token:facebookData.accessToken}).then((data)=>{
             console.log("facebook",data)

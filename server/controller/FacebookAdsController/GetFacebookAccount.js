@@ -4,6 +4,7 @@ const FacebookAds = require("../../model/FacebookAds");
 const GetFacebookData = async(req,res)=>{
     try {
         const {access_token,account_id} = req.body;
+        console.log(req.body)
         console.log(access_token,account_id)
 
         if(!access_token || !account_id){

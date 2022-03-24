@@ -6,21 +6,13 @@ const Campaigns = () => {
     const FacebookAdsAccount = localStorage.getItem('facebookAds') ? JSON.parse(localStorage.getItem('facebookAds')).result.account_id : null
     const [resdata, resSetRes] = useState([]);
 
-
-    
     const getCampaigns = async (FacebookAdsAccount) => {
 
-        PostApi(`/facebookcampaigns`,{FacebookAdsAccount}).then((data)=>{
+        PostApi(`/facebookcampaigns`,{account_id:FacebookAdsAccount}).then((data)=>{
             if(data.status===true){
                 resSetRes(data.camp)   
             }
-        })
-        // const res = await Services.getFacebookCampaigns(FacebookAdsAccount);
-        // console.log("facebook campain data",res.data)
-        // if(res.data.status === true){
-            
-        // }
-    
+        })   
     }
 
     useEffect(() => {

@@ -6,7 +6,9 @@ import Footer from './components/Footer';
 import AllRoutes from './components/AllRoutes/AllRoutes';
 import { useSelector} from 'react-redux';
 import Modal from 'react-modal';
+import { Route } from 'react-router-dom';
 Modal.setAppElement('#root');
+
 
 const App = () => {
  

@@ -3,6 +3,7 @@ const bizSdk = require('facebook-nodejs-business-sdk');
 const FacebookAds = require("../../model/FacebookAds");
 const GetFacebookCampaign = async(req, res) => {
     try {
+        console.log(req.body)
         const { account_id } = req.body;
         if(!account_id){
             return res.status(200).json("account_id must be set in body")
@@ -18,7 +19,7 @@ const GetFacebookCampaign = async(req, res) => {
         const app_id = process.env.FACEBOOK_APP_ID;
 
         const api = bizSdk.FacebookAdsApi.init(access_token);
-        const showDebugingInfo = true; // Setting this to true shows more debugging info.
+        const showDebugingInfo = true; 
         if (showDebugingInfo) {
             api.setDebug(true);
         }
@@ -34,7 +35,6 @@ const GetFacebookCampaign = async(req, res) => {
             "spend_cap",
             "source_campaign",
             "stop_times"
-
         ];
         params = {
             'effective_status': ['ACTIVE', 'PAUSED'],

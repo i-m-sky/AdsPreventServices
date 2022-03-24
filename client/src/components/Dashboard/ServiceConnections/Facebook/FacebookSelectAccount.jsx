@@ -1,10 +1,11 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { useLocation,useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import facebookAdsAction from '../../../../features/actions/facebookAdsAction';
+import { PostApi, saveFacebookData } from '../../../../services/Services';
 const FacebookSelectAccount = () => {
     const location = useLocation();
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const data = location.state.data.Adsaccount.data;
@@ -12,13 +13,15 @@ const FacebookSelectAccount = () => {
     console.log(access_token)
 
 
-    const getData = async(facebookAdsId,access_token) => {
-        dispatch(facebookAdsAction(facebookAdsId,access_token))
-        // const res = await Services.FacebookSetup(access_token,id);
-        // if(res.data.status===true){
-        //     saveFacebookData(res.data);
-        //     navigate('/dashboard/fraudanalytics/facebook');
-        // }
+    const getData = async (facebookAdsId) => {
+
+        PostApi(`/setupfacebook`, { access_token, account_id: facebookAdsId }).then((data) => {
+            console.log("this token",access_token)
+            if (data.status === true) {
+                saveFacebookData(data);
+                navigate('/dashboard/fraudanalytics/facebook');
+            }
+        })
     }
 
 
