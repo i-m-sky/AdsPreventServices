@@ -189,10 +189,22 @@
 #note-found{
    width: 90%;
   
-   
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #f7831f;;
+  }
   
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
   .loading-indicator:before {
     content: '';
     background: #000000cc;

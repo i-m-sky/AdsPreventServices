@@ -4,7 +4,7 @@ import React from 'react';
 const NotFoundPage = () => {
     return (
         <>
-            <div >
+            <div className="text-center">
                 <img src='images/404.png' id="note-found"/>
             </div >
         </>
