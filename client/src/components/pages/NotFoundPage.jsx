@@ -5,7 +5,7 @@ const NotFoundPage = () => {
     return (
         <>
             <div className="text-center">
-                <img src='images/404.png' id="note-found"/>
+                <img src='/images/404.png' id="note-found" alt='Page Not found'/>
             </div >
         </>
     )

@@ -13,9 +13,9 @@ export const loginAction = ({ email, password }) => async (dispatch) => {
 
         if (data.status === true) {
             saveToken(data.user);
-            dispatch({ type: AUTH_SUCCESS, payload: data.user })
+            dispatch({ type: AUTH_SUCCESS, payload: data.user });
         } else {
-            dispatch({ type: AUTH_FAIL, payload: data.message })
+            dispatch({ type: AUTH_FAIL, payload: data.message });
         }
     }).catch(e => {
         dispatch({ type: AUTH_FAIL, payload: "Something went wrong" })

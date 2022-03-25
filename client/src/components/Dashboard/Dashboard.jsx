@@ -3,6 +3,7 @@ import React from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useState } from 'react';
 import GoogleClientIdModal from '../Modals/GoogleClientIdModal';
+import Spinner from '../pages/Spinner';
 
 
 const Dashboard = () => {
@@ -68,10 +69,13 @@ const Dashboard = () => {
                       
                     </ul>
                 </div>
+               
             <GoogleClientIdModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
+         
             </nav>
             <div>
                 <Outlet />
+               
             </div>
 
         </>

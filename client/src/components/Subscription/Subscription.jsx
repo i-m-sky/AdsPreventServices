@@ -6,7 +6,7 @@ const Subscription = () => {
             <div className="container mt-4">
                 <div className="row">
                     <div className="col-sm-2 mt-3">
-                       
+
                     </div>
                     <div className="col-sm-4 mt-3">
 
@@ -58,8 +58,8 @@ const Subscription = () => {
                     </div>
 
                     <div className="col-sm-2 mt-3">
-                       
-                       </div>
+
+                    </div>
                 </div>
 
             </div>

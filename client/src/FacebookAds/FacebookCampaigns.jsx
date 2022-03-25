@@ -1,75 +1,38 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
-import { PostApi } from '../services/Services'
+import {  useState } from 'react'
+import { MdCampaign } from 'react-icons/md';
+import { BsFillFileSpreadsheetFill } from 'react-icons/bs'
+import { BiCartAlt } from 'react-icons/bi'
+import FacebookCampaignData from './FacebookCampaignData';
+import DataOnTheWay from '../components/Dashboard/FraudAnalytics/DataOnTheWay';
+import FacebookAd from './FacebookAd';
+import FacebookAdSets from './FacebookAdSets';
 
 const Campaigns = () => {
-    const FacebookAdsAccount = localStorage.getItem('facebookAds') ? JSON.parse(localStorage.getItem('facebookAds')).result.account_id : null
-    const [resdata, resSetRes] = useState([]);
-
-    const getCampaigns = async (FacebookAdsAccount) => {
-
-        PostApi(`/facebookcampaigns`,{account_id:FacebookAdsAccount}).then((data)=>{
-            if(data.status===true){
-                resSetRes(data.camp)   
-            }
-        })   
-    }
-
-    useEffect(() => {
-        getCampaigns(FacebookAdsAccount)
-    }, [])
-
+    
+    const [setClick,setClickData] = useState("default");
     return (
         <>
             <div className="container mt-3">
-            
-                {resdata.length > 0 ? resdata.map((data, index) => (
-                   
-                    <div className="row mt-4">
-                        {console.log("akash sdta",data)}
-                        <div className="col-md-2">
-                        </div>
-                        <div className="col-md-8 detectediplist" >
-
-                            <div>
-                                <table className="table table-hover">
-
-                                    <tbody>
-                                        <tr className='detecttable'>
-                                            <th>Name</th>
-                                            <td>{data.name}</td>
-                                        </tr>
-                                        <tr className='detecttable'>
-                                            <th>Objective</th>
-                                            <td>{data.objective}</td>
-                                        </tr>
-                                        <tr className='detecttable'>
-                                            <th>Status</th>
-                                            <td>{data.status}</td>
-                                        </tr>
-                                        <tr className='detecttable'>
-                                            <th>Daily Budget</th>
-                                            <td>{data.daily_budget}</td>
-                                        </tr>
-                                        <tr className='detecttable'>
-                                            <th>id</th>
-                                            <td>{data.id}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                            <div className="col-md-2">
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                        </div>
-
+                <div className="row">
+                    <div className="col-md-4">
+                    <button className='fbcamp mt-1' onClick={()=>setClickData("camp")}> <MdCampaign/> Campaigns</button>
                     </div>
-                )):<h1>Not data found</h1> }
-
+                    <div className="col-md-4">
+                    <button className='fbcamp mt-1' onClick={()=>setClickData("set")}> <BsFillFileSpreadsheetFill /> Ad Sets</button>
+                    </div>
+                    <div className="col-md-4">
+                    <button className='fbcamp mt-1' onClick={()=>setClickData("ad")}> <BiCartAlt /> Ad </button>
+                    </div>
+                    <div className="row">
+                    {setClick === "default" ? <FacebookCampaignData/> : setClick === 'camp' ? <FacebookCampaignData/>:setClick==="set"?<FacebookAdSets/> :setClick==="ad"? <FacebookAd/> : <DataOnTheWay/>}
+                    </div>
+                
+                </div>
 
             </div>
+
+
         </>
     )
 }

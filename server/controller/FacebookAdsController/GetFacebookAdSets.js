@@ -1,7 +1,8 @@
 
 const bizSdk = require('facebook-nodejs-business-sdk');
 const FacebookAds = require("../../model/FacebookAds");
-const GetFacebookCampaign = async(req, res) => {
+const GetFacebookAdSets = async(req,res)=>{
+
     try {
         console.log(req.body)
         const { account_id } = req.body;
@@ -13,8 +14,8 @@ const GetFacebookCampaign = async(req, res) => {
 
         const AdAccount = bizSdk.AdAccount;
         const Campaign = bizSdk.Campaign;
-        const access_token = result.access_Token // "EAAJjbBz7b7YBAEm3Lp5ATwyzsmX2k2PT79RKdxF2RicdZANzIRSGRZBhMfjUUNP8kqL4qLhBEC18B7Yw8wMZAG1ZC2vAdZBZAJMCSEY6C3mAI0EVorWW6hr0FmhYAl0xCRW6zC2N3Sd9Kam9dj6FR5MMXvtWQLmVBAwAMCGLLoKpMZAcPOau21faDyHh4loB18ZD";
-        const id = account_id//"act_2211157139048409";
+        const access_token = "EAAJjbBz7b7YBAEm3Lp5ATwyzsmX2k2PT79RKdxF2RicdZANzIRSGRZBhMfjUUNP8kqL4qLhBEC18B7Yw8wMZAG1ZC2vAdZBZAJMCSEY6C3mAI0EVorWW6hr0FmhYAl0xCRW6zC2N3Sd9Kam9dj6FR5MMXvtWQLmVBAwAMCGLLoKpMZAcPOau21faDyHh4loB18ZD";
+        const id = "act_2211157139048409";
         const app_secret = process.env.FACEBOOK_APP_SECRET;
         const app_id = process.env.FACEBOOK_APP_ID;
 
@@ -39,14 +40,14 @@ const GetFacebookCampaign = async(req, res) => {
         params = {
             'effective_status': ['ACTIVE', 'PAUSED'],
         };
-        const campaigns = await (new AdAccount(id)).getCampaigns(
+        const campaigns = await (new AdAccount(id)).getAdSets(
             fields,
             params
         );
 
         const camp = []
         for (let i = 0; i < campaigns.length; i++) {
-            console.log("campaign", campaigns[i]._data)
+            console.log("adSets", campaigns[i]._data)
             camp.push(campaigns[i]._data)
         }
         return res.status(200).json({status:true,camp})
@@ -55,4 +56,5 @@ const GetFacebookCampaign = async(req, res) => {
     }
 
 }
-module.exports = GetFacebookCampaign;
+
+module.exports = GetFacebookAdSets;

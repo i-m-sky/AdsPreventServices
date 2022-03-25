@@ -14,6 +14,7 @@ import FacebookLogin from 'react-facebook-login'
 import { FaFacebook } from 'react-icons/fa';
 import { saveToken } from '../services/authService'
 import { AUTH_SUCCESS } from '../features/actions-types'
+import Spinner from './pages/Spinner'
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -120,7 +121,9 @@ const Login = () => {
                                     <p id='error_msg'>{errors.password?.message}{error}</p>
                                     <label className="form-label" htmlFor="form1Example23">Password</label>
                                 </div>
-
+                                <div className="text-center">
+                                {/* <Spinner/> */}
+                                </div>
                                 <div className="d-flex justify-content-around align-items-center mb-4">
 
                                     <div className="form-check">
@@ -136,10 +139,11 @@ const Login = () => {
                                     <Link to="#!">Forgot password?</Link>
 
                                 </div>
-
+                               
+                              
                                 <div className="text-center">
                                     <button type="submit" className="login_btn">Log in</button>
-
+                                   
 
                                 </div>
                             </form>
@@ -150,6 +154,7 @@ const Login = () => {
                     </div>
                 </div>
             </section>
+           
         </>
     )
 }

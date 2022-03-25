@@ -4,6 +4,7 @@ import NotAccountConnect from '../AccoutOverview/NotAccountConnect'
 import DataOnTheWay from './DataOnTheWay';
 import { useState } from 'react';
 import Campaigns from '../../../GoogleAds/Campaigns';
+import Spinner from '../../pages/Spinner';
 
 const FraudAnalyticsGoogle = () => {
   const [clickdata, setClickData] = useState("default");
@@ -14,6 +15,7 @@ const FraudAnalyticsGoogle = () => {
       <>
         <div className='container-fluid mt-5 '>
           <h3 className='mr-4' id='analytics-main-id'>Google Ads Fraud Analytics</h3>
+        
           <div className='analytics-main-div'>
             <div>
              <Link to="/dashboard/fraudanalyticsgoogle/detectedips"> <button className='analytics-btn' >Detected Ips</button></Link>
