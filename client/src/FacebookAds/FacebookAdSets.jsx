@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 const FacebookAdSets = () => {
     const FacebookAdsAccount = localStorage.getItem('facebookAds') ? JSON.parse(localStorage.getItem('facebookAds')).result.account_id : null
     const [adSet, setAdSet] = useState([]);
+    const arr = [];
 
     const getAdSets = (FacebookAdsAccount) => {
         PostApi(`/facebookadsets`, { account_id: FacebookAdsAccount }).then((data) => {
@@ -31,12 +32,14 @@ const FacebookAdSets = () => {
                         <th>daily Budget</th>
                         <th>Status</th>
                         <th>id</th>
+                        <th>excluded Geo locations</th>
                     </tr>
                 </thead>
                 <tbody>
                     {adSet.length > 0 ? adSet.map((data, index) => (
-
+                     
                         <tr>
+                             {console.log("geo",data.targeting.excluded_geo_locations)}
                             <td>{data.name}</td>
                             <td>{data.account_id}</td>
                             <td>{data.start_time}</td>
@@ -44,6 +47,8 @@ const FacebookAdSets = () => {
                             <td>{data.daily_budget}</td>
                             <td>{data.status}</td>
                             <td>{data.id}</td>
+                        
+                            <td></td>
                         </tr>
 
                     )) : <h1>Not data found</h1>}
@@ -54,3 +59,5 @@ const FacebookAdSets = () => {
 }
 
 export default FacebookAdSets
+
+

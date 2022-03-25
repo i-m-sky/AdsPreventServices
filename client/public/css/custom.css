@@ -363,7 +363,7 @@
       text-align: left;
       width: 100%;
       border: none;
-      border-radius: 5px;
+      border-radius: 20px;
   }
   .fbtab{
       padding: .7rem;
@@ -408,3 +408,27 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+.fbcouInput{
+    text-align: center;
+    outline: none;
+}
+#couinput{
+    padding: .6rem;
+    width: 20rem;
+    border-radius: 10px;
+    border: 1px solid  #db6a07;
+    outline: none;
+}
+.searchCountry{
+    padding: .7rem;
+    margin-left: .5rem;
+    border-radius: 10px;
+    color: #db6a07;
+    border: none;
+    background-color:#f37202; 
+    color: white;
+}
+.searchCountry:hover{
+    background-color:#f8831d; 
+    color: white;
+}

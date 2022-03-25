@@ -14,7 +14,7 @@ const GetFacebookAdSets = async(req,res)=>{
 
         const AdAccount = bizSdk.AdAccount;
         const Campaign = bizSdk.Campaign;
-        const access_token = "EAAJjbBz7b7YBAEm3Lp5ATwyzsmX2k2PT79RKdxF2RicdZANzIRSGRZBhMfjUUNP8kqL4qLhBEC18B7Yw8wMZAG1ZC2vAdZBZAJMCSEY6C3mAI0EVorWW6hr0FmhYAl0xCRW6zC2N3Sd9Kam9dj6FR5MMXvtWQLmVBAwAMCGLLoKpMZAcPOau21faDyHh4loB18ZD";
+        const access_token = "EAAJjbBz7b7YBAAGZBDRMjOFcAbNUroec3e4c7NQNzL4ZCHHkh5Cjql0Gxpr2pcjUGyYTX9FQpcgfttaqXHcPvZAIDX2Yoc0siD9CVNZCjGkfGp4heFZBltnZCg2XFFnCdzGtZBtmSCHC1WMSiYFtugEvLZBeGOaDTjqUd9qLMTh643ysfgtO1mGZCfIiIluvn1TkZD";
         const id = "act_2211157139048409";
         const app_secret = process.env.FACEBOOK_APP_SECRET;
         const app_id = process.env.FACEBOOK_APP_ID;
@@ -35,7 +35,8 @@ const GetFacebookAdSets = async(req,res)=>{
             "created_time",
             "spend_cap",
             "source_campaign",
-            "stop_times"
+            "stop_times",
+            "targeting"
         ];
         params = {
             'effective_status': ['ACTIVE', 'PAUSED'],
@@ -44,6 +45,8 @@ const GetFacebookAdSets = async(req,res)=>{
             fields,
             params
         );
+
+        console.log("adssetdata: ",campaigns)
 
         const camp = []
         for (let i = 0; i < campaigns.length; i++) {

@@ -6,12 +6,15 @@ const accountController = require("../controller/accountController");
 const googleAdsController = require("../controller/GoogleAdsController");
 const facebookAdsController = require("../controller/FacebookAdsController");
 const ipController = require("../controller/ipController");
+const commonController = require("../controller/commonController")
 
 
 //main routes
 route.post('/auth/register', authController.localRegister);
 route.post('/auth/login', authController.localLogin);
 route.post('/domain', auth, accountController.addDomain);
+route.get('/countries',auth,commonController.Countrie);
+route.post('/searchcountry',auth,commonController.SearchCountry);
 
 
 
