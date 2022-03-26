@@ -6,7 +6,8 @@ const SearchCountry = async(req,res)=>{
           return res.status(200).json("Country must be set req body")
       }
       const count = Country.charAt(0).toUpperCase() + Country.slice(1);
-      const result = await Countrie.find({name:count})
+      const count2 = Country.toUpperCase()
+      const result = await Countrie.find({$or:[{name:count},{iso3:count2},{iso2:count2}]})
       if(result.length > 0 ){
         return res.status(200).json({status:true,Countries:result})
       }
