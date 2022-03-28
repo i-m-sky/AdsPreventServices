@@ -1,7 +1,9 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import Spinner from '../components/pages/Spinner'
 import { PostApi } from '../services/Services'
 const FacebookCampaignData = () => {
+    
     const FacebookAdsAccount = localStorage.getItem('facebookAds') ? JSON.parse(localStorage.getItem('facebookAds')).result.account_id : null
     const [resdata, resSetRes] = useState([]);
 
@@ -32,17 +34,17 @@ const FacebookCampaignData = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {resdata.length > 0 ? resdata.map((data, index) => (
-                   
+                    {resdata.length > 0 ? resdata.map((data, index) => (
+
                         <tr className='fbval'>
                             <td>{data.name}</td>
                             <td>{data.objective}</td>
                             <td>{data.status}</td>
-                            <td> {data.daily_budget ? data.daily_budget: "-"}</td>
+                            <td> {data.daily_budget ? data.daily_budget : "-"}</td>
                             <td>{data.id}</td>
                         </tr>
-                   
-                )) : <h1>Not data found</h1>}
+
+                    )) : <div className='spinner'><Spinner /></div>}
                 </tbody>
             </table>
 

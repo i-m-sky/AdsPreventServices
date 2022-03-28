@@ -9,7 +9,7 @@ const FacebookAdSets = () => {
 
     const getAdSets = (FacebookAdsAccount) => {
         PostApi(`/facebookadsets`, { account_id: FacebookAdsAccount }).then((data) => {
-            console.log("adsets", data)
+            console.log("All adsets", data)
             if (data.status === true) {
                 setAdSet(data.camp);
             }
@@ -27,21 +27,22 @@ const FacebookAdSets = () => {
                     <tr className='fbtab'>
                         <th>Ad Set</th>
                         <th>Account Id</th>
+                        <th>Campaign Id</th>
                         <th>Start Time</th>
                         <th>Create Time</th>
                         <th>daily Budget</th>
                         <th>Status</th>
                         <th>id</th>
-                        <th>excluded Geo locations</th>
+                        {/* <th>excluded Geo locations</th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {adSet.length > 0 ? adSet.map((data, index) => (
                      
                         <tr>
-                             {console.log("geo",data.targeting.excluded_geo_locations)}
                             <td>{data.name}</td>
                             <td>{data.account_id}</td>
+                            <td>{data.campaign_id}</td>
                             <td>{data.start_time}</td>
                             <td> {data.created_time}</td>
                             <td>{data.daily_budget}</td>

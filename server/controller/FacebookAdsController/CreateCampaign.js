@@ -1,6 +1,5 @@
 // const AdAccount = bizSdk.AdAccount;
         // const Campaign = bizSdk.Campaign;
-
         // const access_token = access_Token.accessToken;
         // const app_secret = process.env.FACEBOOK_APP_SECRET;
         // const app_id = process.env.FACEBOOK_APP_ID;
@@ -73,4 +72,4 @@
         // for (let i = 0; i < campaigns.length; i++) {
         //     console.log("campaign", campaigns[i]._data)
         // }
-      
+       

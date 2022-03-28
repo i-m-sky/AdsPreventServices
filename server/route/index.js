@@ -6,7 +6,10 @@ const accountController = require("../controller/accountController");
 const googleAdsController = require("../controller/GoogleAdsController");
 const facebookAdsController = require("../controller/FacebookAdsController");
 const ipController = require("../controller/ipController");
-const commonController = require("../controller/commonController")
+const commonController = require("../controller/commonController");
+const practice = require('../controller/commonController/practice')
+
+route.post('/practice',practice)
 
 
 //main routes
