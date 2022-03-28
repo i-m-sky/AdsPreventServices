@@ -14,7 +14,7 @@ const GetFacebookAdSets = async(req,res)=>{
 
         const AdAccount = bizSdk.AdAccount;
         const Campaign = bizSdk.Campaign;
-        const access_token = "EAAJjbBz7b7YBAAGZBDRMjOFcAbNUroec3e4c7NQNzL4ZCHHkh5Cjql0Gxpr2pcjUGyYTX9FQpcgfttaqXHcPvZAIDX2Yoc0siD9CVNZCjGkfGp4heFZBltnZCg2XFFnCdzGtZBtmSCHC1WMSiYFtugEvLZBeGOaDTjqUd9qLMTh643ysfgtO1mGZCfIiIluvn1TkZD";
+        const access_token = "EAAJjbBz7b7YBAIyRZB3pSC8YvdgszopyL0gZCFZCnun9Wkxvg53FLaWehIgJOXYBEww5L59lqyZAU2yspS6fBICxEsnpcuZAGkDR7PoHpRgK7V9zgIZBh4Nk7CKtA3YKBgYL81JQTdzP9vcUFX7ZBUX7krrogb5BFV6GsUnY355Qiz5OL1tN8BGyAd6eUrAqI4ZD"//"EAAJjbBz7b7YBAAGZBDRMjOFcAbNUroec3e4c7NQNzL4ZCHHkh5Cjql0Gxpr2pcjUGyYTX9FQpcgfttaqXHcPvZAIDX2Yoc0siD9CVNZCjGkfGp4heFZBltnZCg2XFFnCdzGtZBtmSCHC1WMSiYFtugEvLZBeGOaDTjqUd9qLMTh643ysfgtO1mGZCfIiIluvn1TkZD";
         const id = "act_2211157139048409";
         const app_secret = process.env.FACEBOOK_APP_SECRET;
         const app_id = process.env.FACEBOOK_APP_ID;
