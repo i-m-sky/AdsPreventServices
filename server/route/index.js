@@ -29,7 +29,8 @@ route.post('/getcampaigns',auth,googleAdsController.GetCampaigns);
 route.post('/facebookad',auth,facebookAdsController.FacebookAdSetup);
 route.post('/setupfacebook',auth,facebookAdsController.GetFacebookData);
 route.post('/facebookcampaigns',auth,facebookAdsController.GetFacebookCampaign);
-route.post('/facebookadsets',auth,facebookAdsController.GetFacebookAdSets)
+route.post('/facebookadsets',auth,facebookAdsController.GetFacebookAdSets);
+route.post('/excludecountry',auth,facebookAdsController.ExcludeCountry);
 
 //google auth
 route.post('/auth/google', authController.googleOauth);
