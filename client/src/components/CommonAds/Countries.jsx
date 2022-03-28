@@ -28,6 +28,14 @@ const Coutnries = () => {
             }
         })
     }
+
+    const getData = (iso2)=>{
+        PostApi(`/excludecountry`,{iso2}).then((data)=>{
+            if(data.status===true){
+                toast("Exclude country success", {autoClose:900});
+            }
+        })
+    }
    
     useEffect(() => {
         getCountries();
@@ -39,7 +47,7 @@ const Coutnries = () => {
             <div className="container">
                 <div className='fbcouInput mt-4'>
                     <form onSubmit={SearchCountry}>
-                        <input type="text" placeholder='India' id='couinput' onChange={(e) => SetCountry(e.target.value)} />
+                        <input type="text" placeholder='India' id='couinput' onChange={(e) => SetCountry(e.target.value,)} />
                         <button className='searchCountry' onClick={SearchCountry}>Search Country</button>
                     </form>
                 </div>
@@ -55,7 +63,7 @@ const Coutnries = () => {
                                                 <th>{data.name}</th>
                                                 <td>{data.iso2}</td>
                                                 <td> <label class="switch ">
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" onChange={(e) => getData( data.iso2)}/>
                                                     <span class="slider round"></span>
                                                 </label></td>
                                             </tr>
@@ -73,8 +81,8 @@ const Coutnries = () => {
                                                         <th>{data.name}</th>
                                                         <td>{data.iso2}</td>
                                                         <td> <label class="switch ">
-                                                            <input type="checkbox" />
-                                                            <span class="slider round"></span>
+                                                            <input type="checkbox"  checked={false} onChange={(e) => getData(e.target.checked, data.ip)}/>
+                                                            <span class="slider round" ></span>
                                                         </label></td>
                                                     </tr>
                                                 </tbody>
