@@ -137,8 +137,9 @@
 
   .analytics-btn{
       border: none;
-     margin: 1rem;
-     background-color: transparent;
+      margin: 3px;
+      background-color: transparent;
+      
 
   }
   .analytics-btn:hover{
@@ -160,9 +161,7 @@
       color: #f87708;
       margin: 2rem;
   }
-  #analytics-main-id{
-      margin: 0 0 1rem 4rem;
-  }
+
   .gm_common{
       background-color: rgb(248, 251, 253);
       padding: 3rem;

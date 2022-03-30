@@ -14,15 +14,16 @@ const FacebookSelectAccount = () => {
 
 
     const getData = async (facebookAdsId) => {
-
-        PostApi(`/setupfacebook`, { access_token, account_id: facebookAdsId }).then((data) => {
-            console.log("this token",access_token)
-            if (data.status === true) {
-                saveFacebookData(data);
-                navigate('/dashboard/fraudanalytics/facebook');
-            }
-        })
+        dispatch(facebookAdsAction({access_token,account_id:facebookAdsId}))
     }
+        // PostApi(`/setupfacebook`, { access_token, account_id: facebookAdsId }).then((data) => {
+        //     console.log("this token",access_token)
+        //     if (data.status === true) {
+        //         saveFacebookData(data);
+        //         navigate('/dashboard/fraudanalytics/facebook');
+        //     }
+        // })
+    
 
 
     return (

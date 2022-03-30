@@ -27,8 +27,13 @@ export const saveToken = (data) => {
 }
 export const deleteToken = () => {
     localStorage.removeItem("googleAds")
+    localStorage.removeItem("facebookAds")
     return localStorage.removeItem("user_data")
 }
+export const deleteFacebook = () => {
+    return  localStorage.removeItem("facebookAds")
+}
+
 export const saveGoogleData = (data) => {
     localStorage.setItem("googleAds", JSON.stringify(data))
 }

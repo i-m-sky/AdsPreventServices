@@ -11,17 +11,17 @@ const BlockIplist = () => {
 
     const getCampaigns = async () => {
 
-        PostApi(`/getcampaigns`,{GoogleAdsId}).then((data)=>{
+        PostApi(`/getcampaigns`, { GoogleAdsId }).then((data) => {
             if (data.status === true) {
                 SetResourceName(data.campaigns[0].campaign.campaign.resourceName)
                 resSetRes(data.campaigns)
             }
         })
-      
+
     }
 
     const list = async () => {
-        PostApi(`/blockiplist`,{resourceName}).then((data)=>{
+        PostApi(`/blockiplist`, { resourceName }).then((data) => {
             if (data.status === true) {
                 SetBlockIplist(data.result[0].excludeIp)
             }
@@ -46,34 +46,35 @@ const BlockIplist = () => {
                             {resdata.length > 0 ? resdata.map((data, index) => (
 
                                 <option value={data.campaign.campaign.resourceName}>CampaignName - {data.campaign.campaign.name} </option>
-                               
+
                             )) : <h1>Not data found</h1>}
                         </select>
-                        <table className="table table-hover">
+                        <div class="table-responsive table-hover mt-5">
+                            <table className="table table-hover">
 
-                            <tbody>
-                                <tr className='detecttable'>
-                                    <th>S. No</th>
-                                    <th scope="row" className='iplist'>Ip Address</th>
-                                    <td>Threat Level</td>
-                                    <td>Blocked</td>
-                                    <td>Block Reason</td>
-                                </tr>
-
-                                {blockIplist.length > 0 ? blockIplist.map((data, index) => (
-
-                                    <tr className='critical'>
-                                        <th>{index + 1}</th>
-                                        <th scope="row" className='iplist'>{data.ip}</th>
-                                        <td>High</td>
-                                        <td>true</td>
-                                        <td>Bot</td>
+                                <tbody>
+                                    <tr className='detecttable'>
+                                        <th>S. No</th>
+                                        <th scope="row" className='iplist'>Ip Address</th>
+                                        <td>Threat Level</td>
+                                        <td>Blocked</td>
+                                        <td>Block Reason</td>
                                     </tr>
-                                )) : <h1>No exclude IPS</h1>}
 
-                            </tbody>
-                        </table>
+                                    {blockIplist.length > 0 ? blockIplist.map((data, index) => (
 
+                                        <tr className='critical'>
+                                            <th>{index + 1}</th>
+                                            <th scope="row" className='iplist'>{data.ip}</th>
+                                            <td>High</td>
+                                            <td>true</td>
+                                            <td>Bot</td>
+                                        </tr>
+                                    )) : <h1>No exclude IPS</h1>}
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div className="col-md-2">

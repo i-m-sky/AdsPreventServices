@@ -1,13 +1,16 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { PostApi,saveGoogleData} from '../../../../services/Services';
+import { useDispatch, useSelector } from 'react-redux';
+import googleAdsAction from '../../../../features/actions/googleAdsAction';
 
 
 const ChoiceOneGoogleAccount = (props) => {
+  const { googleAccount } = useSelector((state) => state.googleReducer);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { id, refreshToken } = useParams();
 
@@ -18,17 +21,18 @@ const ChoiceOneGoogleAccount = (props) => {
 
   const clientSubmit = async (e) => {
     e.preventDefault();
-    PostApi(`google-client`,{managerId,clientId,refreshToken:refresh_token}).then((data)=>{
-      if (data.status === true) {
-        saveGoogleData(data)
-        navigate('/dashboard/fraudanalyticsgoogle')
-      } else if (data.status === false) {
-        alert("Invalid Client id")
-      }
-    })
-    
-   
+    dispatch(googleAdsAction(managerId, clientId, refresh_token));
   }
+
+  useEffect(() => {
+
+    if (!googleAccount.status) {
+      navigate('/login');
+    }
+    else if (googleAccount.status) {
+      navigate('/dashboard');
+    }
+  }, [googleAccount])
 
 
   return (
@@ -59,11 +63,8 @@ const ChoiceOneGoogleAccount = (props) => {
             </div>
           </div>
           <div className="col-md-3">
-
           </div>
         </div>
-
-
       </div>
     </>
   )

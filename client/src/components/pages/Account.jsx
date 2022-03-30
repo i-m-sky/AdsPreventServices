@@ -8,7 +8,7 @@ const Account = () => {
     const navigate = useNavigate()
      const dispatch = useDispatch()
 
-    const logoutUser = ()=>{
+   const  logoutUser = ()=>{
         deleteToken()
         dispatch({type:AUTH_FAIL});
         navigate('login')

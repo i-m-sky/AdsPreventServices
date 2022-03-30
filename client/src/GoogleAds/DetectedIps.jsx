@@ -15,8 +15,8 @@ const DetectedIps = () => {
 
     const getCampaigns = async () => {
 
-        PostApi(`/getcampaigns`,{GoogleAdsId}).then((data)=>{
-            if(data.status === true){
+        PostApi(`/getcampaigns`, { GoogleAdsId }).then((data) => {
+            if (data.status === true) {
                 SetResourceName(data.campaigns[0].campaign.campaign.resourceName)
                 resSetRes(data.campaigns)
             }
@@ -25,18 +25,18 @@ const DetectedIps = () => {
 
     const detectedIp = async () => {
 
-        GetApi(`/detectedips`).then((data)=>{
+        GetApi(`/detectedips`).then((data) => {
             setIps(data.result)
         })
-        
+
     }
 
-    const BlockIp = async (currentip, result,resdata) => {
-        PostApi(`/exclude-ip`,{currentip,result,resourceName}).then((data)=>{
+    const BlockIp = async (currentip, result, resdata) => {
+        PostApi(`/exclude-ip`, { currentip, result, resourceName }).then((data) => {
             return data;
         })
-         
-     }
+
+    }
 
     const setCheck = (data, ip) => {
         BlockIp(ip, result, resdata)
@@ -56,38 +56,41 @@ const DetectedIps = () => {
                             {resdata.length > 0 ? resdata.map((data, index) => (
 
                                 <option value={data.campaign.campaign.resourceName}>CampaignName - {data.campaign.campaign.name} </option>
-                               
+
                             )) : <h1>Not data found</h1>}
                         </select>
-                        <table className="table table-hover">
+                        <div class="table-responsive table-hover mt-5">
+                            <table className="table table-hover">
 
-                            <tbody>
-                                <tr className='detecttable'>
-                                    <th>S. No</th>
-                                    <th scope="row" className='iplist'>Ip Address</th>
-                                    <td>Threat Level</td>
-                                    <td>Blocked</td>
-                                    <td>Block Reason</td>
-                                </tr>
-
-                                {ips.length > 1 ? ips.map((data, index) => (
-
-                                    <tr className='critical'>
-                                        <th>{index + 1}</th>
-                                        <th scope="row" className='iplist'>{data.ip}</th>
-                                        <td>{data.weightage >= 2 ? "Critical" : "Low"}</td>
-                                        <td> <label class="switch ml-3">
-
-                                            <input type="checkbox" checked={checked[index]} onChange={(e) => setCheck(e.target.checked, data.ip)} />
-                                            <span class="slider round"></span>
-
-                                        </label></td>
-                                        <td>-</td>
+                                <tbody>
+                                    <tr className='detecttable'>
+                                        <th>S. No</th>
+                                        <th scope="row" className='iplist'>Ip Address</th>
+                                        <td>Threat Level</td>
+                                        <td>Blocked</td>
+                                        <td>Block Reason</td>
                                     </tr>
-                                )) : <h1>No data Found</h1>}
 
-                            </tbody>
-                        </table>
+                                    {ips.length > 1 ? ips.map((data, index) => (
+
+                                        <tr className='critical'>
+                                            <th>{index + 1}</th>
+                                            <th scope="row" className='iplist'>{data.ip}</th>
+                                            <td>{data.weightage >= 2 ? "Critical" : "Low"}</td>
+                                            <td> <label class="switch ml-3">
+
+                                                <input type="checkbox" checked={checked[index]} onChange={(e) => setCheck(e.target.checked, data.ip)} />
+                                                <span class="slider round"></span>
+
+                                            </label></td>
+                                            <td>-</td>
+                                        </tr>
+                                    )) : <h1>No data Found</h1>}
+
+                                </tbody>
+                            </table>
+                        </div>
+                      
 
                     </div>
 
