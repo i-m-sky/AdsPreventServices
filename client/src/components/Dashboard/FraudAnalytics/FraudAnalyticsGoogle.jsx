@@ -12,7 +12,7 @@ const FraudAnalyticsGoogle = () => {
 
   const { googleAccount } = useSelector((state) => state.googleReducer);
 
-  if (false) {
+  if (googleAccount) {
     return (
       <>
         <div className='container-fluid mt-5 '>
@@ -25,6 +25,7 @@ const FraudAnalyticsGoogle = () => {
               {/* <button className='analytics-btn' onClick={() => setClickData('Keywords')}>Keywords</button> */}
               <button className='analytics-btn' onClick={() => setClickData('campaigns')}>Campaigns</button>
               <Link to="/dashboard/fraudanalyticsgoogle/blockiplist"> <button className='analytics-btn' >Blocked Ips</button></Link>
+              <Link to="/dashboard/fraudanalyticsgoogle/generatecode"> <button className='analytics-btn' >Generate Code</button></Link>
               {/* <button className='analytics-btn' onClick={() => setClickData('iranges')}>Ip Ranges</button> */}
               {/* <button className='analytics-btn' onClick={() => setClickData('devices')}>Devices</button> */}
             </div>

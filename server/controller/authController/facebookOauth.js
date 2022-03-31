@@ -13,7 +13,7 @@ const facebookOauth = async (req, res) => {
         const { id, name, email } = data.data;
         const exist = await User.exists({ email: email });
 
-        if (exist) {
+        if (exist) {    
             const result = await User.findOne({ email: email });
             const user = { name: result.name, email: result.email, role: result.role }
             const token = Jwtservice.sign(user);

@@ -1,6 +1,23 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { GetApi, saveGoogleData } from '../../../../services/Services';
+import { GOOGLE_ADS_SUCCESS } from '../../../../features/actions-types';
+import { useDispatch } from 'react-redux';
 const GoogleServiceConnection = () => {
+    const dispatch = useDispatch();
+    const checkAccountExist = () =>{
+        GetApi(`googleaccountexist`).then((data)=>{
+            if(data.status===true){
+                saveGoogleData(data);
+                dispatch({type:GOOGLE_ADS_SUCCESS,payload:data})
+            }
 
+        })
+    }
+
+    useEffect(()=>{
+        checkAccountExist()
+    },[])
     return (
         <>
             <div className="container">

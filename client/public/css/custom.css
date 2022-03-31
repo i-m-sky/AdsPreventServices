@@ -89,7 +89,7 @@
 }
 @media screen and (max-width: 640) {
     #home_img{
-        height: 25rem;
+        height: 18rem;
         text-align: center;
     }   
     .mobile_dashlink{

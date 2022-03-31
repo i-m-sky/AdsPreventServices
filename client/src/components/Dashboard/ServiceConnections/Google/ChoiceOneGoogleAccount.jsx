@@ -7,6 +7,7 @@ import googleAdsAction from '../../../../features/actions/googleAdsAction';
 
 
 const ChoiceOneGoogleAccount = (props) => {
+
   const { googleAccount } = useSelector((state) => state.googleReducer);
 
   const navigate = useNavigate();
@@ -26,11 +27,8 @@ const ChoiceOneGoogleAccount = (props) => {
 
   useEffect(() => {
 
-    if (!googleAccount.status) {
-      navigate('/login');
-    }
-    else if (googleAccount.status) {
-      navigate('/dashboard');
+    if (googleAccount) {
+      navigate('/fraudanalytics/google');
     }
   }, [googleAccount])
 

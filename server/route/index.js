@@ -18,6 +18,10 @@ route.post('/auth/login', authController.localLogin);
 route.post('/domain', auth, accountController.addDomain);
 route.get('/countries',auth,commonController.Countrie);
 route.post('/searchcountry',auth,commonController.SearchCountry);
+route.get('/vinscout.js',commonController.GenerateFileForClient);
+route.post('/receiveclietdata',(req,res)=>{
+    console.log(req.body)
+})
 
 
 
@@ -27,6 +31,7 @@ route.post('/google-managerid',auth,googleAdsController.GetManagerId);
 route.post('/google-client',auth,googleAdsController.GoogleClient);
 route.post('/exclude-ip',auth,googleAdsController.ExcludeIp);
 route.post('/getcampaigns',auth,googleAdsController.GetCampaigns);
+route.get('/googleaccountexist',auth,googleAdsController.GoogleAccountExist);
 
 //facebook ads
 route.post('/facebookad',auth,facebookAdsController.FacebookAdSetup);

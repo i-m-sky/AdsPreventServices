@@ -3,7 +3,8 @@ const CreateCampaigs = require ("./CreateCampaigs");
 const GetManagerId = require("./GetManagerId");
 const GoogleClient = require("./GoogleClient");
 const ExcludeIp = require("./ExcludeIp");
-const GetCampaigns = require("./GetCampaigns")
+const GetCampaigns = require("./GetCampaigns");
+const GoogleAccountExist = require("./GoogleAccountExist");
 
 
 module.exports = {
@@ -13,5 +14,7 @@ module.exports = {
     GoogleClient,
     GetCampaigns,
     ExcludeIp,
+    GoogleAccountExist,
+    
     
 }
