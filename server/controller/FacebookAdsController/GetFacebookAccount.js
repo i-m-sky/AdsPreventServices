@@ -5,7 +5,7 @@ const GetFacebookData = async(req,res)=>{
     try {
         const {access_token,account_id} = req.body;
         console.log(req.body)
-        console.log(access_token,account_id)
+     
 
         if(!access_token || !account_id){
             return res.status(200).json({message:"access_token and account_id must be set in req body"});

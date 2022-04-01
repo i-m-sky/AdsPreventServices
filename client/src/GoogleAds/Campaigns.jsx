@@ -1,9 +1,11 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { PostApi } from '../services/Services'
+import {useSelector} from 'react-redux';
 
 const Campaigns = () => {
-    const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
+    
+    const { googleAccount } = useSelector((state) => state.googleReducer);
     const [resdata, resSetRes] = useState([]);
 
     const getCampaigns = async (GoogleAdsId) => {
@@ -16,11 +18,12 @@ const Campaigns = () => {
     }
 
     useEffect(() => {
-        getCampaigns(GoogleAdsId)
+        getCampaigns(googleAccount._id)
     }, [])
 
     return (
         <>
+        
             <div className="container mt-3">
                 {resdata.length > 0 ? resdata.map((data, index) => (
                    

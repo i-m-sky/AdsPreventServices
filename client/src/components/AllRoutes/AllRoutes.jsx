@@ -20,6 +20,11 @@ import FraudAnalyticsGoogle from "../Dashboard/FraudAnalytics/FraudAnalyticsGoog
 import FacebookServiceConnection from "../Dashboard/ServiceConnections/Facebook/FacebookServiceConnection";
 import FacebookSelectAccount from "../Dashboard/ServiceConnections/Facebook/FacebookSelectAccount";
 import PageNotFound from '../pages/NotFoundPage'
+import Campaigns from "../../GoogleAds/Campaigns";
+import Coutnries from "../CommonAds/Countries";
+import GenerateCode from "../CommonAds/GenerateCode";
+import FacebookCampaignData from "../../FacebookAds/FacebookCampaignData";
+import FacebookAdSets from "../../FacebookAds/FacebookAdSets";
 
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
@@ -50,7 +55,19 @@ const AllRoutes = () => {
                     path: 'fraudanalyticsgoogle', element: <FraudAnalyticsGoogle />,
                     children: [
                         { path: 'detectedips', element: <DetectedIps /> },
-                        { path: 'blockiplist', element: <BlockIplist /> }
+                        { path: 'blockiplist', element: <BlockIplist /> },
+                        { path: 'googlecampaigns', element: <Campaigns /> },
+                        { path: 'Countries', element: <Coutnries /> },
+                        { path: 'generatecode', element: <GenerateCode /> }
+                    ]
+                },
+                {
+                    path: 'fraudanalyticsfacebook', element: <FraudAnalyticsFacebook />,
+                    children:[
+                        {path:'facebookcampaigns',element:<FacebookCampaignData/>},
+                        {path:'facebookadsets',element:<FacebookAdSets/>},
+                        {path:'countries',element:<Coutnries/>},
+                        
                     ]
                 },
                 { path: 'connection/google', element: <GoogleServiceConnection /> },
@@ -59,7 +76,7 @@ const AllRoutes = () => {
 
             ]
         },
-        {path:"*",element:<PageNotFound/>}
+        { path: "*", element: <PageNotFound /> }
     ]);
 
     return element;

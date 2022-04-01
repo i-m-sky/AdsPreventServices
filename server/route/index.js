@@ -18,7 +18,8 @@ route.post('/auth/login', authController.localLogin);
 route.post('/domain', auth, accountController.addDomain);
 route.get('/countries',auth,commonController.Countrie);
 route.post('/searchcountry',auth,commonController.SearchCountry);
-route.get('/vinscout.js',commonController.GenerateFileForClient);
+route.get('/vinscout.js',commonController.MainScript);
+route.get('/generatescript',commonController.GenerateScript);
 route.post('/receiveclietdata',(req,res)=>{
     console.log(req.body)
 })

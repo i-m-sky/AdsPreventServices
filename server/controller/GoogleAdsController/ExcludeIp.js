@@ -6,10 +6,8 @@ const FormData = require('form-data');
 const ExcludeIp = async (req, res) => {
 
     try {
-      
-        const { currentip, result, resourceName } = req.body;
-        
 
+        const { currentip, result, resourceName } = req.body;
         if (!currentip && !result && !resourceName) {
             return res.status(401).json("Bad request ! IpAddress, account and resourceName required")
         }
@@ -23,10 +21,6 @@ const ExcludeIp = async (req, res) => {
 
         const generateAccesstoken = await axios.post(`https://oauth2.googleapis.com/token?access_type=offline`, form,
             { headers: form.getHeaders() })
-
-            console.log(req.body)
-
-            console.log("custome id:",result.customer_id,"ip:",currentip,"resourcename:",resourceName,"managerid",result.manager_id)
 
         // //Exclude ip address google ads account
 
@@ -43,11 +37,10 @@ const ExcludeIp = async (req, res) => {
                 "login-customer-id": result.manager_id
             }
         })
-        console.log("here 2")
 
         console.log("exclude ip", exclude.data)
 
-        await GoogleCampaign.updateOne({ 'campaign.campaign.resourceName': resourceName }, { $push: { excludeIp: { ip:currentip, status: true } } });
+        await GoogleCampaign.updateOne({ 'campaign.campaign.resourceName': resourceName }, { $addToSet: { excludeIp: { ip: currentip } } });
 
 
         return res.status(200).json({ status: true, result: exclude.data.results });

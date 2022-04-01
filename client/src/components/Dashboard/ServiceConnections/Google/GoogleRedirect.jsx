@@ -7,7 +7,6 @@ import GoogleClientIdModal from '../../../Modals/GoogleClientIdModal';
 const GoogleRedirect = () => {
 
     const code = new URL(window.location.href).searchParams.get('code');
-
     const [modalIsOpen, setIsOpen] = useState(false);
     const [clientDetails, setClientDetails] = useState([]);
     const [refreshToken,setRefreshToken] = useState();
@@ -20,7 +19,7 @@ const GoogleRedirect = () => {
         PostApi(`/google-setupads`,{code}).then((data)=>{
             if (data.status === true) {
                 setClientDetails(data.accounts)
-                setRefreshToken(data.refreshToken)
+                setRefreshToken(data.refreshToken);
                 openModal()
             }
         })

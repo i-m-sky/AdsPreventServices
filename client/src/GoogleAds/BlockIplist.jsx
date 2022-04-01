@@ -1,39 +1,46 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { PostApi } from '../services/Services';
-const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
+import { useSelector } from 'react-redux';
 
 const BlockIplist = () => {
+    const { googleAccount } = useSelector((state) => state.googleReducer);
 
-    const [blockIplist, SetBlockIplist] = useState([]);
+    
     const [resdata, resSetRes] = useState([]);
-    const [resourceName, SetResourceName] = useState();
+    const [resourceName, SetResourceName] = useState("");
+    const [blockIplist, SetBlockIplist] = useState([]);
 
     const getCampaigns = async () => {
-
-        PostApi(`/getcampaigns`, { GoogleAdsId }).then((data) => {
+        console.log("second")
+        PostApi(`/getcampaigns`, { GoogleAdsId: googleAccount._id }).then((data) => {
             if (data.status === true) {
-                SetResourceName(data.campaigns[0].campaign.campaign.resourceName)
                 resSetRes(data.campaigns)
+                SetResourceName(data.campaigns[0].campaign.campaign.resourceName)
             }
         })
-
+        console.log("after second")
     }
 
+    useEffect(() => {
+        console.log("First")
+        getCampaigns()
+    }, [1])
+
     const list = async () => {
-        PostApi(`/blockiplist`, { resourceName }).then((data) => {
+        console.log("resource",resourceName)
+        console.log("forth")
+        PostApi(`/blockiplist`, {resourceName:resourceName}).then((data) => {
             if (data.status === true) {
                 SetBlockIplist(data.result[0].excludeIp)
             }
         })
     }
-
     useEffect(() => {
-        getCampaigns()
-    }, [])
-    useEffect(() => {
-        list()
+        console.log("third")
+            list()
     }, [resourceName])
+
 
     return (
         <>
@@ -43,7 +50,7 @@ const BlockIplist = () => {
                     </div>
                     <div className="col-md-8 detectediplist">
                         <select name="" id="campdrop" onChange={(e) => SetResourceName(e.target.value)}>
-                            {resdata.length > 0 ? resdata.map((data, index) => (
+                            {resdata && resdata.length > 0 ? resdata.map((data, index) => (
 
                                 <option value={data.campaign.campaign.resourceName}>CampaignName - {data.campaign.campaign.name} </option>
 
@@ -61,7 +68,7 @@ const BlockIplist = () => {
                                         <td>Block Reason</td>
                                     </tr>
 
-                                    {blockIplist.length > 0 ? blockIplist.map((data, index) => (
+                                    {blockIplist && blockIplist.length > 0 ? blockIplist.map((data, index) => (
 
                                         <tr className='critical'>
                                             <th>{index + 1}</th>

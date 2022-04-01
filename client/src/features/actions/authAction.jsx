@@ -41,5 +41,6 @@ export const registerAction = ({ name, email, password, domain }) => async (disp
 
 //clear error
 export const clearError = () => async (dispatch) => {
+    console.log("errrr fun")
     dispatch({ type: CLEAR_ERROR });
 }

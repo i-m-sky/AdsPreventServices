@@ -29,7 +29,7 @@ const navigate = useNavigate();
                                 <p>Link your email and in the following step
                                     sync the relevant Facebook Ads account</p>
                                 <FacebookLogin
-                                    appId= '672265947279286'
+                                    appId= '709419267156564'
                                     autoLoad={false}
                                     fields="name,email,picture"
                                     scope="ads_management,ads_read,attribution_read,business_management"

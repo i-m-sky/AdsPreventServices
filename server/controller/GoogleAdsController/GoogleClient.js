@@ -72,7 +72,7 @@ const GoogleClient = async (req, res) => {
     return res.status(200).json({ status: true, result })
 
   } catch (error) {
-    return res.status(500).json({ status: false, message: error.message })
+    return res.status(500).json({ status: false, message: error.message})
   }
 }
 module.exports = GoogleClient;

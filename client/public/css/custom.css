@@ -116,6 +116,10 @@
    
 
 }
+.generatecode{
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+    padding: .5rem;
+}
 .facebook-btn{
     width:12rem;
     height: 2.7rem;
@@ -144,6 +148,18 @@
     font-size: .9rem;
     border-radius: 15px;
 }
+.copybtn{
+    border: none;
+    margin-left: 3px;
+}
+.copybtn:hover{
+    background-color:rgb(204, 202, 202); ;
+}
+.copybtn:active {
+    background-color: #a1a1a1;
+    box-shadow: 0 1px rgb(168, 167, 167);
+    transform: translateY(4px);
+  }
 .fbadssel{
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
@@ -193,21 +209,22 @@
     height: 20rem;
 }
 .select_item{
-    background-color: #ffffff;
+    background-color: #f87708;
+    color:white;
     border: none;
     border-radius: 10rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
     padding: 1rem 3rem 1rem 3rem;
     text-align: left;
-    line-height: 1px;
-    width: 20rem;
+    width: auto;
 
     
   
 }
 .google-accounts{
-    display: flex;
+    /* display: flex;
     padding: 1rem;
+    width: auto; */
 }
 .facebook-account{
     padding: .5rem;
@@ -219,8 +236,9 @@
     margin-left: 2rem;
 }
 .select_item:hover{
-    background-color: #f87708;
+    background-color: #f87708;;
     color:white;
+    transform: scale(1.2); 
 
 }
 #note-found{
@@ -413,7 +431,7 @@
       background-color: #dfdddd;
   }
   .fixed_header{
-    width: 400px;
+    width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
 }

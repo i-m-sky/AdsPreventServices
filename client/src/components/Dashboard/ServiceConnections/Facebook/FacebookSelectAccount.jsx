@@ -1,31 +1,29 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom'
 import facebookAdsAction from '../../../../features/actions/facebookAdsAction';
-import { PostApi, saveFacebookData } from '../../../../services/Services';
+
 const FacebookSelectAccount = () => {
+    const {facebookAccount} = useSelector((state)=>state.facebookReducer);
+  
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const data = location.state.data.Adsaccount.data;
     const access_token = location.state.data.access_token;
-    console.log(access_token)
-
 
     const getData = async (facebookAdsId) => {
-        dispatch(facebookAdsAction({access_token,account_id:facebookAdsId}))
+        dispatch(facebookAdsAction({access_token,facebookAdsId}))
     }
-        // PostApi(`/setupfacebook`, { access_token, account_id: facebookAdsId }).then((data) => {
-        //     console.log("this token",access_token)
-        //     if (data.status === true) {
-        //         saveFacebookData(data);
-        //         navigate('/dashboard/fraudanalytics/facebook');
-        //     }
-        // })
-    
 
-
+    useEffect(()=>{
+        if(facebookAccount){
+            navigate("/dashboard/fraudanalytics/facebook")
+        }
+    },[facebookAccount])
+      
     return (
         <>
             <div className="container">

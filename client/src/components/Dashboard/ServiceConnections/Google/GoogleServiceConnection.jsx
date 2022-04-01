@@ -8,16 +8,17 @@ const GoogleServiceConnection = () => {
     const checkAccountExist = () =>{
         GetApi(`googleaccountexist`).then((data)=>{
             if(data.status===true){
-                saveGoogleData(data);
-                dispatch({type:GOOGLE_ADS_SUCCESS,payload:data})
+                console.log("from starting,",data)
+                saveGoogleData(data.result);
+                dispatch({type:GOOGLE_ADS_SUCCESS,payload:data.result})
             }
 
         })
     }
 
-    useEffect(()=>{
-        checkAccountExist()
-    },[])
+    // useEffect(()=>{
+    //     checkAccountExist()
+    // },[])
     return (
         <>
             <div className="container">

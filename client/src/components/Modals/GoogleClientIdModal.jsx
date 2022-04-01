@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import {PostApi} from '../../services/Services';
+import { PostApi } from '../../services/Services';
 
 const GoogleClientIdModal = (props) => {
 
@@ -14,7 +14,8 @@ const GoogleClientIdModal = (props) => {
             bottom: 'auto',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
-
+            width:"40%",
+            height:"50%"
         },
     }
 
@@ -24,10 +25,10 @@ const GoogleClientIdModal = (props) => {
 
     }
     const getData = async (item) => {
-        PostApi('/google-managerid',{managerId:item,refreshToken:props.refreshToken}).then((data)=>{
-            console.log("manage:",data.result.managerId,"data",data)
-            if(data.status===true){
-                navigate(`/clientid/${data.result.managerId}/${btoa(props.refreshToken)}`); 
+        PostApi('/google-managerid', { managerId: item, refreshToken: props.refreshToken }).then((data) => {
+            console.log("manage:", data.result.managerId, "data", data)
+            if (data.status === true) {
+                navigate(`/clientid/${data.result.managerId}/${btoa(props.refreshToken)}`);
             }
         })
 
@@ -53,11 +54,11 @@ const GoogleClientIdModal = (props) => {
 
                                 <div > <button className='select_item mt-3' onClick={() => getData(item.id)}>
                                     <div className="google-accounts" >
-                                        <h4>{item.descriptiveName}</h4>
-                                        {/* <img src="/images/GoogleAds.png" alt="" id='googlead' /><br /> */}
+                                    <span>{item.descriptiveName} </span> <br />
+      
                                     </div>
 
-                                    <span>{item.id}</span>
+
 
                                 </button>  </div>
 

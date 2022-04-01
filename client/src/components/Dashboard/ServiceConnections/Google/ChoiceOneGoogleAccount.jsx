@@ -3,12 +3,16 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import googleAdsAction from '../../../../features/actions/googleAdsAction';
+import { googleAdsAction,clearGoogleError } from '../../../../features/actions/googleAdsAction';
+import { toast } from 'react-toastify';
+import { CLEAR_ERROR } from '../../../../features/actions-types';
 
 
 const ChoiceOneGoogleAccount = (props) => {
 
-  const { googleAccount } = useSelector((state) => state.googleReducer);
+  const { googleAccount, error } = useSelector((state) => state.googleReducer);
+  console.log(googleAccount, "googleAccount")
+  console.log(error, "error")
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,10 +31,14 @@ const ChoiceOneGoogleAccount = (props) => {
 
   useEffect(() => {
 
-    if (googleAccount) {
-      navigate('/fraudanalytics/google');
+    if (error) {
+      toast("Client id not Match");
+      dispatch(clearGoogleError())
+    } else if (googleAccount) {
+      navigate('/dashboard/fraudanalytics/google');
+      
     }
-  }, [googleAccount])
+  }, [])
 
 
   return (

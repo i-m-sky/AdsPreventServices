@@ -1,13 +1,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { GetApi, PostApi } from '../services/Services';
+import {useSelector} from 'react-redux';
 
-const result = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result : null
-const GoogleAdsId = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result._id : null
+// const result = localStorage.getItem('googleAds') ? JSON.parse(localStorage.getItem('googleAds')).result : null
 
 
 const DetectedIps = () => {
-
+    const { googleAccount } = useSelector((state) => state.googleReducer);
+    console.log(googleAccount)
     const [ips, setIps] = useState([]);
     const [checked, setChecked] = useState(false);
     const [resdata, resSetRes] = useState([]);
@@ -15,7 +16,7 @@ const DetectedIps = () => {
 
     const getCampaigns = async () => {
 
-        PostApi(`/getcampaigns`, { GoogleAdsId }).then((data) => {
+        PostApi(`/getcampaigns`, { GoogleAdsId:googleAccount._id }).then((data) => {
             if (data.status === true) {
                 SetResourceName(data.campaigns[0].campaign.campaign.resourceName)
                 resSetRes(data.campaigns)
@@ -32,6 +33,7 @@ const DetectedIps = () => {
     }
 
     const BlockIp = async (currentip, result, resdata) => {
+        console.log("block ip data: ",currentip,result,resourceName)
         PostApi(`/exclude-ip`, { currentip, result, resourceName }).then((data) => {
             return data;
         })
@@ -39,7 +41,7 @@ const DetectedIps = () => {
     }
 
     const setCheck = (data, ip) => {
-        BlockIp(ip, result, resdata)
+        BlockIp(ip, googleAccount, resdata)
     }
     useEffect(() => {
         getCampaigns()
