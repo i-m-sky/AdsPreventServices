@@ -1,19 +1,21 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import React, { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { registerAction } from '../features/actions/authAction';
+import { clearError, registerAction } from '../features/actions/authAction';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { GoogleLogin } from 'react-google-login'
 import FacebookLogin from 'react-facebook-login'
 import { FaFacebook } from 'react-icons/fa';
+import Spinner from './pages/Spinner';
+import { toast } from 'react-toastify';
 
 const Register = () => {
-    
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const { user, loading, error } = useSelector((state) => state.authReducer);
 
     const schema = yup.object().shape({
@@ -24,12 +26,19 @@ const Register = () => {
     });
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
-      });
+    });
 
     const onSubmitHandler = (data) => {
         dispatch(registerAction(data));
         reset();
     };
+
+    useEffect(() => {
+        if (error) {
+            toast(error)
+            dispatch(clearError())
+        }
+    }, [error])
 
     useEffect(() => {
 
@@ -44,7 +53,7 @@ const Register = () => {
 
     const responseGoogle = (response) => {
         console.log(response)
-        
+
     }
     const responseFacebook = (response) => {
         console.log(response)
@@ -72,25 +81,25 @@ const Register = () => {
                                 <h2 className="text-center fw-bold mx-3 mb-0">  Create your ClickCease account to start your trial</h2>
                             </div>
                             <div className='d-md-flex text-center '>
-                            <GoogleLogin
-                                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                                buttonText="Login with Google"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={'single_host_origin'}
-                                className='google-btn'
-                            />
-                           
-                            <FacebookLogin
-                                appId={process.env.REACT_APP_FACEBOOK_APP_ID}
-                                autoLoad={false}
-                                fields="name,email,picture"
-                                // onClick={componentClicked}
-                                callback={responseFacebook}
-                                cssClass='facebook-btn'
-                                icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px'/>}
+                                <GoogleLogin
+                                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                                    buttonText="Login with Google"
+                                    onSuccess={responseGoogle}
+                                    onFailure={responseGoogle}
+                                    cookiePolicy={'single_host_origin'}
+                                    className='google-btn'
+                                />
 
-                            />
+                                <FacebookLogin
+                                    appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+                                    autoLoad={false}
+                                    fields="name,email,picture"
+                                    // onClick={componentClicked}
+                                    callback={responseFacebook}
+                                    cssClass='facebook-btn'
+                                    icon={<FaFacebook color='#3b5998' fontSize='19px' margin='20px' />}
+
+                                />
                             </div>
                             <div className="divider d-flex align-items-center my-4">
                                 <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
@@ -140,16 +149,19 @@ const Register = () => {
                                             type="text"
                                             id="form1Example23"
                                             className="form-control form-control-lg"
-                                            
+
                                         />
                                         <p id='error_msg'>{errors.domain?.message}</p>
                                         <label className="form-label" htmlFor="form1Example23">Your domain</label>
                                     </div>
                                 </div>
                                 <p id='error_msg'>{error}</p>
+                                <div className="spinne-area">
+                                    {loading && <Spinner />}
+                                </div>
                                 <div className="text-center">
                                     <div className="d-flex justify-content-around align-items-center mb-4 reg_field ">
-                                    
+
                                         <div className="form-check">
                                             <input
                                                 className="form-check-input"
@@ -158,7 +170,7 @@ const Register = () => {
                                                 id="form1Example3"
                                                 defaultChecked
                                             />
-                                            
+
                                             <label className="form-check-label" htmlFor="form1Example3"> Remember me </label>
                                         </div>
                                         <Link to="#!">Forgot password?</Link>

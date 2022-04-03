@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { loginAction } from '../features/actions/authAction'
+import { clearError, loginAction } from '../features/actions/authAction'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useForm } from "react-hook-form";
@@ -15,6 +15,7 @@ import { FaFacebook } from 'react-icons/fa';
 import { saveToken } from '../services/authService'
 import { AUTH_SUCCESS } from '../features/actions-types'
 import Spinner from './pages/Spinner'
+import { ToastContainer, toast } from 'react-toastify';
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -23,9 +24,12 @@ const schema = yup.object().shape({
 
 
 const Login = () => {
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { user, loading, error } = useSelector((state) => state.authReducer)
+    const { user, loading, error } = useSelector((state) => state.authReducer);
+   
+    console.log("loading",loading)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
@@ -33,7 +37,15 @@ const Login = () => {
     const onSubmitHandler = (data) => {
         dispatch(loginAction(data));
         reset();
+        
     };
+
+    useEffect(()=>{
+        if(error){
+            toast(error)
+            dispatch(clearError())
+        }
+    },[error])
 
     useEffect(() => {
 
@@ -43,6 +55,7 @@ const Login = () => {
         else if (user) {
             navigate('/dashboard');
         }
+
     }, [user])
 
     const responseGoogle = async (googleData) => {
@@ -105,8 +118,9 @@ const Login = () => {
                                         className="form-control form-control-lg"
                                         placeholder='Enter email'
                                     />
-                                    <p id='error_msg'>{errors.email?.message}</p>
+                                   
                                     <label className="form-label" htmlFor="form1Example13">Email address</label>
+                                    <p id='error_msg'>{errors.email?.message}</p>
                                 </div>
 
 
@@ -118,13 +132,14 @@ const Login = () => {
                                         className="form-control form-control-lg"
                                         placeholder='Enter Password'
                                     />
-                                    <p id='error_msg'>{errors.password?.message}{error}</p>
+                                   
                                     <label className="form-label" htmlFor="form1Example23">Password</label>
+                                    <p id='error_msg'>{errors.password?.message}{error}</p>
                                 </div>
-                                <div className="text-center">
-                                {/* <Spinner/> */}
+                                <div className="spinne-area">
+                                {loading &&  <Spinner/>} 
                                 </div>
-                                <div className="d-flex justify-content-around align-items-center mb-4">
+                                <div className="d-flex justify-content-around align-items-center mb-4 mt-3">
 
                                     <div className="form-check">
                                         <input

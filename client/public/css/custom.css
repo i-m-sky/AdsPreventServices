@@ -1,6 +1,6 @@
- *{
-    font-family: 'Roboto', sans-serif;
-}
+/* body {
+    font-family: 'Noto Sans Sora Sompeng';font-size: 22px;
+} */
 /* Navbar */
 
 
@@ -290,7 +290,9 @@
     border-radius: 20px;
     padding: 2rem;
 }
-
+.spinne-area{
+    margin-left: 42%;
+}
 
 .secondsubs{
     background-color: #eeeeee;
@@ -312,6 +314,12 @@
 }
 .firstsubs-data{
     text-align: left;
+   
+
+}
+.colshadow{
+    box-shadow: 1px 5px 10px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
 .text-dest{
     color: #ada9a9;
@@ -405,12 +413,13 @@
  }
 
  .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid  #f37100;; /* Blue */
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid  #f37100;; /* Blue */
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    animation: spin 1.5s linear infinite;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    
   }
   .fbcamp{
       color: #f37100;

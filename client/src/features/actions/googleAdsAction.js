@@ -8,6 +8,7 @@ import {
 } from "../actions-types";
 
 export const clearGoogleError = () => async(dispatch) => {
+    console.log("hello")
     dispatch({ type: CLEAR_ERROR });
 }
 

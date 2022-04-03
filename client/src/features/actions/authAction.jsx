@@ -8,7 +8,7 @@ import {
 import { PostApi,saveToken } from '../../services/Services';
 //login Action
 export const loginAction = ({ email, password }) => async (dispatch) => {
-
+    dispatch({ type: AUTH_REQUEST });
     PostApi('/auth/login', { email, password }).then(data => {
 
         if (data.status === true) {
@@ -25,7 +25,7 @@ export const loginAction = ({ email, password }) => async (dispatch) => {
 
 //register 
 export const registerAction = ({ name, email, password, domain }) => async (dispatch) => {
-
+    dispatch({ type: AUTH_REQUEST });
     PostApi('/auth/register', { name,email, password,domain}).then(data => {
 
         if (data.status === true) {

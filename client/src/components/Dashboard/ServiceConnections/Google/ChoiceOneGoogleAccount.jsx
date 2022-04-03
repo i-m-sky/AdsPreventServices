@@ -11,6 +11,7 @@ import { CLEAR_ERROR } from '../../../../features/actions-types';
 const ChoiceOneGoogleAccount = (props) => {
 
   const { googleAccount, error } = useSelector((state) => state.googleReducer);
+  console.log("googlered",googleAccount,error)
   console.log(googleAccount, "googleAccount")
   console.log(error, "error")
 
