@@ -1,6 +1,6 @@
 const route = require("express").Router()
-const auth = require("../middleware/auth")
-const subs = require("../middleware/subs")
+const auth = require("../middleware/auth");
+const subs = require("../middleware/subs");
 const authController = require("../controller/authController");
 const accountController = require("../controller/accountController");
 const googleAdsController = require("../controller/GoogleAdsController");
@@ -9,7 +9,7 @@ const ipController = require("../controller/ipController");
 const commonController = require("../controller/commonController");
 const practice = require('../controller/commonController/practice');
 
-route.post('/practice',practice)
+route.post('/practice',practice);
 
 
 //main routes
@@ -20,11 +20,7 @@ route.get('/countries',auth,commonController.Countrie);
 route.post('/searchcountry',auth,commonController.SearchCountry);
 route.get('/vinscout.js',commonController.MainScript);
 route.get('/generatescript',commonController.GenerateScript);
-route.post('/receiveclietdata',(req,res)=>{
-    console.log(req.body)
-})
-
-
+route.post('/receiveclietdata',commonController.Receiveclietdata)
 
 //google ads
 route.post('/google-setupads',auth, googleAdsController.SetupGoogleAds);

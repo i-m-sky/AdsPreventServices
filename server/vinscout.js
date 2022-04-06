@@ -1,17 +1,20 @@
-console.log("hello Akash }")
+class _AdProtect {
+    static async init(gcid) {
+        const url = new URL(window.location.href);
+        const gclid = new URL(window.location.href).searchParams.get('gclid');
+        const utm_campaign = new URL(window.location.href).searchParams.get('utm_campaign');
+        
 
-function text(url) {
-    return fetch(url).then(res => res.text());
+        const client = await fetch('https://geolocation-db.com/json/')
+            .then(response => response.json())
+            .then(data => data)
+            fetch('http://localhost:8000/receiveclietdata', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ client, gcid,gclid,utm_campaign }),
+        });
+    }
 }
-text('https://www.cloudflare.com/cdn-cgi/trace').then(data => {
-    let ipRegex = /[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}/
-    let ip = data.match(ipRegex)[0];
-    console.log("ip",ip)
-    // fetch('http://localhost:8000/receiveclietdata/',
-    //     {
-    //         method: 'POST',
-    //         body: JSON.stringify({ip})
-    //     })
-    //     .then(function (res) { console.log(res) })
-    //     .catch(function (res) { console.log(res) })
-});
+

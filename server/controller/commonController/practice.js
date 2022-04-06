@@ -2,8 +2,6 @@ const bizSdk = require('facebook-nodejs-business-sdk');
 const practice = async (req, res) => {
     try {
 
-
-
         // 'use strict';
         // const bizSdk = require('facebook-nodejs-business-sdk');
         // const AdAccount = bizSdk.AdAccount;
