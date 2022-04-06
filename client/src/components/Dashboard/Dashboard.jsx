@@ -109,7 +109,6 @@ const Dashboard = () => {
             </nav>
             <div>
                 <Outlet />
-
             </div>
 
         </>

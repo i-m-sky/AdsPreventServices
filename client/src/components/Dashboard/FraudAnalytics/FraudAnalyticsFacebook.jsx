@@ -22,6 +22,7 @@ const FraudAnalyticsFacebook = () => {
               <Link to="/dashboard/fraudanalyticsfacebook/countries"> <button className='analytics-btn'>Countries</button></Link>
               <Link to="#"> <button className='analytics-btn'>State</button></Link>
               <Link to="#"> <button className='analytics-btn'>Devices</button></Link>
+              <Link to="/dashboard/fraudanalyticsfacebook/generatecodefacebook"> <button className='analytics-btn'>Generate Code</button></Link>
             </div>
             <Outlet />
             <DataOnTheWay/>

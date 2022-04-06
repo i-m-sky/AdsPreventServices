@@ -3,17 +3,15 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { googleAdsAction,clearGoogleError } from '../../../../features/actions/googleAdsAction';
+import { googleAdsAction, clearGoogleError } from '../../../../features/actions/googleAdsAction';
 import { toast } from 'react-toastify';
-import { CLEAR_ERROR } from '../../../../features/actions-types';
+import Spinner from '../../../pages/Spinner';
+
 
 
 const ChoiceOneGoogleAccount = (props) => {
 
-  const { googleAccount, error } = useSelector((state) => state.googleReducer);
-  console.log("googlered",googleAccount,error)
-  console.log(googleAccount, "googleAccount")
-  console.log(error, "error")
+  const { googleAccount, googleError, loading } = useSelector((state) => state.googleReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,15 +27,17 @@ const ChoiceOneGoogleAccount = (props) => {
     e.preventDefault();
     dispatch(googleAdsAction(managerId, clientId, refresh_token));
   }
+  useEffect(() => {
+    if (googleError) {
+      toast.error("Client id not Match");
+      dispatch(clearGoogleError())
+    }
+  }, [googleError])
+
 
   useEffect(() => {
-
-    if (error) {
-      toast("Client id not Match");
-      dispatch(clearGoogleError())
-    } else if (googleAccount) {
+    if (googleAccount) {
       navigate('/dashboard/fraudanalytics/google');
-      
     }
   }, [])
 
@@ -55,6 +55,9 @@ const ChoiceOneGoogleAccount = (props) => {
               <h2>Enter your Google Client</h2>
               <p>Submit your Google Ads account or MCC
                 and access request to get connected</p>
+            </div>
+            <div className='spinne-area mt-3'>
+              {loading && <Spinner />}
             </div>
             <div className='manual-input'>
               <form onSubmit={clientSubmit}>

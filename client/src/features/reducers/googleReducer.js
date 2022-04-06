@@ -12,7 +12,7 @@ const googleDataFromStorage = localStorage.getItem("googleAds")
 const initialState = {
     loading: false,
     googleAccount: googleDataFromStorage,
-    error: null
+    googleError: null
 }
 export const googleReducer = (state = initialState, { type, payload }) => {
     
@@ -29,7 +29,7 @@ export const googleReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 loading: false,
                 googleAccount: payload,
-                error: null
+                googleError: null
             };
         case
             GOOGLE_ADS_FAIL:
@@ -37,13 +37,13 @@ export const googleReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 loading: false,
                 googleAccount: null,
-                error: payload
+                googleError: payload
             }
         case
             CLEAR_ERROR:
             return {
                 ...state,
-                error: null
+                googleError: null
             }
         default:
             return state;

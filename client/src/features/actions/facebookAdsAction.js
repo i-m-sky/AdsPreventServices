@@ -7,7 +7,6 @@ import {
 } from "../actions-types";
 
 const facebookAdsAction = ({ access_token, facebookAdsId }) => async (dispatch) => {
-    console.log("clik")
 
     dispatch({ type: FACEBOOK_ADS_REQUEST })
     PostApi(`/setupfacebook`, { access_token, account_id: facebookAdsId }).then((data) => {

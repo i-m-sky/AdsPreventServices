@@ -7,7 +7,7 @@ import {
     CLEAR_ERROR
 } from "../actions-types";
 
-export const clearGoogleError = () => async(dispatch) => {
+export const clearGoogleError = () => async (dispatch) => {
     console.log("hello")
     dispatch({ type: CLEAR_ERROR });
 }
@@ -19,7 +19,7 @@ export const googleAdsAction = (managerId, clientId, refreshToken) => async (dis
             saveGoogleData(data.result)
             dispatch({ type: GOOGLE_ADS_SUCCESS, payload: data.result });
         } else {
-            dispatch({ type: GOOGLE_ADS_FAIL, payload:data.message });
+            dispatch({ type: GOOGLE_ADS_FAIL, payload: data.message });
         }
     }).catch(e => {
         dispatch({ type: GOOGLE_ADS_FAIL, payload: "Something went wrong" });

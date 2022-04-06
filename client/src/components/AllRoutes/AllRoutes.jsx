@@ -22,9 +22,13 @@ import FacebookSelectAccount from "../Dashboard/ServiceConnections/Facebook/Face
 import PageNotFound from '../pages/NotFoundPage'
 import Campaigns from "../../GoogleAds/Campaigns";
 import Coutnries from "../CommonAds/Countries";
-import GenerateCode from "../CommonAds/GenerateCode";
+import GenerateCodeGoogle from "../CommonAds/GenerateCodeGoogle";
+import GenerateCodeFacebook from "../CommonAds/GenerateCodeFacebook";
 import FacebookCampaignData from "../../FacebookAds/FacebookCampaignData";
 import FacebookAdSets from "../../FacebookAds/FacebookAdSets";
+import GoogleOverview from "../Dashboard/AccoutOverview/GoogleOverview";
+import FacebookOverview from "../Dashboard/AccoutOverview/FacebookOverview";
+import MicrosoftOverview from "../Dashboard/AccoutOverview/MicrosoftOverview";
 
 const AllRoutes = () => {
     const { user } = useSelector((state) => state.authReducer);
@@ -47,7 +51,14 @@ const AllRoutes = () => {
         {
             path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
             children: [
-                { path: '', element: <AccountOverview /> },
+                {
+                    path: '', element: <AccountOverview />,
+                    children:[
+                        {path:'googleoverview',element:<GoogleOverview/>},
+                        {path:'facebookoverview',element:<FacebookOverview/>},
+                        {path:'microsoftoverview',element:<MicrosoftOverview/>}
+                    ]
+                },
                 { path: 'domainoverview', element: <DomainOverview /> },
                 { path: 'facebook-account', element: <FacebookSelectAccount /> },
                 { path: 'fraudanalytics/:adstype', element: <FraudAnalytics /> },
@@ -58,16 +69,18 @@ const AllRoutes = () => {
                         { path: 'blockiplist', element: <BlockIplist /> },
                         { path: 'googlecampaigns', element: <Campaigns /> },
                         { path: 'Countries', element: <Coutnries /> },
-                        { path: 'generatecode', element: <GenerateCode /> }
+                        { path: 'generatecodegoogle', element: <GenerateCodeGoogle /> },
+                       
                     ]
                 },
                 {
-                    path: 'fraudanalyticsfacebook', element: <FraudAnalyticsFacebook />,
-                    children:[
-                        {path:'facebookcampaigns',element:<FacebookCampaignData/>},
-                        {path:'facebookadsets',element:<FacebookAdSets/>},
-                        {path:'countries',element:<Coutnries/>},
-                        
+                    path:'fraudanalyticsfacebook', element:<FraudAnalyticsFacebook />,
+                    children: [
+                        { path: 'facebookcampaigns', element: <FacebookCampaignData /> },
+                        { path: 'facebookadsets', element: <FacebookAdSets /> },
+                        { path: 'countries', element: <Coutnries /> },
+                        {path:'generatecodefacebook',element:<GenerateCodeFacebook/>}
+
                     ]
                 },
                 { path: 'connection/google', element: <GoogleServiceConnection /> },

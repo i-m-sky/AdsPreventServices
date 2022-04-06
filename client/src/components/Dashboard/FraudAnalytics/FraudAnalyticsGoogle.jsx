@@ -19,8 +19,8 @@ const FraudAnalyticsGoogle = () => {
               <Link to="/dashboard/fraudanalyticsgoogle/Countries"><button className='analytics-btn'>Countries</button></Link>
               <Link to="/dashboard/fraudanalyticsgoogle/googlecampaigns"> <button className='analytics-btn'>Campaigns</button></Link>
               <Link to="/dashboard/fraudanalyticsgoogle/blockiplist"> <button className='analytics-btn' >Blocked Ips</button></Link>
-              <Link to="/dashboard/fraudanalyticsgoogle/generatecode"> <button className='analytics-btn'>Generate Code</button></Link>
-            </div>
+              <Link to="/dashboard/fraudanalyticsgoogle/generatecodegoogle"> <button className='analytics-btn'>Generate Code</button></Link>
+            </div>  
             <Outlet />
             <DataOnTheWay/>
           </div>
