@@ -6,9 +6,7 @@ const cors = require("cors");
 require("./db/db");
 const route = require("./route");
 
-app.use(cors({
-    origin:["http://127.0.0.1:5501","http://localhost:3000",]
-}));
+app.use(cors());
 app.use(express.urlencoded({ extended:false }));
 app.use(express.json());
 app.use(route);

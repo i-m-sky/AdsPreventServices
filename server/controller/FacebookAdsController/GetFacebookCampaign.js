@@ -3,8 +3,10 @@ const bizSdk = require('facebook-nodejs-business-sdk');
 const FacebookAds = require("../../model/FacebookAds");
 const GetFacebookCampaign = async (req, res) => {
     try {
-        console.log(req.body)
+       
         const { account_id } = req.body;
+
+        console.log("facebook camp body",req.body)
         if (!account_id) {
             return res.status(200).json("account_id must be set in body")
         }

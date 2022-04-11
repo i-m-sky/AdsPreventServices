@@ -1,8 +1,9 @@
 const axios = require("axios")
 const FacebookAdSetup = async (req, res) => {
+    console.log("here")
     try {
         const { access_Token } = req.body
-      
+        console.log(req.body)
 
         if (!access_Token) {
             return res.status(200).json("access token must be set in body");
