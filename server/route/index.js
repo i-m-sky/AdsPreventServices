@@ -7,6 +7,7 @@ const googleAdsController = require("../controller/GoogleAdsController");
 const facebookAdsController = require("../controller/FacebookAdsController");
 const ipController = require("../controller/ipController");
 const commonController = require("../controller/commonController");
+const paymentGatwayController = require("../controller/paymentGatwayController");
 const practice = require('../controller/commonController/practice');
 
 route.post('/practice',practice);
@@ -49,6 +50,10 @@ route.get('/spamhausip', ipController.SpamhausIp);
 route.get('/myip-ms', ipController.myip);
 route.get('/detectedips',ipController.DetectedIps);
 route.post('/blockiplist',ipController.BlockedIplist);
+
+
+//Payment 
+route.post('/oreder',paymentGatwayController.Order);
 
 
 module.exports = route;

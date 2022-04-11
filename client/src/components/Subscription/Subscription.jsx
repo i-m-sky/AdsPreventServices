@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 const Subscription = () => {
     return (
         <>
@@ -14,7 +14,7 @@ const Subscription = () => {
                                 <p>Protect 1 Platform</p>
                                 <p>Goolge Ads or Facebook Ads</p>
                                 <span>$</span><span id='amount'>49</span> <span>/m</span>
-                                <br /> <button className='btn_subscription'>Try</button>
+                                <br /> <Link to="/payment/49"> <button className='btn_subscription'>Try</button></Link>
                                 <hr />
                                 <p>Up to 5,000 clicks</p>
                             </div>
@@ -38,7 +38,7 @@ const Subscription = () => {
                                 <p>Protect 1 Platform</p>
                                 <p>Goolge Ads or Facebook Ads</p>
                                 <span>$</span><span id='amount'>59</span> <span>/m</span>
-                                <br /> <button className='btn_subscription'>Try</button>
+                                <br /> <Link to="/payment/59"> <button className='btn_subscription'>Try</button></Link>
                                 <hr />
                                 <p>Up to 10,000 clicks</p>
                             </div>
@@ -62,7 +62,7 @@ const Subscription = () => {
                                 <p>Protect 2 Platform</p>
                                 <p>Goolge Ads, Facebook Ads or both</p>
                                 <span>$</span><span id='amount'>89</span> <span>/m</span>
-                                <br /> <button className='btn_subscription'>Try</button>
+                                <br /> <Link to="/payment/89"> <button className='btn_subscription'>Try</button></Link>
                                 <hr />
                                 <p>Up to 15,000 clicks</p>
                             </div>

@@ -10,6 +10,7 @@ const GoogleRedirect = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [clientDetails, setClientDetails] = useState([]);
     const [refreshToken,setRefreshToken] = useState();
+    
     const openModal = () => {
         setIsOpen(true)
     }
