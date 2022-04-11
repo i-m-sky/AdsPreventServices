@@ -12,7 +12,7 @@ const Home = () => {
                         <span>
                             Ad Fraud & Click fraud will waste 20% of PPC advertisers’ budgets in 2021. Competitors and bots can click on your ads and waste your advertising budget.
 
-                            ClickCease™ Google Ads click fraud protection and Facebook Ads fraud prevention software will block fake impressions and clicks. <br />
+                            {process.env.REACT_APP_TITLE} Google Ads click fraud protection and Facebook Ads fraud prevention software will block fake impressions and clicks. <br />
                         </span>
                         <div className='homebtn'>
                             <NavLink to="/login"> <button className='custom-home-btn'>START YOUR TRIAL</button></NavLink>

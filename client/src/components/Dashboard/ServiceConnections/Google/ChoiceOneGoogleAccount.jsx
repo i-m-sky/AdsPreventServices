@@ -57,7 +57,6 @@ const ChoiceOneGoogleAccount = (props) => {
                 and access request to get connected</p>
             </div>
             <div className='spinne-area mt-3'>
-              {loading && <Spinner />}
             </div>
             <div className='manual-input'>
               <form onSubmit={clientSubmit}>
@@ -68,7 +67,12 @@ const ChoiceOneGoogleAccount = (props) => {
                   value={clientId}
                   onChange={(e) => setClientid(e.target.value)}
                 />
-                <input type="submit" className='service-btn' />
+                <button type="submit" disabled={loading && true} className='service-btn'>
+                  {loading ? 
+                    <Spinner />
+                : "Submit"}
+                </button>
+
               </form>
             </div>
           </div>

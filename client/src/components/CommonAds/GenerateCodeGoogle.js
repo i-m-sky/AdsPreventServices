@@ -5,11 +5,10 @@ import { useSelector } from 'react-redux';
 import { PostApi } from '../../services/Services';
 
 const GenerateCode = () => {
-    const [code, setCode] = useState();
-
-
+    
     const { googleAccount } = useSelector((state) => state.googleReducer);
 
+    const [code, setCode] = useState();
     const [resdata, resSetRes] = useState([]);
     const [resourceName, SetResourceName] = useState();
 
@@ -31,7 +30,7 @@ const GenerateCode = () => {
         console.log("call")
         GetApi(`/generatescript`).then((data) => {
             if (data.status === true) {
-                setCode(`${data.url}?gcid=${resourceName}`);
+                setCode(`${data.url}`);
             }
         })
     }
@@ -87,7 +86,7 @@ const GenerateCode = () => {
                                         {
                                             `window.onload=function(){
                                              if(typeof _AdProtect !=='undefind' && _AdProtect){
-                                             _AdProtect.init('${resourceName}');
+                                             _AdProtect.init('${resourceName}','Google');
                                                 }
                                             }`
                                         }
@@ -98,7 +97,7 @@ const GenerateCode = () => {
                             
                                                 window.onload=function(){
                                                 if(typeof _AdProtect !=='undefind' && _AdProtect){
-                                                 _AdProtect.init('${resourceName}');
+                                                 _AdProtect.init('${resourceName}','Google');
                                                 }
                                                  }
                         

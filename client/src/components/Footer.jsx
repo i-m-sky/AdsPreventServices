@@ -16,7 +16,7 @@ const Footer = () => {
                                     <i className="fas fa-gem me-3"></i>{process.env.REACT_APP_TITLE}
                                 </h6>
                                 <p>
-                                    ClickCease™ is an ad fraud and click-fraud detection and protection service software. Our anti click-fraud service protects Google Ads and Bing by using our industry leading detection algorithms blocking fraudulent IPs automatically. ClickCease™ protects Facebook Ads by detecting and blocking fake users from wasting impressions. ClickCease™ is not affiliated with any search engine and is an independent provider.
+                                    {process.env.REACT_APP_TITLE} is an ad fraud and click-fraud detection and protection service software. Our anti click-fraud service protects Google Ads and Bing by using our industry leading detection algorithms blocking fraudulent IPs automatically. {process.env.REACT_APP_TITLE} protects Facebook Ads by detecting and blocking fake users from wasting impressions. {process.env.REACT_APP_TITLE} is not affiliated with any search engine and is an independent provider.
                                 </p>
                             </div>
 
@@ -81,7 +81,7 @@ const Footer = () => {
                                 <p><i className="fab fa-linkedin">Linkedin</i></p>
                                 <p> <i className="fab fa-twitter">Twitter</i></p>
                             </div>
-                        
+
 
                         </div>
 
@@ -101,7 +101,7 @@ const Footer = () => {
                         </div>
                         <div className="col-md-8">
                             © 2021 Copyright:
-                            <Link className="text-reset fw-bold" to="https://mdbootstrap.com/">ClickCease.com </Link> 2021. ClickCease™ is an ad fraud and click fraud protection and detection service
+                            <Link className="text-reset fw-bold" to="/"> {process.env.REACT_APP_TITLE.toLowerCase()}.com </Link> 2021. {process.env.REACT_APP_TITLE} is an ad fraud and click fraud protection and detection service
 
                         </div>
 

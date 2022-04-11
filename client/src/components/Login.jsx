@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { clearError, loginAction } from '../features/actions/authAction'
 import { useNavigate } from 'react-router-dom'
@@ -28,8 +28,8 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user, loading, error } = useSelector((state) => state.authReducer);
-   
-    console.log("loading",loading)
+
+    console.log("loading", loading)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
@@ -37,15 +37,15 @@ const Login = () => {
     const onSubmitHandler = (data) => {
         dispatch(loginAction(data));
         reset();
-        
+
     };
 
-    useEffect(()=>{
-        if(error){
+    useEffect(() => {
+        if (error) {
             toast(error)
             dispatch(clearError())
         }
-    },[error])
+    }, [error])
 
     useEffect(() => {
 
@@ -82,7 +82,7 @@ const Login = () => {
                 <div className="container py-5 ">
                     <div className="row d-flex align-items-center justify-content-center h-100">
                         <div className="col-md-8 col-lg-7 col-xl-6">
-                            <img src="images/Loginimg.jpg" className="img-fluid login_img" alt="Phone image" />
+                            <img src="images/LogIn.png" className="img-fluid login_img " alt="Phone image" />
                         </div>
                         <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                             <h4 className='mb-4'>Login to ClickCease</h4>
@@ -118,7 +118,7 @@ const Login = () => {
                                         className="form-control form-control-lg"
                                         placeholder='Enter email'
                                     />
-                                   
+
                                     <label className="form-label" htmlFor="form1Example13">Email address</label>
                                     <p id='error_msg'>{errors.email?.message}</p>
                                 </div>
@@ -132,13 +132,11 @@ const Login = () => {
                                         className="form-control form-control-lg"
                                         placeholder='Enter Password'
                                     />
-                                   
+
                                     <label className="form-label" htmlFor="form1Example23">Password</label>
                                     <p id='error_msg'>{errors.password?.message}{error}</p>
                                 </div>
-                                <div className="spinne-area">
-                                {loading &&  <Spinner/>} 
-                                </div>
+
                                 <div className="d-flex justify-content-around align-items-center mb-4 mt-3">
 
                                     <div className="form-check">
@@ -154,11 +152,13 @@ const Login = () => {
                                     <Link to="#!">Forgot password?</Link>
 
                                 </div>
-                               
-                              
                                 <div className="text-center">
-                                    <button type="submit" className="login_btn">Log in</button>
-                                   
+                                    <button type="submit" disabled={loading && true} className="login_btn">
+                                        {loading ? <div className="spinne-area">
+                                            <Spinner />
+                                        </div> : "Log In"}
+                                    </button>
+
 
                                 </div>
                             </form>
@@ -169,7 +169,7 @@ const Login = () => {
                     </div>
                 </div>
             </section>
-           
+
         </>
     )
 }

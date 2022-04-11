@@ -1,14 +1,17 @@
 import React from 'react'
 import { PostApi } from '../services/Services'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import Spinner from '../components/pages/Spinner';
 
 const FacebookAdSets = () => {
-    const FacebookAdsAccount = localStorage.getItem('facebookAds') ? JSON.parse(localStorage.getItem('facebookAds')).result.account_id : null
+    const { facebookAccount, loading } = useSelector((state) => state.facebookReducer);
+    console.log("facebook loading",loading)
     const [adSet, setAdSet] = useState([]);
     const arr = [];
 
-    const getAdSets = (FacebookAdsAccount) => {
-        PostApi(`/facebookadsets`, { account_id: FacebookAdsAccount }).then((data) => {
+    const getAdSets = (account_id) => {
+        PostApi(`/facebookadsets`, { account_id }).then((data) => {
             console.log("All adsets", data)
             if (data.status === true) {
                 setAdSet(data.camp);
@@ -17,12 +20,12 @@ const FacebookAdSets = () => {
     }
 
     useEffect(() => {
-        getAdSets(FacebookAdsAccount)
+        getAdSets(facebookAccount.result.account_id)
     }, [])
 
     return (
         <>
-            <table class="fixed_header mt-3">
+            <table className="fixed_header mt-3">
                 <thead className='fbtab'>
                     <tr className='fbtab'>
                         <th>Ad Set</th>
@@ -36,6 +39,7 @@ const FacebookAdSets = () => {
                         {/* <th>excluded Geo locations</th> */}
                     </tr>
                 </thead>
+                {loading && <Spinner/>}
                 <tbody>
                     {adSet.length > 0 ? adSet.map((data, index) => (
                      
@@ -52,7 +56,7 @@ const FacebookAdSets = () => {
                             <td></td>
                         </tr>
 
-                    )) : <h1>Not data found</h1>}
+                    )) : <h2 className='text-center mt-5'>No AdSets Available </h2>}
                 </tbody>
             </table>
         </>

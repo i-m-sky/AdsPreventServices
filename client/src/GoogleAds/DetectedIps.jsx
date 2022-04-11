@@ -61,7 +61,7 @@ const DetectedIps = () => {
 
                             )) : <h1>Not data found</h1>}
                         </select>
-                        <div class="table-responsive table-hover mt-5">
+                        <div className="table-responsive table-hover mt-5">
                             <table className="table table-hover">
 
                                 <tbody>
@@ -79,10 +79,10 @@ const DetectedIps = () => {
                                             <th>{index + 1}</th>
                                             <th scope="row" className='iplist'>{data.ip}</th>
                                             <td>{data.weightage >= 2 ? "Critical" : "Low"}</td>
-                                            <td> <label class="switch ml-3">
+                                            <td> <label className="switch ml-3">
 
                                                 <input type="checkbox" checked={checked[index]} onChange={(e) => setCheck(e.target.checked, data.ip)} />
-                                                <span class="slider round"></span>
+                                                <span className="slider round"></span>
 
                                             </label></td>
                                             <td>-</td>

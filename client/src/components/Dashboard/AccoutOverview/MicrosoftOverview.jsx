@@ -26,7 +26,7 @@ const MicrosoftOverview = () => {
       <table className="table table-hover">
         <thead>
           <tr>
-            <th scope="col">DOMAIN <i class="fas fa-sort"></i></th>
+            <th scope="col">DOMAIN <i className="fas fa-sort"></i></th>
             <th scope="col">AD CLICKS <i className="fas fa-sort"></i></th>
             <th scope="col">BLOCKED IPS <i className="fas fa-sort"></i> </th>
             <th scope="col">CLEANER TRAFFIC <i className="fas fa-sort"></i></th>

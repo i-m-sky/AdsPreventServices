@@ -19,13 +19,13 @@ const Subscription = () => {
                                 <p>Up to 5,000 clicks</p>
                             </div>
                             <div className='firstsubs-data'>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Protection for multiple domains</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> ClickCease AI detection algorithm</p>
-                                <p className='text-dest'><i class="fa fa-times" aria-hidden="true"></i> Cross-domain blocking</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Session recordings and analysis</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Adspy - competitor ad intel</p>
-                                <p className='text-dest'><i class="fa fa-times" aria-hidden="true"></i> Account overview</p>
-                                <p className='text-dest'><i class="fa fa-times" aria-hidden="true"></i> Dedicated account manager</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Protection for multiple domains</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> {process.env.REACT_APP_TITLE} AI detection algorithm</p>
+                                <p className='text-dest'><i className="fa fa-times" aria-hidden="true"></i> Cross-domain blocking</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Session recordings and analysis</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Adspy - competitor ad intel</p>
+                                <p className='text-dest'><i className="fa fa-times" aria-hidden="true"></i> Account overview</p>
+                                <p className='text-dest'><i className="fa fa-times" aria-hidden="true"></i> Dedicated account manager</p>
                             </div>
 
                         </div>
@@ -44,13 +44,13 @@ const Subscription = () => {
                             </div>
 
                             <div className='firstsubs-data'>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Protection for multiple domains</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> ClickCease AI detection algorithm</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Cross-domain blocking</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Session recordings and analysis</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Adspy - competitor ad intel</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Account overview</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Dedicated account manager</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Protection for multiple domains</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> {process.env.REACT_APP_TITLE} AI detection algorithm</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Cross-domain blocking</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Session recordings and analysis</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Adspy - competitor ad intel</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Account overview</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Dedicated account manager</p>
                             </div>
                         </div>
                     </div>
@@ -68,13 +68,13 @@ const Subscription = () => {
                             </div>
 
                             <div className='firstsubs-data'>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Protection for multiple domains</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> ClickCease AI detection algorithm</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Cross-domain blocking</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Session recordings and analysis</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Adspy - competitor ad intel</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Account overview</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i> Dedicated account manager</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Protection for multiple domains</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> {process.env.REACT_APP_TITLE} AI detection algorithm</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Cross-domain blocking</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Session recordings and analysis</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Adspy - competitor ad intel</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Account overview</p>
+                                <p><i className="fa fa-check" aria-hidden="true"></i> Dedicated account manager</p>
                             </div>
                         </div>
                     </div>

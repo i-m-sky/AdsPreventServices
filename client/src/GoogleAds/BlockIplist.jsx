@@ -56,7 +56,7 @@ const BlockIplist = () => {
 
                             )) : <h1>Not data found</h1>}
                         </select>
-                        <div class="table-responsive table-hover mt-5">
+                        <div className="table-responsive table-hover mt-5">
                             <table className="table table-hover">
 
                                 <tbody>

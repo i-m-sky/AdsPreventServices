@@ -57,9 +57,6 @@ const GoogleClientIdModal = (props) => {
                                     <span>{item.descriptiveName} </span> <br />
       
                                     </div>
-
-
-
                                 </button>  </div>
 
                             ) : null}

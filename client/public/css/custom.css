@@ -208,7 +208,8 @@
 }
 
 .login_img{
-    height: 20rem;
+    height:100%;
+    width: 100%;
 }
 .select_item{
     background-color: #f87708;
@@ -293,7 +294,8 @@
     padding: 2rem;
 }
 .spinne-area{
-    margin-left: 42%;
+    
+    margin-left: 40%;
 }
 
 .secondsubs{
@@ -511,3 +513,11 @@
 .generatecode-parent{
     padding: 3rem;
 }
+.log-message{
+    padding-top:13rem;
+    
+}
+.message{
+    z-index: -1;
+}
+

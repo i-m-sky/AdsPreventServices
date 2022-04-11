@@ -92,9 +92,9 @@ const Coutnries = () => {
                                         <tr>
                                             <th>{data.name}</th>
                                             <td>{data.iso2}</td>
-                                            <td> <label class="switch ">
+                                            <td> <label className="switch ">
                                                 <input type="checkbox" onChange={(e) => getData(data.iso2)} />
-                                                <span class="slider round"></span>
+                                                <span className="slider round"></span>
                                             </label></td>
                                         </tr>
                                     </tbody>
@@ -112,9 +112,9 @@ const Coutnries = () => {
                                             <tr>
                                                 <th>{data.name}</th>
                                                 <td>{data.iso2}</td>
-                                                <td> <label class="switch ">
+                                                <td> <label className="switch ">
                                                     <input type="checkbox" checked={false} onChange={(e) => getData( data.iso2)} />
-                                                    <span class="slider round" ></span>
+                                                    <span className="slider round" ></span>
                                                 </label></td>
                                             </tr>
                                         </tbody>

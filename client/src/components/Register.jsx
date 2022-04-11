@@ -10,6 +10,9 @@ import FacebookLogin from 'react-facebook-login'
 import { FaFacebook } from 'react-icons/fa';
 import Spinner from './pages/Spinner';
 import { toast } from 'react-toastify';
+import authService from '../services/authService';
+import { saveToken } from '../services/Services';
+import { AUTH_SUCCESS } from '../features/actions-types';
 
 const Register = () => {
 
@@ -36,7 +39,7 @@ const Register = () => {
     useEffect(() => {
         if (error) {
             toast(error)
-            dispatch(clearError())
+            dispatch(clearError());
         }
     }, [error])
 
@@ -51,12 +54,19 @@ const Register = () => {
     }, [navigate, user])
 
 
-    const responseGoogle = (response) => {
-        console.log(response)
+    const responseGoogle = async (googleData) => {
+        const res = await authService.LoginWithGoogle(googleData);
+        if (res.data.status === true) {
+            saveToken(res.data.user);
+            dispatch({ type: AUTH_SUCCESS, payload: res.data.user });
+        }
 
     }
-    const responseFacebook = (response) => {
-        console.log(response)
+    const responseFacebook = async (facebookData) => {
+        console.log(facebookData);
+        const res = await authService.LoginWithFacebook(facebookData.accessToken, facebookData.userID)
+        saveToken(res.data.user);
+        dispatch({ type: AUTH_SUCCESS, payload: res.data.user });
     }
 
     return (
@@ -66,11 +76,11 @@ const Register = () => {
                     <div className="row d-flex align-items-center justify-content-center ">
                         <div className="col-md-6 col-lg-5 col-xl-3">
                             <div>
-                                <h6>“ClickCease saves us 15-20% of our Google Ads spend every month”</h6>
+                                <h6>{process.env.REACT_APP_TITLE} saves us 15-20% of our Google Ads spend every month”</h6>
                                 <hr />
                                 <img src="images/qualities.png" id='register_img' alt="img" />
                                 <h6>CCPA + GDPR</h6>
-                                <p>ClickCease is committed to protecting your data and respecting your privacy</p>
+                                <p>{process.env.REACT_APP_TITLE} is committed to protecting your data and respecting your privacy</p>
                                 <h6>24/7 Support</h6>
                                 <p>Dedicated account managers are available for your every need.</p>
                             </div>
@@ -78,7 +88,7 @@ const Register = () => {
                         <div className="col-md-7 col-lg-7 col-xl-7 mt-2 offset-xl-1 ">
 
                             <div className="divider d-flex align-items-center my-4">
-                                <h2 className="text-center fw-bold mx-3 mb-0">  Create your ClickCease account to start your trial</h2>
+                                <h2 className="text-center fw-bold mx-3 mb-0">  Create your {process.env.REACT_APP_TITLE} account to start your trial</h2>
                             </div>
                             <div className='d-md-flex text-center '>
                                 <GoogleLogin
@@ -156,9 +166,7 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <p id='error_msg'>{error}</p>
-                                <div className="spinne-area">
-                                    {loading && <Spinner />}
-                                </div>
+
                                 <div className="text-center">
                                     <div className="d-flex justify-content-around align-items-center mb-4 reg_field ">
 
@@ -176,7 +184,10 @@ const Register = () => {
                                         <Link to="#!">Forgot password?</Link>
                                     </div>
 
-                                    <button type="submit" className="register_btn">Start your 7-Day free trail</button>
+
+                                    <button type="submit" disabled={loading && true} className="register_btn">
+                                        {loading ? <Spinner /> : " Start your 7-Day free trail"}
+                                    </button>
                                 </div>
                                 <Link to="/login">Have an account? Log in
                                 </Link>

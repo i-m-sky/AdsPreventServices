@@ -24,8 +24,8 @@ const FacebookOverview = () => {
             </tbody>
           </table>
 
-          <div class="table-responsive table-hover">
-            <table class="table">
+          <div className="table-responsive table-hover">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">AD CLICKS <i className="fas fa-sort"></i></th>

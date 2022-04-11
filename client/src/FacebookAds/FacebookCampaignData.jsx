@@ -10,7 +10,6 @@ const FacebookCampaignData = () => {
     const getCampaigns = (FacebookAdsAccount) => {
 
         PostApi(`/facebookcampaigns`, { account_id: FacebookAdsAccount }).then((data) => {
-            console.log("campaings", data)
             if (data.status === true) {
                 resSetRes(data.camp)
             }
@@ -23,7 +22,7 @@ const FacebookCampaignData = () => {
 
     return (
         <>
-            <table class="fixed_header mt-3">
+            <table className="fixed_header mt-3">
                 <thead>
                     <tr className='fbtab'>
                         <th>Campaign</th>
