@@ -19,17 +19,15 @@ const BlockIplist = () => {
                 SetResourceName(data.campaigns[0].campaign.campaign.resourceName)
             }
         })
-        console.log("after second")
+      
     }
 
     useEffect(() => {
-        console.log("First")
+       
         getCampaigns()
     }, [1])
 
     const list = async () => {
-        console.log("resource",resourceName)
-        console.log("forth")
         PostApi(`/blockiplist`, {resourceName:resourceName}).then((data) => {
             if (data.status === true) {
                 SetBlockIplist(data.result[0].excludeIp)
@@ -37,7 +35,7 @@ const BlockIplist = () => {
         })
     }
     useEffect(() => {
-        console.log("third")
+
             list()
     }, [resourceName])
 

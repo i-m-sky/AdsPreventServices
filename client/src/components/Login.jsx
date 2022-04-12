@@ -23,13 +23,13 @@ const schema = yup.object().shape({
 });
 
 
-const Login = () => {
+const Login = (props) => {
+
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user, loading, error } = useSelector((state) => state.authReducer);
 
-    console.log("loading", loading)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(schema),
@@ -46,7 +46,8 @@ const Login = () => {
             dispatch(clearError())
         }
     }, [error])
-
+      
+   
     useEffect(() => {
 
         if (!user) {

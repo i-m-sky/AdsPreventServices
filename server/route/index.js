@@ -13,7 +13,7 @@ const practice = require('../controller/commonController/practice');
 route.post('/practice',practice);
 
 
-//main routes
+//commom routes
 route.post('/auth/register', authController.localRegister);
 route.post('/auth/login', authController.localLogin);
 route.post('/domain', auth, accountController.addDomain);
@@ -22,6 +22,7 @@ route.post('/searchcountry',auth,commonController.SearchCountry);
 route.get('/vinscout.js',commonController.MainScript);
 route.get('/generatescript',commonController.GenerateScript);
 route.post('/receiveclietdata',commonController.Receiveclietdata)
+route.post('/getstates',commonController.GetStates)
 
 //google ads
 route.post('/google-setupads',auth, googleAdsController.SetupGoogleAds);
@@ -53,7 +54,10 @@ route.post('/blockiplist',ipController.BlockedIplist);
 
 
 //Payment 
-route.post('/oreder',paymentGatwayController.Order);
+route.post('/payment/order',paymentGatwayController.Order);
+route.post('/payment/success',paymentGatwayController.Success);
+route.post('/plans',paymentGatwayController.CreatePlans);
+
 
 
 module.exports = route;

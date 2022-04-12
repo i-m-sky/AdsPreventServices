@@ -48,7 +48,6 @@ const AllRoutes = () => {
         { path: 'subscription', element: <Subscription /> },
         { path: 'clientid/:id/:refreshToken', element: <ChoiceOneGoogleAccount /> },
         { path: 'payment/:price', element: <Payment /> },
-
         {
             path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes>,
             children: [
