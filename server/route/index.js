@@ -53,10 +53,10 @@ route.get('/detectedips',ipController.DetectedIps);
 route.post('/blockiplist',ipController.BlockedIplist);
 
 
-//Payment 
-route.post('/payment/order',paymentGatwayController.Order);
-route.post('/payment/success',paymentGatwayController.Success);
-route.post('/plans',paymentGatwayController.CreatePlans);
+//Payment Gateway
+route.post('/payment/subscription',paymentGatwayController.PaymentSubscription);
+route.post('/payment/verification',paymentGatwayController.PaymentVerification);
+
 
 
 

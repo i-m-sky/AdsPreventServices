@@ -1,9 +1,8 @@
-const Order = require("./Order");
-const Success = require("./Success");
-const CreatePlans  = require("./CreatePlans")
+
+const PaymentVerification = require("./PaymentVerification");
+const PaymentSubscription  = require("./PaymentSubscription")
 
 module.exports = {
-    Order,
-    Success,
-    CreatePlans
+    PaymentVerification,
+    PaymentSubscription,
 }
