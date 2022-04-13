@@ -51,7 +51,7 @@ const Payment = (props) => {
     }
 
     async function displayRazorpay() {
-    
+        console.log("1")
         const res = await loadScript(
             "https://checkout.razorpay.com/v1/checkout.js"
         );
@@ -61,35 +61,31 @@ const Payment = (props) => {
             return;
         }
 
-        PostApi('/plans').then((data) => {
+        PostApi('/payment/subscription').then((data) => {
             if (data.status === 'created') {
                 setOrder(data)
             }
         })
 
         const options = {
-            key: "rzp_test_SCjWaFjLaNNGXt", // Enter the Key ID generated from the Dashboard
-            amount: order.amount.toString(),
-            currency: order.currency,
+            key: "rzp_test_SCjWaFjLaNNGXt",
+            subscription_id: order.id,
             name: `${process.env.REACT_APP_TITLE}`,
-            description: "Test Transaction",
+            description: "Monthly Test Plan",
             image: '../images/Fraud.png',
-            order_id: order.order_id,
+            handler: function (response) {
+                    
+                alert(response.razorpay_payment_id)
+                // const data = {
+                //     razorpay_payment_id: response.razorpay_payment_id,
+                //     razorpay_subscription_id: response.razorpay_subscription_id,
+                //     razorpaySignature: response.razorpay_signature,
+                // };
 
-            handler: async function (response) {
-
-                const data = {
-                    orderCreationId: order.order_id,
-                    razorpayPaymentId: response.razorpay_payment_id,
-                    razorpayOrderId: response.razorpay_order_id,
-                    razorpaySignature: response.razorpay_signature,
-                };
-
-                PostApi(`/payment/success`, { data }).then((data) => {
-                    console.log("success data", data)
-                    alert("Payment Success")
-                })
-
+                // PostApi(`/payment/verification`, { data }).then((data) => {
+                //     console.log("success data", data)
+                //     alert("Payment Success")
+                // })
             },
             prefill: {
                 name: "Soumya Dey",
@@ -102,7 +98,7 @@ const Payment = (props) => {
             theme: {
                 color: "#61dafb",
             },
-        };
+        }
 
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
@@ -219,7 +215,7 @@ const Payment = (props) => {
                                                     <div class="form-group col-md-4 cemail">
                                                         <label for="inputState">State</label>
                                                         <select id="inputState" class="form-control" onChange={(e) => setSelectState(e.target.value)}>
-                                                           
+
                                                             {states && states.length > 0 ? states.map((data, index) => (
 
                                                                 <option value={data.name}>{data.name}</option>
