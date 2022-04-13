@@ -12,11 +12,11 @@ const PaymentVerification = (req, res) => {
         
         if (digest === razorpay_signature) {
             console.log('request is legit')
-            return res.status(200).json({status:true,message:"Payment success"})
+            return res.status(200).json({status:true,message:"Payment success"});
             
         } else {
             console.log('request is not legit')
-            return res.status(200).json({status:false,message:"Payment Faild"})
+            return res.status(200).json({status:false,message:"Payment Faild"});
             
         }
     } catch (error) {
