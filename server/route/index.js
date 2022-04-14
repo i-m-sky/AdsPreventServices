@@ -54,7 +54,9 @@ route.post('/blockiplist',ipController.BlockedIplist);
 
 
 //Payment Gateway
-route.post('/payment/subscription',paymentGatwayController.PaymentSubscription);
+route.post('/payment/subscription89',paymentGatwayController.Subscription_89);
+route.post('/payment/subscription59',paymentGatwayController.Subscription_59);
+route.post('/payment/subscription49',paymentGatwayController.Subscription_49);
 route.post('/payment/verification',paymentGatwayController.PaymentVerification);
 
 

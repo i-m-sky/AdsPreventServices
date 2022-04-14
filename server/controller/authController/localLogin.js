@@ -28,7 +28,7 @@ const localLogin = async(req,res)=>{
         if (!compare) {
             return res.status(200).json({ status: false, message: "Invalid email or password" });
         }
-        const user = { id: userdata.id, name: userdata.name, role: userdata.role}
+        const user = { id: userdata.id, name: userdata.name, role: userdata.role,email:userdata.email}
         
         const token = await JwtService.sign(user);
         return res.status(200).json({ status: true, message: "Login success", user: { user, token } });

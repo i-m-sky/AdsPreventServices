@@ -61,35 +61,35 @@ const Payment = (props) => {
             return;
         }
 
-        PostApi('/payment/subscription').then((data) => {
+        PostApi('/payment/subscription49').then((data) => {
             if (data.status === 'created') {
                 setOrder(data)
             }
         })
 
         const options = {
-            key: "rzp_test_SCjWaFjLaNNGXt",
+            key: 'rzp_test_QPULOzrbO6D11J',
             subscription_id: order.id,
             name: `${process.env.REACT_APP_TITLE}`,
             description: "Monthly Test Plan",
             image: '../images/Fraud.png',
             handler: function (response) {
                     
-                alert(response.razorpay_payment_id)
-                // const data = {
-                //     razorpay_payment_id: response.razorpay_payment_id,
-                //     razorpay_subscription_id: response.razorpay_subscription_id,
-                //     razorpaySignature: response.razorpay_signature,
-                // };
+                const data = {
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_subscription_id: response.razorpay_subscription_id,
+                    razorpaySignature: response.razorpay_signature,
+                };
 
-                // PostApi(`/payment/verification`, { data }).then((data) => {
-                //     console.log("success data", data)
-                //     alert("Payment Success")
-                // })
+                PostApi(`/payment/verification`, { data }).then((data) => {
+                    if(data.status===true){
+                        toast("Payment success")
+                    }
+                })
             },
             prefill: {
-                name: "Soumya Dey",
-                email: "SoumyaDey@example.com",
+                name: user.user.name,
+                email: user.user.email,
 
             },
             notes: {

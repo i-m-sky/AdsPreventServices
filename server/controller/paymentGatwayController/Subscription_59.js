@@ -1,8 +1,9 @@
 
 const Razorpay = require('razorpay');
 
-const PaymentSubscription = async (req, res) => {
+const Subscription_59 = async (req, res) => {
     try {
+
         const instance = new Razorpay({
             key_id: process.env.RAZORPAY_KEY_ID,
             key_secret: process.env.RAZORPAY_SECRET,
@@ -10,11 +11,20 @@ const PaymentSubscription = async (req, res) => {
 
         const subs = await instance.subscriptions.create({
 
-            plan_id: "plan_JIhcFkrWkFST9K",
+            plan_id: process.env.RAZORPAY_PLAN_49,
             customer_notify: 1,
             quantity: 1,
             total_count: 1,
-            start_at: Date.now() / 1000 | 0,
+            start_at: Math.round((Date.now() / 1000) + 8.64e4),
+            addons: [
+                {
+                  item: {
+                    name: "Delivery charges",
+                    amount: 49,
+                    currency: "USD"
+                  }
+                }
+              ],
             notes: { key1: "value3", key2: "value2" }
 
         });
@@ -23,7 +33,7 @@ const PaymentSubscription = async (req, res) => {
         return res.status(200).json(subs);
 
     } catch (error) {
-        return res.status(500).json(error)
+        return res.status(500).json(error.message)
     }
 }
-module.exports = PaymentSubscription;
+module.exports = Subscription_59;
